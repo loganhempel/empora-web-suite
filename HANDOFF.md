@@ -84,7 +84,7 @@ Group cream/ink/orange · Emporom agency = the React white/orange/black redesign
 4. **Logos** — Logan sends marked-up logos → place in each site.
 5. **Real pricing + testimonials** — placeholders everywhere; Logan to supply.
 6. **Apply Framer feel to Group hub** — hub is currently light editorial ecomflow style; consider whether to push it toward the same Framer DNA (atmospheric backdrop, column guides) or keep as-is for differentiation. Logan's call.
-7. **Deploy** — Vercel. Needs Logan's one-time `npx vercel login`, then deploy the suite dir (static). Emporom React deploys via empwebv2 → emporom.media on its own pipeline.
+7. ~~**Deploy** — Vercel.~~ **PIPELINE BUILT 2026-05-30 (round 3)**. See `DEPLOY.md`. `build.sh` generates `deploy/{group,h2,intelligence,emporom}/` — each self-contained with `_shared/` inlined. Git repo initialised + initial commit made. Remote points at `https://github.com/loganhempel/empora-web-suite.git` (repo needs creation at github.com/new — see `NEXT-STEPS.md`). Vercel CLI uses `npx vercel`, no global install. Target URLs: `empora-group.vercel.app`, `h2-empora.vercel.app`, `intelligence-empora.vercel.app`, `emporom-empora.vercel.app`. Emporom React still deploys separately from empwebv2.
 8. Imagery — Unsplash (verified URLs already in the dives); Canva stock isn't directly pullable via the connector, so use Unsplash + Logan's Canva logos.
 
 ## Framer DNA (lifted from aisupply.framer.website — apply consistently)
