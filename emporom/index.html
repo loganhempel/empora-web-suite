@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Emporom Media · Build demand. Dominate your market.</title>
+<meta name="description" content="Emporom Media is a Wellington-based performance marketing agency. Meta Ads, Google Ads, SEO, content and landing pages built to grow revenue for NZ brands." />
+<meta name="theme-color" content="#2536E6" />
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Emporom Media · Build demand. Dominate your market." />
+<meta property="og:description" content="Wellington performance marketing. We run the ads, build the pages and tighten the tracking, so growth shows up where it counts: revenue." />
+<meta property="og:locale" content="en_NZ" />
+<meta name="twitter:card" content="summary_large_image" />
+<!-- Inline SVG favicon: Southern Cross sparkle -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%232536E6'/%3E%3Cpath fill='%23FF6A1F' d='M50 14 C53 38 62 47 86 50 C62 53 53 62 50 86 C47 62 38 53 14 50 C38 47 47 38 50 14 Z'/%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<!-- Shared Empora design system. Emporom = the system defaults (cobalt + orange, light). -->
+<link rel="stylesheet" href="../_shared/system.css" />
+<style>
+  /* ── Emporom signature: the demand engine ── */
+  .engine{background:var(--bg-2)}
+  .flow{display:flex;align-items:center;justify-content:center;flex-wrap:nowrap;margin-top:10px}
+  .stage{flex:0 0 auto;width:152px;text-align:center;background:var(--white);border:1px solid var(--line);border-radius:16px;padding:20px 14px;position:relative;z-index:2}
+  .stage .stage-ic{width:44px;height:44px;border-radius:12px;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;background:linear-gradient(150deg,var(--brand),var(--brand-deep))}
+  .stage .stage-ic svg{width:20px;height:20px;stroke:#fff;fill:none;stroke-width:1.9}
+  .stage .stage-name{font-weight:800;font-size:.98rem;letter-spacing:-.01em}
+  .stage .stage-val{font-family:var(--mono);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+  .stage.feat .stage-ic{background:linear-gradient(150deg,var(--accent),var(--accent-d));box-shadow:0 8px 22px rgba(var(--accent-rgb),.35)}
+  .stage.feat .stage-big{font-size:1.5rem;font-weight:900;letter-spacing:-.03em;color:var(--accent-d);margin-top:2px}
+  .conn{flex:1 1 auto;height:2px;background:var(--line);position:relative;min-width:34px;align-self:center;margin-top:-12px}
+  .conn .pkt{position:absolute;top:50%;left:0;width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px var(--accent);transform:translate(-50%,-50%);animation:flowH 2.4s linear infinite}
+  .conn .pkt:nth-child(2){animation-delay:.8s}.conn .pkt:nth-child(3){animation-delay:1.6s}
+  @keyframes flowH{0%{left:0;opacity:0}12%{opacity:1}88%{opacity:1}100%{left:100%;opacity:0}}
+  @media(max-width:820px){
+    .flow{flex-direction:column}.stage{width:220px}
+    .conn{width:2px;height:34px;min-width:0;margin:0}
+    .conn .pkt{animation-name:flowV}
+    @keyframes flowV{0%{top:0;left:50%;opacity:0}12%{opacity:1}88%{opacity:1}100%{top:100%;left:50%;opacity:0}}
+  }
+  @media(prefers-reduced-motion:reduce){.conn .pkt{animation:none;opacity:.6;left:50%}}
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<!-- ───────── NAV ───────── -->
+<nav id="nav">
+  <div class="wrap nav-in">
+    <a class="logo" href="#top" aria-label="Emporom Media home">
+      <span class="mark" style="width:30px;height:30px">
+        <span class="glow"></span>
+        <svg viewBox="0 0 100 100" width="30" height="30"><path fill="#FF6A1F" d="M50 3 C53.5 35 65 46.5 97 50 C65 53.5 53.5 65 50 97 C46.5 65 35 53.5 3 50 C35 46.5 46.5 35 50 3 Z"/></svg>
+        <span class="dot" style="width:7px;height:7px;top:1px;right:0"></span>
+      </span>
+      <span class="word"><b>Emporom</b> <span>Media</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#audit">Tracking</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="#contact" class="nav-cta">Book a call</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mMenu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="m-menu" id="mMenu" aria-hidden="true">
+  <a href="#services">Services</a>
+  <a href="#audit">Tracking audit</a>
+  <a href="#work">Work</a>
+  <a href="#pricing">Pricing</a>
+  <a href="#contact" class="btn btn-orange">Book a strategy call</a>
+</div>
+
+<!-- ───────── HERO (the blue one) ───────── -->
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-in">
+      <span class="eyebrow an a1">Wellington-based performance marketing</span>
+      <h1 class="an a2">Build demand.<br><span class="or">Dominate</span> your <span class="kw"><span class="kw-sizer">category.</span><span class="kw-w" data-active="true">market.</span><span class="kw-w">funnel.</span><span class="kw-w">category.</span><span class="kw-w">pipeline.</span></span></h1>
+      <p class="sub an a3">We run the ads, build the pages and tighten the tracking, so growth shows up where it counts: revenue.</p>
+      <div class="hero-cta an a4">
+        <a href="#contact" class="btn btn-orange magnetic">Book a strategy call <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a href="#work" class="btn btn-ghost-light">See the work</a>
+      </div>
+      <p class="hero-trust an a5">Trusted by <b>NZ brands</b> in e-commerce, trades &amp; professional services</p>
+    </div>
+
+    <!-- dashboard mock -->
+    <div class="stage an a6">
+      <span class="ftag ftag-1"><span class="d" style="background:#36d77e;box-shadow:0 0 8px #36d77e"></span>Tracking fixed</span>
+      <span class="ftag ftag-2"><span class="d" style="background:var(--accent);box-shadow:0 0 8px var(--accent)"></span>+38% ROAS</span>
+      <span class="ftag ftag-3"><span class="d" style="background:#7aa2ff;box-shadow:0 0 8px #7aa2ff"></span>Page 1 · SEO</span>
+      <div class="browser rv">
+        <div class="b-bar"><i></i><i></i><i></i><span class="b-url">app.emporom.org/dashboard</span></div>
+        <div class="dash">
+          <div class="tiles">
+            <div class="tile"><div class="lbl">Revenue</div><div class="num" data-count="284" data-prefix="$" data-suffix="k">$0</div><div class="delta">▲ 38% MoM</div></div>
+            <div class="tile"><div class="lbl">ROAS</div><div class="num" data-count="3.8" data-suffix="×" data-dec="1">0×</div><div class="delta b">▲ blended</div></div>
+            <div class="tile"><div class="lbl">Cost / lead</div><div class="num" data-count="11" data-prefix="$">$0</div><div class="delta">▼ 41%</div></div>
+          </div>
+          <div class="panel">
+            <h4>Revenue trend</h4><div class="cap">Last 6 months</div>
+            <div class="area">
+              <svg viewBox="0 0 320 140" preserveAspectRatio="none">
+                <defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#2536E6" stop-opacity=".28"/><stop offset="1" stop-color="#2536E6" stop-opacity="0"/>
+                </linearGradient></defs>
+                <path d="M0 110 L55 96 L110 102 L165 70 L220 58 L275 30 L320 14 L320 140 L0 140 Z" fill="url(#g)"/>
+                <path class="line" d="M0 110 L55 96 L110 102 L165 70 L220 58 L275 30 L320 14" fill="none" stroke="#2536E6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle class="pip" cx="320" cy="14" r="4.5" fill="#FF6A1F"/>
+              </svg>
+            </div>
+          </div>
+          <div class="panel">
+            <h4>Spend by channel</h4><div class="cap">This month</div>
+            <div class="bars">
+              <span style="--h:48%"></span><span style="--h:70%"></span><span style="--h:40%"></span><span style="--h:88%"></span><span style="--h:62%"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="result-card rv d2">
+        <div class="cap">Revenue influenced</div>
+        <div class="big" data-count="1.2" data-prefix="$" data-suffix="M+" data-dec="1">$0</div>
+        <div class="row">
+          <span class="up">▲ for NZ clients</span>
+          <span class="play" role="img" aria-label="Play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ───────── TRUST MARQUEE ───────── -->
+<div class="trust">
+  <div class="lab">Working with brands that value the work</div>
+  <div class="marquee-mask">
+    <div class="marquee">
+      <span>Carnivore Crate</span><span>Ultra Fast Pest Control</span><span>Waterwell</span><span>2in1 Cleaners</span><span>Welly Lawns</span><span>Home &amp; Beyond</span>
+      <span>Carnivore Crate</span><span>Ultra Fast Pest Control</span><span>Waterwell</span><span>2in1 Cleaners</span><span>Welly Lawns</span><span>Home &amp; Beyond</span>
+    </div>
+  </div>
+</div>
+
+<!-- ───────── RESULTS BAND ───────── -->
+<section class="results">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow line">By the numbers</span>
+      <h2>Not just a pretty layout.<br>This one's built to <span style="color:var(--accent)">convert.</span></h2>
+    </div>
+    <div class="stat-grid">
+      <div class="stat rv"><div class="n"><span data-count="1.2" data-prefix="$" data-dec="1">$0</span><span class="u">M+</span></div><div class="t">Revenue influenced for clients</div></div>
+      <div class="stat rv d1"><div class="n"><span data-count="3.8" data-dec="1">0</span><span class="u">×</span></div><div class="t">Average blended ROAS</div></div>
+      <div class="stat rv d2"><div class="n"><span data-count="94">0</span><span class="u">%</span></div><div class="t">Client retention rate</div></div>
+      <div class="stat rv d3"><div class="n"><span data-count="12">0</span><span class="u">+</span></div><div class="t">NZ brands scaled to date</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── DEMAND ENGINE (signature flow) ───────── -->
+<section class="engine">
+  <div class="wrap">
+    <div class="sec-head center rv">
+      <span class="eyebrow line">The demand engine</span>
+      <h2>How a click becomes <span class="blue">revenue.</span></h2>
+      <p>Every stage measured, every handoff tracked. This is the system we run for you, end to end.</p>
+    </div>
+    <div class="flow rv">
+      <div class="stage"><div class="stage-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7"/></svg></div><div class="stage-name">Audience</div><div class="stage-val">Targeted</div></div>
+      <div class="conn"><span class="pkt"></span><span class="pkt"></span><span class="pkt"></span></div>
+      <div class="stage"><div class="stage-ic"><svg viewBox="0 0 24 24"><path d="M3 11l18-7-7 18-2.5-7.5z"/></svg></div><div class="stage-name">Ads</div><div class="stage-val">Meta + Google</div></div>
+      <div class="conn"><span class="pkt"></span><span class="pkt"></span><span class="pkt"></span></div>
+      <div class="stage"><div class="stage-ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18"/></svg></div><div class="stage-name">Landing page</div><div class="stage-val">Built to convert</div></div>
+      <div class="conn"><span class="pkt"></span><span class="pkt"></span><span class="pkt"></span></div>
+      <div class="stage"><div class="stage-ic"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg></div><div class="stage-name">Conversion</div><div class="stage-val">Tracked</div></div>
+      <div class="conn"><span class="pkt"></span><span class="pkt"></span><span class="pkt"></span></div>
+      <div class="stage feat"><div class="stage-ic"><svg viewBox="0 0 24 24"><path d="M4 18V8m5 10V5m5 13v-7m5 7V9"/></svg></div><div class="stage-name">Revenue</div><div class="stage-big" data-count="38" data-prefix="+" data-suffix="%">+0%</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── AUDIT (interactive signature feature) ───────── -->
+<section class="audit" id="audit">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow line">The first lever</span>
+      <h2>See what your tracking is <span class="blue">hiding.</span></h2>
+      <p>Most accounts we inherit are quietly losing conversions to broken pixels and untracked calls. Flip the switch. That gap is usually the fastest win in the account.</p>
+    </div>
+    <div class="audit-card rv" id="auditCard">
+      <div class="audit-toggle" role="tablist" aria-label="Tracking state">
+        <button class="t-before on" role="tab" aria-selected="true">Reported</button>
+        <button class="t-after" role="tab" aria-selected="false">After audit</button>
+      </div>
+      <div class="audit-grid">
+        <div class="audit-chart">
+          <svg viewBox="0 0 480 230" preserveAspectRatio="none" aria-hidden="true">
+            <defs><linearGradient id="ag" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#FF6A1F" stop-opacity=".26"/><stop offset="1" stop-color="#FF6A1F" stop-opacity="0"/>
+            </linearGradient></defs>
+            <!-- gridlines -->
+            <g stroke="rgba(13,13,15,.07)" stroke-width="1">
+              <line x1="0" y1="58" x2="480" y2="58"/><line x1="0" y1="116" x2="480" y2="116"/><line x1="0" y1="174" x2="480" y2="174"/>
+            </g>
+            <!-- gap shading between reported and actual -->
+            <path class="a-gap" d="M0 150 L80 142 L160 138 L240 128 L320 124 L400 118 L480 112 L480 188 L400 186 L320 182 L240 180 L160 176 L80 172 L0 170 Z"/>
+            <!-- actual area + line -->
+            <path class="a-fill" d="M0 150 L80 142 L160 138 L240 128 L320 124 L400 118 L480 112 L480 230 L0 230 Z"/>
+            <path class="a-actual" d="M0 150 L80 142 L160 138 L240 128 L320 124 L400 118 L480 112"/>
+            <!-- reported (always visible) -->
+            <path class="a-reported" d="M0 170 L80 172 L160 176 L240 180 L320 182 L400 186 L480 188"/>
+            <circle class="a-dot" cx="480" cy="112" r="5.5" fill="#FF6A1F"/>
+          </svg>
+        </div>
+        <div class="audit-read">
+          <div class="lead" id="auditLead">Conversions reported</div>
+          <div class="figure" id="auditFigure" data-before="148" data-after="271">148</div>
+          <p class="sub" id="auditSub">What the platform credited before we touched the tracking.</p>
+          <span class="recovered">▲ <span id="auditRecovered">123</span> conversions recovered</span>
+        </div>
+      </div>
+      <div class="audit-foot">Illustrative example · real recovery depends on the account</div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── CREATIVE / WORK ───────── -->
+<section id="creative">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow line">What we do</span>
+      <h2>Brands scale with <span class="blue">creative</span> that earns its spend.</h2>
+      <p>Strategy, creative and tracking under one roof. Every dollar is measured, every campaign is built to be cut or scaled on the numbers, never on a hunch.</p>
+    </div>
+    <div class="collage rv">
+      <div class="cell c-blue grain tall"><span class="k">Meta Ads</span><span class="v">Story &amp; Reel<br>A/B tested</span></div>
+      <div class="cell c-paper wide"><span class="k">Google Ads</span><span class="v">Search that<br>actually tracks.</span></div>
+      <div class="cell c-ink grain"><span class="k">SEO</span><span class="v">Page 1</span></div>
+      <div class="cell c-orange grain"><span class="k">CRO</span><span class="v">+38%</span></div>
+      <div class="cell c-ink grain wide"><span class="k">Email &amp; Lifecycle</span><span class="v">Flows that sell on autopilot</span></div>
+      <div class="cell c-blue grain"><span class="k">Content</span><span class="v">Short-form</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── SERVICES ───────── -->
+<section id="services" style="background:var(--bg-2)">
+  <div class="wrap">
+    <div class="sec-head center rv">
+      <span class="eyebrow line">Services</span>
+      <h2>One partner for the whole <span class="blue">growth engine.</span></h2>
+      <p>Pick the pieces you need, or hand us the lot. We plug into your business, not the other way around.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc rv">
+        <div class="svc-badge"><svg viewBox="0 0 24 24"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg></div>
+        <h3>Meta Ads</h3><p>Story &amp; Reel creative, audience testing and offers that move. Built around your margins, not vanity reach.</p>
+      </div>
+      <div class="svc rv d1">
+        <div class="svc-badge"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div>
+        <h3>Google Ads</h3><p>Search, Performance Max and proper conversion tracking. We audit the tracking first. It's where most accounts quietly leak.</p>
+      </div>
+      <div class="svc rv d2">
+        <div class="svc-badge"><svg viewBox="0 0 24 24"><path d="M4 18V8m5 10V5m5 13v-7m5 7V9"/></svg></div>
+        <h3>SEO</h3><p>Technical fixes, content and local search that compounds, so you're not renting every click forever.</p>
+      </div>
+      <div class="svc rv">
+        <div class="svc-badge"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18M8 18v2m8-2v2"/></svg></div>
+        <h3>Landing pages &amp; CRO</h3><p>Fast, focused pages built to convert the traffic you're paying for. Tested, not guessed.</p>
+      </div>
+      <div class="svc rv d1">
+        <div class="svc-badge"><svg viewBox="0 0 24 24"><path d="M4 5h16v14H4z"/><path d="M4 7l8 6 8-6"/></svg></div>
+        <h3>Email &amp; lifecycle</h3><p>Welcome, abandoned-cart and win-back flows that turn one-time buyers into repeat revenue while you sleep.</p>
+      </div>
+      <div class="svc rv d2">
+        <div class="svc-badge"><svg viewBox="0 0 24 24"><path d="M15 10l4.5-2.6v9.2L15 14M3 8h12v8H3z"/></svg></div>
+        <h3>Social &amp; content</h3><p>Short-form video and content systems that feed the funnel and keep your brand in front of the right people.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── CASE STUDIES (real proof) ───────── -->
+<section class="cases" id="work">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow line">Selected work</span>
+      <h2>Real accounts. <span style="color:var(--accent)">Real fixes.</span></h2>
+      <p>A snapshot of what we've actually done for NZ brands, the kind of unglamorous, revenue-moving work that doesn't show up in a logo wall.</p>
+    </div>
+    <div class="case-grid">
+      <article class="case rv">
+        <span class="cnum">01 · Pest control</span>
+        <h3>Ultra Fast Pest Control</h3>
+        <p>Diagnosed a conversion crash after a website migration down to broken phone-call tracking, restored visibility on every call the ads were actually driving.</p>
+        <div class="tags"><span>Google Ads</span><span>Conversion tracking</span></div>
+      </article>
+      <article class="case rv d1">
+        <span class="cnum">02 · E-commerce</span>
+        <h3>Carnivore Crate</h3>
+        <p>Ran a Mother's Day push on a Shopify store with A/B tested Story and Reel creative, backed by email and on-site CRO.</p>
+        <div class="tags"><span>Meta Ads</span><span>Email</span><span>CRO</span></div>
+      </article>
+      <article class="case rv d2">
+        <span class="cnum">03 · Home services</span>
+        <h3>Welly Lawns &amp; 2in1</h3>
+        <p>Audited the accounts, fixed the conversion tracking that was misreporting results, and rebuilt the landing pages the spend was pointing at.</p>
+        <div class="tags"><span>Google Ads</span><span>Landing pages</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── APPROACH ───────── -->
+<section class="approach" id="approach">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow line">How we work</span>
+      <h2>A mission built around <span class="blue">growth</span>, not busywork.</h2>
+    </div>
+    <div class="app-grid">
+      <ol class="steps rv">
+        <li><div><h3>Audit &amp; tracking</h3><p>We fix what's leaking first. Broken conversion tracking and analytics before a dollar of new spend goes out.</p></div></li>
+        <li><div><h3>Strategy &amp; offer</h3><p>Clear positioning, the right channels and an offer worth clicking. No spray-and-pray.</p></div></li>
+        <li><div><h3>Build &amp; launch</h3><p>Creative, pages and campaigns shipped fast, then measured against revenue from day one.</p></div></li>
+        <li><div><h3>Scale &amp; report</h3><p>Cut what doesn't work, double down on what does, and report in plain English you can act on.</p></div></li>
+      </ol>
+      <div class="app-card rv d2">
+        <div class="rate">4.9<span style="font-size:2rem;opacity:.6">/5</span></div>
+        <div class="stars">★★★★★</div>
+        <p class="q">"Emporom found the broken tracking that was hiding half our conversions. The fix paid for the retainer in the first month."</p>
+        <div class="by">— Client testimonial · replace with a real quote</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── EDUCATIONAL: problem → solution ───────── -->
+<section class="edu" style="background:var(--bg-2)">
+  <div class="wrap">
+    <div class="sec-head center rv">
+      <span class="eyebrow line">The problem</span>
+      <h2>Most ad budgets leak<br>before they <span class="blue">convert.</span></h2>
+    </div>
+    <div class="edu-grid">
+      <div class="rv"><div class="edu-tag">What goes wrong</div><h3>You're paying for clicks you can't see.</h3><p>Broken tracking, slow pages and untuned campaigns mean half the spend disappears before anyone counts it. You can't scale what you can't measure.</p></div>
+      <div class="edu-card rv d1"><ul class="edu-pts bad">
+        <li><svg viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18"/></svg><span>Conversions misfire after a site migration</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18"/></svg><span>Phone calls and forms go untracked</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18"/></svg><span>Budget scales on hunches, not numbers</span></li>
+      </ul></div>
+    </div>
+    <div class="edu-grid">
+      <div class="edu-card rv"><ul class="edu-pts">
+        <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6"/></svg><span><b>Fix the tracking first.</b> Every click and call attributed.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6"/></svg><span><b>Tune the page</b> the spend points at.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6"/></svg><span><b>Scale what works,</b> cut what doesn't.</span></li>
+      </ul></div>
+      <div class="rv d1"><div class="edu-tag">How we fix it</div><h3>Measure first. Then make it grow.</h3><p>We audit the tracking before a dollar of new spend goes out, rebuild the pages that leak, and scale only what's proven. Revenue you can defend to anyone.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── PRICING ───────── -->
+<section id="pricing">
+  <div class="wrap">
+    <div class="sec-head center rv">
+      <span class="eyebrow line">Pricing</span>
+      <h2>Retainers that scale <span class="blue">with you.</span></h2>
+      <p>Monthly, no lock-in beyond the agreed term. Deposit secures your start date. Work begins once it's in.</p>
+    </div>
+    <div class="price-grid">
+      <div class="plan rv">
+        <div class="pname">Launch</div>
+        <div class="amt">$900<small>/mo</small></div>
+        <div class="desc">One channel, done properly. Ideal for getting a single engine humming.</div>
+        <ul>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>1 ad channel (Meta or Google)</li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>Conversion tracking setup</li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>Monthly report &amp; call</li>
+        </ul>
+        <a href="#contact" class="btn">Start with Launch</a>
+      </div>
+      <div class="plan feat rv d1">
+        <div class="pname">Growth <span class="tag">POPULAR</span></div>
+        <div class="amt">$1,400<small>/mo</small></div>
+        <div class="desc">The full demand engine for brands ready to scale spend with confidence.</div>
+        <ul>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>Meta + Google managed</li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>Landing page &amp; CRO</li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>Creative &amp; social content</li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>Bi-weekly reporting</li>
+        </ul>
+        <a href="#contact" class="btn btn-orange">Book a strategy call</a>
+      </div>
+      <div class="plan rv d2">
+        <div class="pname">Scale</div>
+        <div class="amt">Custom</div>
+        <div class="desc">Multi-channel, full-funnel and lifecycle for established brands with real budget.</div>
+        <ul>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>Everything in Growth</li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>SEO + email lifecycle</li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>Dedicated strategist</li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>Live dashboard access</li>
+        </ul>
+        <a href="#contact" class="btn">Talk to us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── FAQ ───────── -->
+<section style="background:var(--bg-2)">
+  <div class="wrap">
+    <div class="sec-head center rv">
+      <span class="eyebrow line">Questions</span>
+      <h2>The honest <span class="blue">answers.</span></h2>
+    </div>
+    <div class="faq rv">
+      <div class="q-item">
+        <button class="q-head" aria-expanded="false">Do I need a deposit to start? <span class="ic"></span></button>
+        <div class="q-body"><p>Yes. A deposit secures your start date and confirms the engagement. Work begins once it's in. No exceptions. It keeps both of us serious and the timeline real.</p></div>
+      </div>
+      <div class="q-item">
+        <button class="q-head" aria-expanded="false">How fast will I see results? <span class="ic"></span></button>
+        <div class="q-body"><p>Tracking and quick wins in week one. Meaningful trend data usually takes 4–6 weeks as campaigns exit the learning phase. We'd rather set the right expectation than overpromise.</p></div>
+      </div>
+      <div class="q-item">
+        <button class="q-head" aria-expanded="false">Why audit tracking first? <span class="ic"></span></button>
+        <div class="q-body"><p>Because most accounts we inherit are quietly losing conversions to broken pixels, untracked phone calls or a botched website migration. Fixing that is often the single biggest lever before we touch spend.</p></div>
+      </div>
+      <div class="q-item">
+        <button class="q-head" aria-expanded="false">Am I locked in? <span class="ic"></span></button>
+        <div class="q-body"><p>We work to an agreed minimum term so campaigns have room to perform, then it's month-to-month. The work should keep you, not a contract.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── CTA ───────── -->
+<section class="cta" id="contact">
+  <div class="wrap cta-in">
+    <div class="rv">
+      <h2>Ready to dominate your market?</h2>
+      <p>Book a free strategy call. We'll audit what you're running and show you where the revenue is hiding.</p>
+      <form class="lead-form" novalidate>
+        <input type="text" name="name" placeholder="Your name" required aria-label="Your name" />
+        <input type="email" name="email" placeholder="Email address" required aria-label="Email address" />
+        <button type="submit" class="btn btn-orange magnetic">Book a strategy call <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        <p class="lead-status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── FOOTER ───────── -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a class="logo" href="#top">
+          <span class="mark" style="width:28px;height:28px">
+            <svg viewBox="0 0 100 100" width="28" height="28"><path fill="#FF6A1F" d="M50 3 C53.5 35 65 46.5 97 50 C65 53.5 53.5 65 50 97 C46.5 65 35 53.5 3 50 C35 46.5 46.5 35 50 3 Z"/></svg>
+          </span>
+          <span class="word" style="color:#fff"><b>Emporom</b> <span style="opacity:.7">Media</span></span>
+        </a>
+        <p>Performance marketing for NZ brands that value the work. Wellington, Aotearoa.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Services</h5>
+        <a href="#services">Meta Ads</a><a href="#services">Google Ads</a><a href="#services">SEO</a><a href="#services">CRO</a>
+      </div>
+      <div class="foot-col">
+        <h5>Company</h5>
+        <a href="#work">Work</a><a href="#approach">Approach</a><a href="#pricing">Pricing</a><a href="#contact">Contact</a>
+      </div>
+      <div class="foot-col">
+        <h5>Get in touch</h5>
+        <a href="mailto:logan@emporom.org">logan@emporom.org</a><a href="https://emporom.org">emporom.org</a><a href="#contact">Book a call</a>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <small>© <span id="yr"></span> Emporom Media. Part of Empora Group.</small>
+      <span class="foot-tag">Navigate forward.</span>
+    </div>
+  </div>
+</footer>
+
+<a class="switch" href="../index.html"><span class="d"></span>Empora Group ↗</a>
+
+<script src="../_shared/system.js"></script>
+</body>
+</html>

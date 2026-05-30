@@ -1,0 +1,33 @@
+# OS
+.DS_Store
+Thumbs.db
+*.swp
+
+# Workspace junk
+_archive/
+_backup-original-2026-05-28/
+_demos/
+review/
+
+# Claude Code project-local config (per-machine)
+.claude/
+
+# Old backup variants (kept locally as historical reference)
+emporom-redesign/
+intelligence/sova-hero.html
+
+# Old standalone HTML scripts that were referenced in memory but never committed
+/tmp/standalone.py
+/tmp/polish.py
+
+# Local dev artefacts
+*.log
+.vscode/
+.idea/
+
+# Vercel
+.vercel/
+
+# Node — none in this project, but defensive
+node_modules/
+npm-debug.log*
