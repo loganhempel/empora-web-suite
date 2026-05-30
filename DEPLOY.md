@@ -4,14 +4,14 @@ Four sites, one repo, four Vercel projects. Each site is deployed independently 
 
 ## The 4 demo URLs
 
-| Site | Vercel project | URL |
-|---|---|---|
-| Empora Group hub | `empora-group` | https://empora-group.vercel.app |
-| H² · Hempel & Howell | `h2-empora` | https://h2-empora.vercel.app |
-| Empora Intelligence | `intelligence-empora` | https://intelligence-empora.vercel.app |
-| Emporom Media (standalone donor) | `emporom-empora` | https://emporom-empora.vercel.app |
+| Site | Source | Vercel project | URL |
+|---|---|---|---|
+| Empora Group hub | this repo · `deploy/group/` | `empora-group` | https://empora-group.vercel.app |
+| H² · Hempel & Howell | this repo · `deploy/h2/` | `h2-empora` | https://h2-empora.vercel.app |
+| Empora Intelligence | this repo · `deploy/intelligence/` | `intelligence-empora` | https://intelligence-empora.vercel.app |
+| **Emporom Media** | **`Bylo24/empwebv2`** (React app, separate repo) | `emporom-empora` | https://emporom-empora.vercel.app |
 
-> **Heads up:** the *real* Emporom Media site is the React app at `~/Documents/GitHub/empwebv2 /redesign`, which deploys separately to `emporom.media`. The `emporom-empora` URL above is the standalone HTML donor variant only.
+> **Heads up:** Emporom Media is the React/Vite app at `~/Documents/GitHub/empwebv2`, branch `main-redesign-sandbox`, GitHub remote `Bylo24/empwebv2`. The `/` route there now renders `IndexRedesign` (originally only at `/redesign`); the old site is preserved at `/old`. Vercel will auto-detect Vite and use the existing `vercel.json`. The standalone `emporom/` folder in *this* repo is kept only as a donor reference (no longer built into `deploy/`).
 
 ## How a deploy works
 
@@ -45,7 +45,7 @@ Four sites, one repo, four Vercel projects. Each site is deployed independently 
    ```bash
    npx vercel login
    ```
-2. For each of the 4 sites, create + link a Vercel project pointing at its `deploy/<site>` directory:
+2. **Three projects from this repo** — create + link each pointing at its `deploy/<site>` directory:
    ```bash
    cd "/Users/loganhempel/Agency & Website (V1)/deploy/group"
    npx vercel --name empora-group --yes
@@ -58,15 +58,18 @@ Four sites, one repo, four Vercel projects. Each site is deployed independently 
    cd "/Users/loganhempel/Agency & Website (V1)/deploy/intelligence"
    npx vercel --name intelligence-empora --yes
    npx vercel --prod --yes
-
-   cd "/Users/loganhempel/Agency & Website (V1)/deploy/emporom"
+   ```
+3. **Emporom Media** — separate project from the React repo:
+   ```bash
+   cd ~/Documents/GitHub/empwebv2
    npx vercel --name emporom-empora --yes
    npx vercel --prod --yes
    ```
-3. **Connect each Vercel project to the GitHub repo** so future pushes auto-deploy:
-   - In each project's Vercel dashboard → Settings → Git → Connect Git Repository → choose `loganhempel/empora-web-suite`.
-   - In Settings → General → Root Directory → set to the appropriate `deploy/<site>` path.
-   - From this point on, `git push` deploys all 4 automatically.
+   Vercel auto-detects Vite. Uses the existing `vercel.json` with SPA fallback rewrites. The `/` route renders `IndexRedesign` (per the App.tsx change); old site preserved at `/old`.
+4. **Connect each Vercel project to its Git repo** so future pushes auto-deploy:
+   - `empora-group`, `h2-empora`, `intelligence-empora` → connect to `loganhempel/empora-web-suite`, set Root Directory to the appropriate `deploy/<site>` path.
+   - `emporom-empora` → connect to `Bylo24/empwebv2`, branch `main-redesign-sandbox`, leave Root Directory blank (repo root).
+   - From this point on, `git push` to either repo auto-deploys the affected projects.
 
 ## Verifying changes before push
 

@@ -22,7 +22,11 @@ SHARED_JS="$ROOT/_shared/system.js"
 
 echo "→ wiping $DEPLOY"
 rm -rf "$DEPLOY"
-mkdir -p "$DEPLOY/group/assets" "$DEPLOY/h2" "$DEPLOY/intelligence" "$DEPLOY/emporom"
+mkdir -p "$DEPLOY/group/assets" "$DEPLOY/h2" "$DEPLOY/intelligence"
+# Emporom Media is deployed separately — the React app at
+# ~/Documents/GitHub/empwebv2 (the /redesign route). The standalone
+# emporom/ in this repo is kept as a donor reference only and is NOT
+# built into deploy/. See DEPLOY.md for the empwebv2 Vercel setup.
 
 # ---------- Group hub ------------------------------------------
 # Already self-contained inline (no _shared/ refs). Needs only the
@@ -74,11 +78,11 @@ PY
 
 echo "→ h2/"
 inline_shared "$ROOT/h2/index.html"       "$DEPLOY/h2/index.html"
-echo "→ emporom/"
-inline_shared "$ROOT/emporom/index.html"  "$DEPLOY/emporom/index.html"
+# emporom/ standalone is the donor — NOT built. Real Emporom Media =
+# empwebv2 React app at ~/Documents/GitHub/empwebv2 (its own deploy).
 
 # ---------- per-site vercel.json (clean config) ----------------
-for site in group h2 intelligence emporom; do
+for site in group h2 intelligence; do
   cat > "$DEPLOY/$site/vercel.json" <<JSON
 {
   "\$schema": "https://openapi.vercel.sh/vercel.json",
@@ -102,4 +106,5 @@ echo "✓ Build complete. Deploy artefacts in:"
 echo "    $DEPLOY/group/"
 echo "    $DEPLOY/h2/"
 echo "    $DEPLOY/intelligence/"
-echo "    $DEPLOY/emporom/"
+echo ""
+echo "    [Emporom Media] deploys separately from ~/Documents/GitHub/empwebv2"
