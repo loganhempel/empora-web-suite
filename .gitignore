@@ -31,3 +31,4 @@ intelligence/sova-hero.html
 # Node — none in this project, but defensive
 node_modules/
 npm-debug.log*
+.vercel
