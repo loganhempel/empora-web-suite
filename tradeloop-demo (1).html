@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TradeLoop — Pacific Climate Solutions</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Figtree:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#080808;--bg2:#0f0f0f;--bg3:#151515;--bg4:#1a1a1a;--bg5:#202020;
+  --border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.12);--border3:rgba(255,255,255,0.18);
+  --text:#eceae5;--muted:#6e6b66;--muted2:#3a3835;
+  --accent:#b8f050;--accent-dim:rgba(184,240,80,0.1);--accent-border:rgba(184,240,80,0.22);
+  --red:#f05060;--red-dim:rgba(240,80,96,0.1);
+  --amber:#f0b040;--amber-dim:rgba(240,176,64,0.1);
+  --blue:#50a8f0;--blue-dim:rgba(80,168,240,0.1);
+  --nav:230px;
+  --serif:'Syne',sans-serif;
+  --mono:'JetBrains Mono',monospace;
+  --sans:'Figtree',system-ui,sans-serif;
+  --radius:10px;
+}
+html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font-smoothing:antialiased;font-size:15px;}
+
+/* SCROLLBAR */
+::-webkit-scrollbar{width:3px;}
+::-webkit-scrollbar-track{background:transparent;}
+::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px;}
+
+/* SHELL */
+.shell{display:flex;height:100vh;overflow:hidden;}
+.sidebar{width:var(--nav);background:var(--bg2);border-right:1px solid var(--border);display:flex;flex-direction:column;flex-shrink:0;position:relative;z-index:20;}
+.main{flex:1;overflow-y:auto;background:var(--bg);}
+.main-inner{padding:2rem 2.5rem;max-width:1000px;}
+
+/* SIDEBAR */
+.sb-top{padding:1.125rem 1.25rem;border-bottom:1px solid var(--border);}
+.sb-brand{font-family:var(--serif);font-size:17px;font-weight:700;color:var(--text);letter-spacing:-0.02em;margin-bottom:12px;}
+.sb-brand span{color:var(--accent);}
+.sb-client-chip{display:flex;align-items:center;gap:8px;padding:7px 10px;background:var(--bg3);border:1px solid var(--border2);border-radius:7px;}
+.sb-avatar{width:26px;height:26px;border-radius:6px;background:var(--accent-dim);border:1px solid var(--accent-border);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--accent);font-family:var(--serif);flex-shrink:0;}
+.sb-client-info{min-width:0;}
+.sb-client-name{font-size:12px;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.sb-client-plan{font-size:10px;color:var(--muted);font-family:var(--mono);}
+
+.sb-nav{flex:1;padding:0.75rem 0;overflow-y:auto;}
+.sb-section{font-size:9px;font-family:var(--mono);letter-spacing:0.12em;text-transform:uppercase;color:var(--muted2);padding:0.625rem 1.25rem 0.375rem;font-weight:500;}
+.sb-link{display:flex;align-items:center;gap:9px;padding:8px 1.25rem;font-size:13px;color:var(--muted);cursor:pointer;border-left:2px solid transparent;transition:all 0.12s;user-select:none;position:relative;}
+.sb-link:hover{color:var(--text);background:rgba(255,255,255,0.025);}
+.sb-link.active{color:var(--text);background:rgba(184,240,80,0.05);border-left-color:var(--accent);font-weight:500;}
+.sb-link .ico{width:16px;text-align:center;font-size:14px;opacity:0.6;}
+.sb-link.active .ico{opacity:1;}
+.sb-notif{margin-left:auto;min-width:18px;height:18px;padding:0 5px;border-radius:9px;background:var(--amber);color:#000;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;font-family:var(--mono);}
+.sb-notif.green{background:var(--accent);}
+
+.sb-bottom{border-top:1px solid var(--border);padding:0.75rem 0;}
+
+/* STATUS BAR */
+.status-bar{padding:0 1.25rem 0.875rem;margin-top:0.25rem;}
+.status-item{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--muted);font-family:var(--mono);margin-bottom:3px;}
+.status-dot{width:5px;height:5px;border-radius:50%;}
+.status-dot.green{background:var(--accent);box-shadow:0 0 6px var(--accent);}
+.status-dot.amber{background:var(--amber);}
+.status-dot.red{background:var(--red);}
+
+/* PAGES */
+.page{display:none;}.page.active{display:block;}
+
+/* PAGE HEADER */
+.ph{margin-bottom:1.75rem;}
+.ph-eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
+.ph h1{font-family:var(--serif);font-size:26px;font-weight:700;color:var(--text);letter-spacing:-0.02em;line-height:1.1;margin-bottom:5px;}
+.ph p{font-size:13px;color:var(--muted);}
+
+/* METRICS */
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:1.75rem;}
+.metrics.three{grid-template-columns:repeat(3,1fr);}
+.metric{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:1rem 1.125rem;position:relative;overflow:hidden;}
+.metric::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent-border),transparent);opacity:0;}
+.metric.accent-top::before{opacity:1;}
+.metric-lbl{font-size:11px;color:var(--muted);margin-bottom:8px;font-weight:500;display:flex;align-items:center;gap:6px;}
+.metric-val{font-size:23px;font-weight:600;color:var(--text);line-height:1;margin-bottom:5px;font-family:var(--serif);letter-spacing:-0.02em;}
+.metric-sub{font-size:11px;color:var(--accent);font-family:var(--mono);}
+.metric-sub.neg{color:var(--red);}
+.metric-sub.mut{color:var(--muted);}
+
+/* SECTION LABEL */
+.slabel{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted2);margin:1.5rem 0 0.75rem;display:flex;align-items:center;gap:10px;}
+.slabel::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* DIGEST */
+.digest-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;}
+.digest-hdr h2{font-size:14px;font-weight:600;color:var(--text);font-family:var(--serif);}
+
+.ditem{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:1.125rem;margin-bottom:8px;display:grid;grid-template-columns:1fr auto;gap:1.25rem;align-items:start;transition:all 0.25s;position:relative;overflow:hidden;}
+.ditem::after{content:'';position:absolute;inset:0;background:var(--accent-dim);opacity:0;transition:opacity 0.3s;pointer-events:none;}
+.ditem.approving::after{opacity:1;}
+.ditem.approved{border-color:rgba(184,240,80,0.18);opacity:0.6;}
+.ditem.denied{border-color:rgba(240,80,96,0.18);opacity:0.6;}
+.ditem-badge{margin-bottom:6px;}
+.ditem-title{font-size:13.5px;font-weight:600;color:var(--text);margin-bottom:3px;line-height:1.35;}
+.ditem-sub{font-size:12px;color:var(--muted);line-height:1.5;}
+.ditem-right{text-align:right;flex-shrink:0;}
+.ditem-amount{font-size:16px;font-weight:600;color:var(--text);margin-bottom:10px;font-family:var(--serif);}
+.ditem-amount.flag{color:var(--amber);}
+.ditem-btns{display:flex;gap:6px;justify-content:flex-end;}
+.btn-a{font-size:12px;padding:6px 14px;border-radius:6px;border:1px solid var(--accent-border);background:var(--accent-dim);color:var(--accent);cursor:pointer;font-family:var(--sans);font-weight:600;transition:all 0.12s;}
+.btn-d{font-size:12px;padding:6px 14px;border-radius:6px;border:1px solid var(--border2);background:transparent;color:var(--muted);cursor:pointer;font-family:var(--sans);font-weight:500;transition:all 0.12s;}
+.btn-a:hover{background:rgba(184,240,80,0.18);transform:translateY(-1px);}
+.btn-d:hover{color:var(--red);border-color:rgba(240,80,96,0.3);}
+
+/* BADGES */
+.badge{display:inline-flex;align-items:center;gap:5px;padding:3px 9px;border-radius:20px;font-size:11px;font-weight:600;white-space:nowrap;font-family:var(--mono);}
+.bs{background:var(--accent-dim);color:var(--accent);border:1px solid var(--accent-border);}
+.bw{background:var(--amber-dim);color:var(--amber);border:1px solid rgba(240,176,64,0.25);}
+.bd{background:var(--red-dim);color:var(--red);border:1px solid rgba(240,80,96,0.25);}
+.bi{background:var(--blue-dim);color:var(--blue);border:1px solid rgba(80,168,240,0.25);}
+.bm{background:var(--bg4);color:var(--muted);border:1px solid var(--border2);}
+
+/* ROWS */
+.row{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:0.875rem 1.125rem;margin-bottom:6px;display:flex;align-items:center;justify-content:space-between;gap:1rem;transition:background 0.12s;}
+.row:hover{background:var(--bg3);}
+.row-title{font-size:13.5px;font-weight:500;color:var(--text);margin-bottom:2px;}
+.row-sub{font-size:12px;color:var(--muted);}
+.row-right{display:flex;align-items:center;gap:10px;flex-shrink:0;}
+
+/* CARD */
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem;}
+
+/* SMS THREAD */
+.sms-shell{background:var(--bg3);border:1px solid var(--border2);border-radius:12px;overflow:hidden;margin-top:1.25rem;}
+.sms-header{background:var(--bg2);padding:0.875rem 1.125rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;}
+.sms-avatar{width:32px;height:32px;border-radius:50%;background:var(--bg4);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--muted);flex-shrink:0;font-family:var(--serif);}
+.sms-from{font-size:13px;font-weight:600;color:var(--text);}
+.sms-num{font-size:11px;color:var(--muted);font-family:var(--mono);}
+.sms-body{padding:1rem;display:flex;flex-direction:column;gap:8px;max-height:260px;overflow-y:auto;}
+.sms-msg{max-width:72%;padding:9px 13px;border-radius:16px;font-size:13px;line-height:1.45;}
+.sms-msg.in{background:var(--bg4);color:var(--text);border-radius:16px 16px 16px 4px;align-self:flex-start;}
+.sms-msg.out{background:var(--accent);color:#060606;border-radius:16px 16px 4px 16px;align-self:flex-end;font-weight:500;}
+.sms-time{font-size:10px;color:var(--muted);font-family:var(--mono);text-align:center;margin:2px 0;}
+.sms-typing{display:flex;gap:4px;padding:10px 14px;background:var(--bg4);border-radius:16px;width:60px;align-self:flex-start;}
+.sms-typing span{width:6px;height:6px;border-radius:50%;background:var(--muted);animation:typing 1.2s infinite;}
+.sms-typing span:nth-child(2){animation-delay:0.2s;}
+.sms-typing span:nth-child(3){animation-delay:0.4s;}
+@keyframes typing{0%,60%,100%{transform:translateY(0);opacity:0.4}30%{transform:translateY(-4px);opacity:1}}
+
+/* XERO FLOW */
+.xero-flow{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-top:1.25rem;}
+.xf-step{background:var(--bg2);padding:1.25rem 0.875rem;text-align:center;border-right:1px solid var(--border);position:relative;}
+.xf-step:last-child{border-right:none;}
+.xf-step.active{background:rgba(184,240,80,0.04);}
+.xf-step.done{background:rgba(184,240,80,0.03);}
+.xf-icon{font-size:1.4rem;margin-bottom:6px;display:block;}
+.xf-name{font-size:11px;font-weight:600;color:var(--text);margin-bottom:3px;}
+.xf-desc{font-size:10px;color:var(--muted);line-height:1.4;}
+.xf-arrow{position:absolute;right:-8px;top:50%;transform:translateY(-50%);width:16px;height:16px;background:var(--bg3);border:1px solid var(--border2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--muted);z-index:2;}
+.sync-progress{height:3px;background:var(--border);border-radius:2px;overflow:hidden;margin-top:1rem;}
+.sync-bar{height:100%;background:var(--accent);border-radius:2px;width:0;transition:width 1.5s ease;}
+
+/* LIVE DOT */
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.4;transform:scale(0.85)}}
+.live-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite;flex-shrink:0;}
+
+/* TOAST */
+.toast{position:fixed;bottom:24px;right:24px;background:var(--bg3);border:1px solid var(--accent-border);border-radius:10px;padding:12px 16px;font-size:13px;color:var(--text);z-index:1000;transform:translateY(80px);opacity:0;transition:all 0.3s cubic-bezier(0.34,1.56,0.64,1);display:flex;align-items:center;gap:10px;max-width:320px;}
+.toast.show{transform:translateY(0);opacity:1;}
+.toast-icon{font-size:16px;}
+
+/* INCOMING CALL DEMO */
+.call-card{background:var(--bg2);border:1px solid var(--border2);border-radius:var(--radius);overflow:hidden;margin-top:1.25rem;}
+.call-header{background:var(--bg3);padding:0.875rem 1.125rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
+.call-header-left{display:flex;align-items:center;gap:8px;}
+.call-title{font-size:13px;font-weight:600;color:var(--text);}
+.call-sub{font-size:11px;color:var(--muted);font-family:var(--mono);}
+.call-log{padding:1rem;}
+.call-entry{display:flex;gap:12px;padding:8px 0;border-bottom:1px solid var(--border);font-size:12.5px;}
+.call-entry:last-child{border-bottom:none;}
+.call-time{font-family:var(--mono);font-size:11px;color:var(--muted);flex-shrink:0;width:52px;}
+.call-ico{width:24px;height:24px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;}
+.call-ico.missed{background:var(--red-dim);}
+.call-ico.sms{background:var(--accent-dim);}
+.call-ico.booked{background:var(--accent-dim);}
+.call-detail{color:var(--text);line-height:1.4;}
+.call-detail span{color:var(--muted);font-size:11px;display:block;margin-top:1px;}
+
+/* PRICING */
+.pricing-wrap{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:1.25rem;}
+.pricing-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:1.75rem;}
+.pricing-card.feat{border-color:var(--accent-border);background:rgba(184,240,80,0.03);}
+.pc-badge{font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.875rem;}
+.pc-badge.accent{color:var(--accent);}
+.pc-name{font-family:var(--serif);font-size:1.4rem;font-weight:700;color:var(--text);margin-bottom:0.25rem;letter-spacing:-0.02em;}
+.pc-price{font-family:var(--serif);font-size:2.2rem;font-weight:700;color:var(--text);line-height:1;margin:0.875rem 0 0.25rem;letter-spacing:-0.03em;}
+.pc-price span{font-family:var(--sans);font-size:13px;color:var(--muted);font-weight:400;}
+.pc-desc{font-size:12px;color:var(--muted);margin-bottom:1.25rem;}
+.feat-list{list-style:none;}
+.feat-list li{font-size:13px;color:rgba(236,234,229,0.72);padding:7px 0;border-bottom:1px solid var(--border);display:flex;gap:10px;line-height:1.4;}
+.feat-list li:last-child{border-bottom:none;}
+.feat-list li::before{content:'✓';color:var(--accent);flex-shrink:0;font-weight:700;}
+
+/* ROI CALC */
+.roi-wrap{border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-top:1.25rem;}
+.roi-top{background:var(--bg2);padding:1rem 1.25rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
+.roi-top-label{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:0.06em;text-transform:uppercase;}
+.roi-body{padding:1.5rem;background:var(--bg3);}
+input[type=range]{width:100%;-webkit-appearance:none;height:2px;background:var(--border2);outline:none;margin:6px 0;}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height:14px;background:var(--accent);cursor:pointer;border-radius:0;}
+.sr{display:grid;grid-template-columns:1fr 90px;align-items:center;gap:1rem;margin-bottom:1.125rem;}
+.sl{font-size:13px;color:var(--muted);margin-bottom:4px;}
+.sv{font-family:var(--mono);font-size:12px;color:var(--text);text-align:right;}
+.roi-results{border-top:1px solid var(--border);padding-top:1.25rem;margin-top:0.5rem;}
+.roi-line{display:flex;justify-content:space-between;align-items:baseline;padding:4px 0;font-size:13.5px;}
+.roi-line .k{color:var(--muted);}
+.roi-line .v{font-family:var(--mono);font-size:12px;}
+.roi-line .v.pos{color:var(--accent);}
+.roi-line .v.neg{color:var(--red);}
+.roi-total{margin-top:1rem;padding:1.125rem 1.25rem;background:var(--bg2);border:1px solid var(--border2);border-radius:var(--radius);display:flex;justify-content:space-between;align-items:center;}
+.roi-big{font-family:var(--serif);font-size:1.8rem;font-weight:700;color:var(--accent);line-height:1;letter-spacing:-0.02em;}
+.roi-mult{font-family:var(--mono);font-size:1.2rem;color:var(--accent);}
+
+/* ACTIVITY FEED */
+.activity-item{display:flex;gap:12px;padding:8px 0;border-bottom:1px solid var(--border);}
+.activity-item:last-child{border-bottom:none;}
+.act-dot{width:8px;height:8px;border-radius:50%;margin-top:5px;flex-shrink:0;}
+.act-text{font-size:13px;color:var(--muted);line-height:1.5;}
+.act-text strong{color:var(--text);font-weight:500;}
+.act-time{font-family:var(--mono);font-size:10px;color:var(--muted2);margin-top:2px;}
+
+/* LOADING SHIMMER */
+@keyframes shimmer{0%{background-position:-200px 0}100%{background-position:200px 0}}
+.shimmer{background:linear-gradient(90deg,var(--bg3) 25%,var(--bg4) 50%,var(--bg3) 75%);background-size:400px 100%;animation:shimmer 1.5s infinite;border-radius:4px;}
+
+/* ANIMATIONS */
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.page.active .ditem{animation:fadeIn 0.2s ease forwards;}
+.page.active .ditem:nth-child(2){animation-delay:0.04s;}
+.page.active .ditem:nth-child(3){animation-delay:0.08s;}
+.page.active .row{animation:fadeIn 0.2s ease forwards;}
+.page.active .row:nth-child(2){animation-delay:0.04s;}
+.page.active .row:nth-child(3){animation-delay:0.08s;}
+</style>
+</head>
+<body>
+
+<div class="toast" id="toast"><span class="toast-icon">✓</span><span id="toast-msg"></span></div>
+
+<div class="shell">
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="sb-top">
+    <div class="sb-brand">Trade<span>Loop</span></div>
+    <div class="sb-client-chip">
+      <div class="sb-avatar">PC</div>
+      <div class="sb-client-info">
+        <div class="sb-client-name">Pacific Climate Solutions</div>
+        <div class="sb-client-plan">Pro Plan · NZ</div>
+      </div>
+    </div>
+  </div>
+
+  <nav class="sb-nav">
+    <div class="sb-section">Overview</div>
+    <div class="sb-link active" onclick="nav('digest',this)"><span class="ico">▣</span> Daily Digest <span class="sb-notif" id="notif-badge">3</span></div>
+    <div class="sb-link" onclick="nav('revenue',this)"><span class="ico">↑</span> Revenue</div>
+    <div class="sb-link" onclick="nav('activity',this)"><span class="ico">◎</span> Activity</div>
+
+    <div class="sb-section">Modules</div>
+    <div class="sb-link" onclick="nav('sms',this)"><span class="ico">📲</span> SMS Responder</div>
+    <div class="sb-link" onclick="nav('leads',this)"><span class="ico">◈</span> Leads <span class="sb-notif green">6</span></div>
+    <div class="sb-link" onclick="nav('invoices',this)"><span class="ico">◻</span> Invoices</div>
+    <div class="sb-link" onclick="nav('xero',this)"><span class="ico">⬡</span> Xero Sync</div>
+    <div class="sb-link" onclick="nav('pricing',this)"><span class="ico">◇</span> Pricing Guard</div>
+
+    <div class="sb-section">Account</div>
+    <div class="sb-link" onclick="nav('settings',this)"><span class="ico">⚙</span> Settings</div>
+  </nav>
+
+  <div class="status-bar">
+    <div class="status-item"><div class="status-dot green"></div>SMS responder live</div>
+    <div class="status-item"><div class="status-dot green"></div>Xero connected</div>
+    <div class="status-item"><div class="status-dot amber"></div>1 invoice pending</div>
+  </div>
+</aside>
+
+<!-- MAIN -->
+<main class="main">
+<div class="main-inner">
+
+<!-- ── DIGEST ── -->
+<div id="page-digest" class="page active">
+  <div class="ph">
+    <div class="ph-eyebrow">Tuesday, 20 May 2026</div>
+    <h1>Good morning, Mike 👋</h1>
+    <p>TradeLoop ran overnight. 3 items need your attention — takes about 2 minutes.</p>
+  </div>
+
+  <div class="metrics">
+    <div class="metric accent-top">
+      <div class="metric-lbl">↑ Recovered MTD</div>
+      <div class="metric-val">$18,400</div>
+      <div class="metric-sub">+$4,200 vs last month</div>
+    </div>
+    <div class="metric">
+      <div class="metric-lbl">📲 Calls captured</div>
+      <div class="metric-val">24</div>
+      <div class="metric-sub">8 booked overnight</div>
+    </div>
+    <div class="metric">
+      <div class="metric-lbl">◻ Invoices sent</div>
+      <div class="metric-val">11</div>
+      <div class="metric-sub">avg 3.2h after job</div>
+    </div>
+    <div class="metric">
+      <div class="metric-lbl">⚡ Overdue chased</div>
+      <div class="metric-val">$6,200</div>
+      <div class="metric-sub neg">2 invoices pending</div>
+    </div>
+  </div>
+
+  <div class="digest-hdr">
+    <h2>Today's digest</h2>
+    <span class="badge bw" id="pending-badge">3 pending</span>
+  </div>
+  <div id="done-banner" style="display:none;padding:1rem 1.25rem;background:var(--accent-dim);border:1px solid var(--accent-border);border-radius:var(--radius);font-size:13.5px;color:var(--accent);margin-bottom:10px;font-weight:500;">
+    ✓ All done — Xero sync queued. See you tomorrow morning.
+  </div>
+
+  <div class="ditem" id="d1">
+    <div>
+      <div class="ditem-badge"><span class="badge bi">Invoice ready</span></div>
+      <div class="ditem-title">Baxter Commercial — Heat pump service</div>
+      <div class="ditem-sub">Completed yesterday · 3 units serviced · parts + labour included<br><span style="color:var(--accent);font-family:var(--mono);font-size:11px;">→ Will sync to Xero on approval</span></div>
+    </div>
+    <div class="ditem-right">
+      <div class="ditem-amount">$3,840</div>
+      <div class="ditem-btns"><button class="btn-d" onclick="deny('d1','Invoice held')">Deny</button><button class="btn-a" onclick="approve('d1','Invoice sent + Xero synced')">Approve →</button></div>
+    </div>
+  </div>
+
+  <div class="ditem" id="d2">
+    <div>
+      <div class="ditem-badge"><span class="badge bs">New lead booked</span></div>
+      <div class="ditem-title">Sarah Holden — Ducted install enquiry</div>
+      <div class="ditem-sub">Missed call 7:42pm · TradeLoop SMS'd back in 47 seconds · Booked Wed 22 May 10am<br><span style="color:var(--accent);font-family:var(--mono);font-size:11px;">→ Lead added to pipeline</span></div>
+    </div>
+    <div class="ditem-right">
+      <div class="ditem-amount">Est. $8,500</div>
+      <div class="ditem-btns"><button class="btn-d" onclick="deny('d2','Lead removed')">Remove</button><button class="btn-a" onclick="approve('d2','Lead confirmed')">Confirm →</button></div>
+    </div>
+  </div>
+
+  <div class="ditem" id="d3">
+    <div>
+      <div class="ditem-badge"><span class="badge bw">Pricing flag</span></div>
+      <div class="ditem-title">Riverside Apartments — Maintenance contract renewal</div>
+      <div class="ditem-sub">Quoted $4,200 · actual job cost $3,940 · margin only 6.2% (threshold: 18%)<br><span style="color:var(--amber);font-family:var(--mono);font-size:11px;">→ Recommend requoting at $5,100</span></div>
+    </div>
+    <div class="ditem-right">
+      <div class="ditem-amount flag">⚠ Review</div>
+      <div class="ditem-btns"><button class="btn-d" onclick="deny('d3','Quote sent as-is')">Send anyway</button><button class="btn-a" onclick="approve('d3','Quote updated to $5,100')">Requote →</button></div>
+    </div>
+  </div>
+
+  <div class="slabel">Sent overnight — no action needed</div>
+
+  <div class="ditem approved" style="pointer-events:none;">
+    <div>
+      <div class="ditem-badge"><span class="badge bw">Follow-up sent</span></div>
+      <div class="ditem-title">Johnson Residence — Quote follow-up #2</div>
+      <div class="ditem-sub">Quote sent 8 days ago · automated email + SMS dispatched 8:00am</div>
+    </div>
+    <div class="ditem-right"><span class="badge bs">✓ Sent</span></div>
+  </div>
+
+  <div class="ditem approved" style="pointer-events:none;">
+    <div>
+      <div class="ditem-badge"><span class="badge bi">Payment reminder</span></div>
+      <div class="ditem-title">Thornton Group — Invoice #1047, 14 days overdue</div>
+      <div class="ditem-sub">Reminder 2 of 3 dispatched · escalation tone applied</div>
+    </div>
+    <div class="ditem-right"><span class="badge bs">✓ Sent</span></div>
+  </div>
+</div>
+
+<!-- ── REVENUE ── -->
+<div id="page-revenue" class="page">
+  <div class="ph">
+    <div class="ph-eyebrow">May 2026</div>
+    <h1>Revenue Recovery</h1>
+    <p>Money your business earned but wasn't capturing — now recovered by TradeLoop.</p>
+  </div>
+  <div class="metrics">
+    <div class="metric accent-top"><div class="metric-lbl">Total recovered</div><div class="metric-val">$18,400</div><div class="metric-sub">+$4,200 vs April</div></div>
+    <div class="metric"><div class="metric-lbl">Missed call jobs</div><div class="metric-val">$9,600</div><div class="metric-sub">4 jobs, captured overnight</div></div>
+    <div class="metric"><div class="metric-lbl">Lead revival</div><div class="metric-val">$5,200</div><div class="metric-sub">3 past customers back</div></div>
+    <div class="metric"><div class="metric-lbl">Invoicing boost</div><div class="metric-val">$3,600</div><div class="metric-sub">cash flow, same-day</div></div>
+  </div>
+  <div class="card" style="padding:1.25rem;margin-bottom:1rem;">
+    <div style="font-family:var(--mono);font-size:10px;color:var(--muted2);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:1rem;">Monthly recovered revenue</div>
+    <canvas id="rev-chart" height="160"></canvas>
+  </div>
+  <div class="roi-wrap">
+    <div class="roi-top">
+      <span class="roi-top-label">ROI calculator</span>
+      <span style="font-family:var(--mono);font-size:12px;color:var(--accent);" id="roi-lbl">12.3× return</span>
+    </div>
+    <div class="roi-body">
+      <div class="sr"><div><div class="sl">Average job value (NZD)</div><input type="range" id="s-job" min="500" max="12000" step="100" value="3500" oninput="calcROI()"></div><div class="sv">$<span id="v-job">3,500</span></div></div>
+      <div class="sr"><div><div class="sl">Jobs recovered / month</div><input type="range" id="s-jobs" min="1" max="15" step="1" value="4" oninput="calcROI()"></div><div class="sv"><span id="v-jobs">4</span></div></div>
+      <div class="sr"><div><div class="sl">Invoicing cash flow improvement</div><input type="range" id="s-cf" min="0" max="5000" step="100" value="1000" oninput="calcROI()"></div><div class="sv">$<span id="v-cf">1,000</span></div></div>
+      <div class="roi-results">
+        <div class="roi-line"><span class="k">Recovered revenue</span><span class="v pos" id="r-rev">+$14,000</span></div>
+        <div class="roi-line"><span class="k">Cash flow improvement</span><span class="v pos" id="r-cf">+$1,000</span></div>
+        <div class="roi-line"><span class="k">TradeLoop fee</span><span class="v neg">−$1,497</span></div>
+        <div class="roi-total">
+          <div><div style="font-size:11px;color:var(--muted);margin-bottom:4px;font-family:var(--mono);">NET MONTHLY RETURN</div><div class="roi-big" id="r-net">+$13,503</div></div>
+          <div style="text-align:right;"><div class="roi-mult" id="r-mult">9.5×</div><div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:var(--mono);">per dollar invested</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── ACTIVITY ── -->
+<div id="page-activity" class="page">
+  <div class="ph"><h1>Activity Feed</h1><p>Everything TradeLoop did in the last 24 hours.</p></div>
+  <div class="card">
+    <div class="activity-item"><div class="act-dot" style="background:var(--accent)"></div><div><div class="act-text"><strong>Invoice sent</strong> — Baxter Commercial · $3,840 · synced to Xero</div><div class="act-time">Today, 7:14am</div></div></div>
+    <div class="activity-item"><div class="act-dot" style="background:var(--accent)"></div><div><div class="act-text"><strong>Lead booked</strong> — Sarah Holden enquired after hours, SMS replied in 47s, appointment locked in</div><div class="act-time">Yesterday, 7:43pm</div></div></div>
+    <div class="activity-item"><div class="act-dot" style="background:var(--amber)"></div><div><div class="act-text"><strong>Follow-up sent</strong> — Johnson Residence quote follow-up #2 dispatched</div><div class="act-time">Today, 8:00am</div></div></div>
+    <div class="activity-item"><div class="act-dot" style="background:var(--amber)"></div><div><div class="act-text"><strong>Payment reminder</strong> — Thornton Group $4,200 · 14 days overdue · reminder #2 sent</div><div class="act-time">Today, 8:00am</div></div></div>
+    <div class="activity-item"><div class="act-dot" style="background:var(--accent)"></div><div><div class="act-text"><strong>Payment reconciled</strong> — Murray Group $3,600 received · auto-matched in Xero</div><div class="act-time">Yesterday, 4:22pm</div></div></div>
+    <div class="activity-item"><div class="act-dot" style="background:var(--accent)"></div><div><div class="act-text"><strong>Lead reactivated</strong> — Belmont School responded to reactivation sequence · interested in commercial quote</div><div class="act-time">Yesterday, 2:11pm</div></div></div>
+    <div class="activity-item"><div class="act-dot" style="background:var(--blue)"></div><div><div class="act-text"><strong>Pricing flag raised</strong> — Riverside Apartments quote margin 6.2% · below 18% threshold</div><div class="act-time">Yesterday, 11:47am</div></div></div>
+    <div class="activity-item"><div class="act-dot" style="background:var(--accent)"></div><div><div class="act-text"><strong>Invoice sent</strong> — Chen Residence $1,920 · same-day after job completion</div><div class="act-time">Yesterday, 3:05pm</div></div></div>
+  </div>
+</div>
+
+<!-- ── SMS RESPONDER ── -->
+<div id="page-sms" class="page">
+  <div class="ph"><h1>SMS Responder</h1><p>Every missed call gets an instant reply. You never lose a lead to voicemail again.</p></div>
+  <div class="metrics three">
+    <div class="metric accent-top"><div class="metric-lbl">Response time</div><div class="metric-val">47s</div><div class="metric-sub">avg, last 30 days</div></div>
+    <div class="metric"><div class="metric-lbl">Calls captured</div><div class="metric-val">24</div><div class="metric-sub">this month</div></div>
+    <div class="metric"><div class="metric-lbl">Conversion rate</div><div class="metric-val">33%</div><div class="metric-sub">missed call → booked</div></div>
+  </div>
+
+  <div class="call-card">
+    <div class="call-header">
+      <div class="call-header-left"><div class="live-dot"></div><div><div class="call-title">Live call log</div><div class="call-sub">Last 24 hours</div></div></div>
+      <span class="badge bs">Responder active</span>
+    </div>
+    <div class="call-log">
+      <div class="call-entry"><div class="call-time">7:42pm</div><div class="call-ico missed">📵</div><div class="call-detail">Missed call — +64 21 555 8821<span>Sarah Holden · unknown caller</span></div></div>
+      <div class="call-entry"><div class="call-time">7:42pm</div><div class="call-ico sms">💬</div><div class="call-detail">SMS sent in 47 seconds<span>"Hi, sorry we missed your call! I'm Mike from Pacific Climate..."</span></div></div>
+      <div class="call-entry"><div class="call-time">7:51pm</div><div class="call-ico sms">💬</div><div class="call-detail">Customer replied — conversation started<span>Enquiring about ducted heat pump install</span></div></div>
+      <div class="call-entry"><div class="call-time">8:04pm</div><div class="call-ico booked">📅</div><div class="call-detail">Appointment booked — Wed 22 May, 10:00am<span>Job value est. $8,500 · added to pipeline</span></div></div>
+    </div>
+  </div>
+
+  <div class="slabel">SMS conversation thread</div>
+  <div class="sms-shell">
+    <div class="sms-header">
+      <div class="sms-avatar">SH</div>
+      <div><div class="sms-from">Sarah Holden</div><div class="sms-num">+64 21 555 8821 · Yesterday 7:42pm</div></div>
+      <span class="badge bs" style="margin-left:auto;">Booked ✓</span>
+    </div>
+    <div class="sms-body" id="sms-thread">
+      <div class="sms-time">7:42pm</div>
+      <div class="sms-msg out">Hi Sarah, sorry we missed your call! I'm Mike from Pacific Climate Solutions. How can we help you today? 😊</div>
+      <div class="sms-msg in">Hi! Yeah I was calling about getting a ducted heat pump installed. Do you guys do that?</div>
+      <div class="sms-msg out">Absolutely — ducted installs are one of our specialties. We service all of Wellington and surrounds. Can I ask roughly how many rooms you're looking to heat/cool?</div>
+      <div class="sms-msg in">It's a 4 bedroom home, open plan living. Around 180sqm</div>
+      <div class="sms-msg out">Perfect, that's well within our range. A ducted system for that size would typically run $7,500–$10,000 fully installed. I'd love to get one of our team out to do a proper assessment — are you free this Wednesday morning? We have 10am available.</div>
+      <div class="sms-msg in">Wednesday 10am works great!</div>
+      <div class="sms-msg out">Confirmed! ✅ Mike will be with you Wednesday 22 May at 10:00am. You'll get a reminder SMS the evening before. Looking forward to it!</div>
+      <div class="sms-time">8:04pm · Booked</div>
+    </div>
+  </div>
+  <div style="margin-top:1rem;padding:0.875rem 1.125rem;background:var(--accent-dim);border:1px solid var(--accent-border);border-radius:var(--radius);font-size:13px;color:var(--accent);">
+    💡 This entire conversation happened automatically while Mike was at home. Sarah never knew she wasn't talking to a human.
+  </div>
+</div>
+
+<!-- ── LEADS ── -->
+<div id="page-leads" class="page">
+  <div class="ph"><h1>Lead Pipeline</h1><p>Every lead captured, followed up, and tracked — automatically.</p></div>
+  <div class="metrics three">
+    <div class="metric accent-top"><div class="metric-lbl">Total pipeline</div><div class="metric-val">$41,500</div><div class="metric-sub">6 active leads</div></div>
+    <div class="metric"><div class="metric-lbl">Hot leads</div><div class="metric-val">2</div><div class="metric-sub">booked or in contact</div></div>
+    <div class="metric"><div class="metric-lbl">In sequences</div><div class="metric-val">4</div><div class="metric-sub mut">auto follow-up active</div></div>
+  </div>
+  <div class="slabel">Hot</div>
+  <div class="row"><div><div class="row-title">Sarah Holden</div><div class="row-sub">Ducted install · booked Wed 22 May 10am · captured via SMS last night</div></div><div class="row-right"><span style="font-family:var(--mono);font-size:13px;color:var(--muted);">$8,500</span><span class="badge bs">Booked</span></div></div>
+  <div class="row"><div><div class="row-title">Liam & Priya Chen</div><div class="row-sub">Heat pump replacement · called back 9am · quoting today</div></div><div class="row-right"><span style="font-family:var(--mono);font-size:13px;color:var(--muted);">$5,200</span><span class="badge bs">In contact</span></div></div>
+  <div class="slabel">Warm — follow-up sequence active</div>
+  <div class="row"><div><div class="row-title">Johnson Residence</div><div class="row-sub">Quote sent 8 days ago · follow-up #2 sent this morning</div></div><div class="row-right"><span style="font-family:var(--mono);font-size:13px;color:var(--muted);">$3,800</span><span class="badge bw">Follow-up 2/3</span></div></div>
+  <div class="row"><div><div class="row-title">Riverside Apartments</div><div class="row-sub">Maintenance enquiry · follow-up #1 sent yesterday</div></div><div class="row-right"><span style="font-family:var(--mono);font-size:13px;color:var(--muted);">$12,000</span><span class="badge bw">Follow-up 1/3</span></div></div>
+  <div class="slabel">Cold — reactivation sequence</div>
+  <div class="row"><div><div class="row-title">Murray & Associates</div><div class="row-sub">Last serviced Oct 2024 · annual reactivation dispatched</div></div><div class="row-right"><span style="font-family:var(--mono);font-size:13px;color:var(--muted);">$2,400</span><span class="badge bm">Reactivation</span></div></div>
+  <div class="row"><div><div class="row-title">Belmont School</div><div class="row-sub">Commercial quote expired · re-engaged · interested in new quote</div></div><div class="row-right"><span style="font-family:var(--mono);font-size:13px;color:var(--muted);">$9,600</span><span class="badge bm">Reactivation</span></div></div>
+</div>
+
+<!-- ── INVOICES ── -->
+<div id="page-invoices" class="page">
+  <div class="ph"><h1>Invoices</h1><p>Sent same-day, chased automatically, reconciled in Xero on payment.</p></div>
+  <div class="metrics">
+    <div class="metric accent-top"><div class="metric-lbl">Sent this month</div><div class="metric-val">11</div><div class="metric-sub">avg 3.2h after job</div></div>
+    <div class="metric"><div class="metric-lbl">Paid</div><div class="metric-val">$24,180</div><div class="metric-sub">8 cleared</div></div>
+    <div class="metric"><div class="metric-lbl">Outstanding</div><div class="metric-val">$9,440</div><div class="metric-sub mut">3 pending</div></div>
+    <div class="metric"><div class="metric-lbl">Overdue chasing</div><div class="metric-val">$6,200</div><div class="metric-sub neg">2 invoices</div></div>
+  </div>
+  <div class="slabel">Awaiting approval</div>
+  <div class="row"><div><div class="row-title">Baxter Commercial <span style="color:var(--muted2);font-family:var(--mono);font-size:11px;margin-left:6px;">#1049</span></div><div class="row-sub">Approve in digest → sends to client + syncs Xero</div></div><div class="row-right"><span style="font-family:var(--mono);font-size:14px;">$3,840</span><span class="badge bw">Pending</span></div></div>
+  <div class="slabel">Active</div>
+  <div class="row"><div><div class="row-title">Chen Residence <span style="color:var(--muted2);font-family:var(--mono);font-size:11px;margin-left:6px;">#1048</span></div><div class="row-sub">Sent 2 days ago · payment link opened · due in 5 days</div></div><div class="row-right"><span style="font-family:var(--mono);font-size:14px;">$1,920</span><span class="badge bs">Expected</span></div></div>
+  <div class="slabel">Overdue — chasing automatically</div>
+  <div class="row"><div><div class="row-title">Thornton Group <span style="color:var(--muted2);font-family:var(--mono);font-size:11px;margin-left:6px;">#1047</span></div><div class="row-sub">14 days overdue · reminder 2 of 3 sent this morning</div></div><div class="row-right"><span style="font-family:var(--mono);font-size:14px;">$4,200</span><span class="badge bd">Overdue</span></div></div>
+  <div class="row"><div><div class="row-title">Pacific Retail <span style="color:var(--muted2);font-family:var(--mono);font-size:11px;margin-left:6px;">#1046</span></div><div class="row-sub">28 days overdue · final notice sent · flag for manual action</div></div><div class="row-right"><span style="font-family:var(--mono);font-size:14px;">$2,000</span><span class="badge bd">Final notice</span></div></div>
+  <div class="slabel">Paid — reconciled in Xero</div>
+  <div class="row"><div><div class="row-title">Murray Group <span style="color:var(--muted2);font-family:var(--mono);font-size:11px;margin-left:6px;">#1045</span></div><div class="row-sub">Paid · auto-reconciled · bank feed matched</div></div><div class="row-right"><span style="font-family:var(--mono);font-size:14px;">$3,600</span><span class="badge bs">Paid ✓</span></div></div>
+  <div class="row"><div><div class="row-title">Hillcrest Body Corp <span style="color:var(--muted2);font-family:var(--mono);font-size:11px;margin-left:6px;">#1044</span></div><div class="row-sub">Paid · auto-reconciled · bank feed matched</div></div><div class="row-right"><span style="font-family:var(--mono);font-size:14px;">$5,800</span><span class="badge bs">Paid ✓</span></div></div>
+</div>
+
+<!-- ── XERO ── -->
+<div id="page-xero" class="page">
+  <div class="ph"><h1>Xero Sync</h1><p>Every approved invoice hits Xero automatically. Payments reconcile on receipt.</p></div>
+
+  <div class="card" style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+    <div style="display:flex;align-items:center;gap:12px;">
+      <div class="live-dot"></div>
+      <div><div style="font-size:13.5px;font-weight:600;color:var(--text);">Xero connected</div><div style="font-size:12px;color:var(--muted);font-family:var(--mono);">Pacific Climate Solutions · last sync 4 mins ago</div></div>
+    </div>
+    <button onclick="triggerSync()" style="padding:7px 16px;border-radius:7px;background:var(--accent-dim);border:1px solid var(--accent-border);color:var(--accent);font-size:12px;font-weight:600;cursor:pointer;font-family:var(--sans);">Sync now</button>
+  </div>
+
+  <div class="sync-progress"><div class="sync-bar" id="sync-bar"></div></div>
+
+  <div class="xero-flow">
+    <div class="xf-step done">
+      <div class="xf-arrow">→</div>
+      <span class="xf-icon">🔧</span><div class="xf-name">Job done</div><div class="xf-desc">Tech marks complete in field</div>
+    </div>
+    <div class="xf-step done">
+      <div class="xf-arrow">→</div>
+      <span class="xf-icon">📄</span><div class="xf-name">Invoice drafted</div><div class="xf-desc">AI generates parts + labour</div>
+    </div>
+    <div class="xf-step active">
+      <div class="xf-arrow">→</div>
+      <span class="xf-icon">✅</span><div class="xf-name">You approve</div><div class="xf-desc">One tap in morning digest</div>
+    </div>
+    <div class="xf-step">
+      <div class="xf-arrow">→</div>
+      <span class="xf-icon">📨</span><div class="xf-name">Client invoiced</div><div class="xf-desc">Same-day, payment link</div>
+    </div>
+    <div class="xf-step">
+      <span class="xf-icon">🟢</span><div class="xf-name">Xero synced</div><div class="xf-desc">Auto-reconciled on payment</div>
+    </div>
+  </div>
+
+  <div class="metrics three" style="margin-top:1.25rem;">
+    <div class="metric"><div class="metric-lbl">Synced today</div><div class="metric-val">3</div><div class="metric-sub">invoices + payments</div></div>
+    <div class="metric accent-top"><div class="metric-lbl">Auto-reconciled</div><div class="metric-val">$3,600</div><div class="metric-sub">Murray Group</div></div>
+    <div class="metric"><div class="metric-lbl">Pending sync</div><div class="metric-val">1</div><div class="metric-sub mut">awaiting approval</div></div>
+  </div>
+
+  <div class="slabel">Today's sync log</div>
+  <div class="row"><div><div class="row-title">Invoice #1048 synced</div><div class="row-sub">Chen Residence · $1,920 · bank rec ready · GST filed</div></div><span class="badge bs">Synced</span></div>
+  <div class="row"><div><div class="row-title">Payment received · #1044</div><div class="row-sub">Murray Group · $3,600 · auto-matched to bank feed</div></div><span class="badge bs">Reconciled</span></div>
+  <div class="row"><div><div class="row-title">Chaser logged · #1047</div><div class="row-sub">Thornton Group · $4,200 overdue · reminder activity noted</div></div><span class="badge bi">Logged</span></div>
+  <div class="slabel">Waiting for your approval</div>
+  <div class="row"><div><div class="row-title">Invoice #1049 — Baxter Commercial</div><div class="row-sub">$3,840 · approve in today's digest to trigger sync</div></div><span class="badge bw">Waiting</span></div>
+</div>
+
+<!-- ── PRICING GUARD ── -->
+<div id="page-pricing" class="page">
+  <div class="ph"><h1>Pricing Guard</h1><p>Every quote checked against real cost before it goes out. No more locking in losses.</p></div>
+  <div class="metrics three">
+    <div class="metric accent-top"><div class="metric-lbl">Avg job margin</div><div class="metric-val">21.4%</div><div class="metric-sub">+3.2% vs last month</div></div>
+    <div class="metric"><div class="metric-lbl">Flags raised</div><div class="metric-val">3</div><div class="metric-sub">this month</div></div>
+    <div class="metric"><div class="metric-lbl">Revenue saved</div><div class="metric-val">$4,200</div><div class="metric-sub">by requoting</div></div>
+  </div>
+  <div class="slabel">Recent quote checks</div>
+  <div class="row"><div><div class="row-title">Riverside Apartments — Maintenance</div><div class="row-sub">Quoted $4,200 · actual cost $3,940 · margin 6.2% ⚠ · recommended $5,100</div></div><span class="badge bw">⚠ Flagged</span></div>
+  <div class="row"><div><div class="row-title">Belmont School — Commercial install</div><div class="row-sub">Quoted $18,500 · actual cost $14,200 · margin 23.2% ✓</div></div><span class="badge bs">Healthy</span></div>
+  <div class="row"><div><div class="row-title">Chen Residence — Heat pump replacement</div><div class="row-sub">Quoted $5,200 · actual cost $3,900 · margin 25.0% ✓</div></div><span class="badge bs">Healthy</span></div>
+  <div class="row"><div><div class="row-title">Murray & Associates — Annual service</div><div class="row-sub">Quoted $1,800 · actual cost $1,620 · margin 10.0% ⚠ · recommended $2,100</div></div><span class="badge bw">⚠ Flagged</span></div>
+  <div class="row"><div><div class="row-title">Thornton Group — Emergency callout</div><div class="row-sub">Quoted $2,400 · actual cost $1,740 · margin 27.5% ✓</div></div><span class="badge bs">Healthy</span></div>
+  <div style="margin-top:1rem;padding:0.875rem 1.125rem;background:var(--amber-dim);border:1px solid rgba(240,176,64,0.25);border-radius:var(--radius);font-size:13px;color:var(--amber);">
+    ⚠ Your target margin is 18%. Quotes below this threshold are flagged before they go out — giving you the chance to requote or approve.
+  </div>
+</div>
+
+<!-- ── SETTINGS ── -->
+<div id="page-settings" class="page">
+  <div class="ph"><h1>Settings</h1><p>Business config and active modules.</p></div>
+  <div class="slabel">Business details</div>
+  <div class="card" style="margin-bottom:1.25rem;">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;">
+      <div><div style="font-size:10px;color:var(--muted);font-family:var(--mono);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:5px;">Business</div><div style="font-size:13.5px;color:var(--text);">Pacific Climate Solutions</div></div>
+      <div><div style="font-size:10px;color:var(--muted);font-family:var(--mono);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:5px;">Owner</div><div style="font-size:13.5px;color:var(--text);">Mike Thompson</div></div>
+      <div><div style="font-size:10px;color:var(--muted);font-family:var(--mono);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:5px;">Phone (responder)</div><div style="font-size:13.5px;color:var(--text);">+64 9 555 0142</div></div>
+      <div><div style="font-size:10px;color:var(--muted);font-family:var(--mono);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:5px;">Target margin</div><div style="font-size:13.5px;color:var(--text);">18%</div></div>
+      <div><div style="font-size:10px;color:var(--muted);font-family:var(--mono);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:5px;">Invoice terms</div><div style="font-size:13.5px;color:var(--text);">7 days</div></div>
+      <div><div style="font-size:10px;color:var(--muted);font-family:var(--mono);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:5px;">Plan</div><div style="font-size:13.5px;color:var(--text);">TradeLoop Pro · $2,197/mo</div></div>
+    </div>
+  </div>
+  <div class="slabel">Modules</div>
+  <div class="row"><div><div class="row-title">AI Phone Responder</div><div class="row-sub">Replies to missed calls via SMS in under 60s · 24/7 · books appointments</div></div><span class="badge bs">Active</span></div>
+  <div class="row"><div><div class="row-title">Lead Revival Engine</div><div class="row-sub">7-day sequences for cold quotes and past customers</div></div><span class="badge bs">Active</span></div>
+  <div class="row"><div><div class="row-title">Same-Day Invoicing</div><div class="row-sub">Job done → invoice drafted + sent same day → Xero sync</div></div><span class="badge bs">Active</span></div>
+  <div class="row"><div><div class="row-title">Pricing Guard</div><div class="row-sub">Flags quotes below 18% margin before they go out</div></div><span class="badge bs">Active</span></div>
+  <div class="row"><div><div class="row-title">Xero Sync</div><div class="row-sub">Auto-reconciles payments · GST-compliant · bank-rec ready</div></div><span class="badge bs">Active</span></div>
+</div>
+
+</div><!-- /main-inner -->
+</main>
+</div><!-- /shell -->
+
+<script>
+// NAV
+function nav(page, el) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'))
+  document.querySelectorAll('.sb-link').forEach(l => l.classList.remove('active'))
+  document.getElementById('page-' + page).classList.add('active')
+  el.classList.add('active')
+  if (page === 'revenue') { initChart(); calcROI(); }
+}
+
+// Set date
+document.getElementById('digest-date') && (document.getElementById('digest-date').textContent = new Date().toLocaleDateString('en-NZ',{weekday:'long',day:'numeric',month:'long',year:'numeric'}))
+
+// TOAST
+function showToast(msg) {
+  const t = document.getElementById('toast')
+  document.getElementById('toast-msg').textContent = msg
+  t.classList.add('show')
+  setTimeout(() => t.classList.remove('show'), 3200)
+}
+
+// APPROVE / DENY
+let pending = 3
+function approve(id, msg) { action(id, 'approved', msg || 'Done') }
+function deny(id, msg) { action(id, 'denied', msg || 'Skipped') }
+
+function action(id, status, msg) {
+  const el = document.getElementById(id)
+  if (!el || el.dataset.done) return
+  el.dataset.done = '1'
+  // Flash
+  el.classList.add('approving')
+  setTimeout(() => {
+    el.classList.remove('approving')
+    el.classList.add(status)
+    el.querySelector('.ditem-btns').innerHTML = `<span class="badge ${status==='approved'?'bs':'bd'}">${status==='approved'?'✓ Approved':'✕ Denied'}</span>`
+  }, 280)
+  pending = Math.max(0, pending - 1)
+  const badge = document.getElementById('pending-badge')
+  const notif = document.getElementById('notif-badge')
+  if (pending === 0) {
+    badge.className = 'badge bs'; badge.textContent = 'All done ✓'
+    if (notif) notif.style.display = 'none'
+    document.getElementById('done-banner').style.display = 'block'
+  } else {
+    badge.textContent = pending + ' pending'
+    if (notif) notif.textContent = pending
+  }
+  showToast(msg)
+}
+
+// REVENUE CHART
+let chartDone = false
+function initChart() {
+  if (chartDone) return; chartDone = true
+  new Chart(document.getElementById('rev-chart').getContext('2d'), {
+    type: 'bar',
+    data: {
+      labels: ['Jan','Feb','Mar','Apr','May'],
+      datasets: [{
+        data: [9200,11400,13800,14200,18400],
+        backgroundColor: ['rgba(184,240,80,0.25)','rgba(184,240,80,0.25)','rgba(184,240,80,0.25)','rgba(184,240,80,0.25)','#b8f050'],
+        borderRadius: 5, borderSkipped: false,
+      }]
+    },
+    options: {
+      responsive:true, plugins:{legend:{display:false}},
+      scales:{
+        y:{ticks:{callback:v=>'$'+(v/1000)+'K',color:'#6e6b66',font:{size:11,family:'JetBrains Mono'}},grid:{color:'rgba(255,255,255,0.05)'},border:{display:false}},
+        x:{ticks:{color:'#6e6b66',font:{size:12}},grid:{display:false},border:{display:false}}
+      }
+    }
+  })
+}
+
+// ROI CALC
+function fmt(n){return '$'+Number(n).toLocaleString('en-NZ')}
+function calcROI() {
+  const job = +document.getElementById('s-job').value
+  const jobs = +document.getElementById('s-jobs').value
+  const cf = +document.getElementById('s-cf').value
+  const fee = 1497
+  document.getElementById('v-job').textContent = fmt(job).replace('$','')
+  document.getElementById('v-jobs').textContent = jobs
+  document.getElementById('v-cf').textContent = fmt(cf).replace('$','')
+  const rev = job * jobs, total = rev + cf, net = total - fee
+  const mult = (total/fee).toFixed(1)
+  document.getElementById('r-rev').textContent = '+'+fmt(rev)
+  document.getElementById('r-cf').textContent = '+'+fmt(cf)
+  document.getElementById('r-net').textContent = (net>=0?'+':'')+fmt(net)
+  document.getElementById('r-net').style.color = net>=0?'var(--accent)':'var(--red)'
+  document.getElementById('r-mult').textContent = mult+'×'
+  document.getElementById('roi-lbl').textContent = mult+'× return'
+}
+
+// XERO SYNC ANIMATION
+function triggerSync() {
+  const bar = document.getElementById('sync-bar')
+  bar.style.width = '0'
+  setTimeout(() => bar.style.width = '100%', 50)
+  showToast('Xero sync triggered — 3 records queued')
+  setTimeout(() => bar.style.width = '0', 2000)
+}
+</script>
+</body>
+</html>
