@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TradeLoop — How it works (60-second tour)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0f1116;--bg2:#161922;--surface:#1c1f29;--surface-2:#242833;--line:rgba(255,255,255,.09);--line2:rgba(255,255,255,.15);
+  --text:#eef0f4;--muted:#8b909c;--faint:#5a606c;
+  --ac:#5b8cff;--ac2:#7aa2ff;--violet:#a78bfa;--green:#3ddc97;--amber:#f7b955;--red:#f87171;
+  --display:'Hanken Grotesk',system-ui,sans-serif;--mono:'Space Mono',monospace;--ease:cubic-bezier(.16,1,.3,1);
+}
+html,body{height:100%}
+body{font-family:var(--display);background:
+  radial-gradient(60% 50% at 50% -5%,rgba(91,140,255,.14),transparent 60%),
+  radial-gradient(45% 45% at 90% 100%,rgba(167,139,250,.10),transparent 60%),var(--bg);
+  color:var(--text);overflow:hidden;-webkit-font-smoothing:antialiased}
+.mk{width:var(--mks,44px);height:var(--mks,44px);border-radius:11px;background:linear-gradient(150deg,var(--ac),#3a61d8);display:flex;align-items:center;justify-content:center;position:relative;box-shadow:0 8px 26px rgba(91,140,255,.45);flex:none}
+.mk::before{content:'';width:46%;height:46%;border:3px solid #fff;border-radius:50%}
+.mk::after{content:'';position:absolute;width:22%;height:22%;border-radius:50%;background:#fff;right:18%;bottom:20%}
+
+/* shell */
+.player{position:fixed;inset:0;display:flex;align-items:center;justify-content:center}
+.stage{position:relative;width:min(960px,92vw);height:min(560px,86vh)}
+.scene{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;opacity:0;visibility:hidden;padding:24px}
+.scene.active{opacity:1;visibility:visible}
+.eyebrow{font-family:var(--mono);font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ac2);font-weight:700}
+.big{font-weight:900;letter-spacing:-.035em;line-height:1;font-size:clamp(2.4rem,6vw,4.6rem)}
+.big em{font-style:normal;background:linear-gradient(110deg,var(--ac2),var(--violet));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.sub{color:var(--muted);font-size:clamp(1rem,1.8vw,1.35rem);font-weight:500;max-width:560px;line-height:1.5}
+.num{font-variant-numeric:tabular-nums}
+
+/* entrance helpers (run when scene active) */
+.scene.active .u1{animation:rise .8s var(--ease) both}
+.scene.active .u2{animation:rise .8s var(--ease) .15s both}
+.scene.active .u3{animation:rise .8s var(--ease) .3s both}
+.scene.active .u4{animation:rise .8s var(--ease) .45s both}
+.scene.active .pop{animation:pop .7s var(--ease) both}
+@keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+@keyframes pop{from{opacity:0;transform:scale(.82)}to{opacity:1;transform:none}}
+
+/* top hud */
+.hud{position:fixed;top:0;left:0;right:0;z-index:20;padding:18px 24px;display:flex;align-items:center;gap:16px}
+.hud .logo{display:flex;align-items:center;gap:9px;font-weight:800;letter-spacing:-.02em;font-size:1.02rem}
+.hud .logo span{color:var(--ac2)}
+.hud .count{font-family:var(--mono);font-size:.72rem;color:var(--faint);margin-left:auto}
+.hud .skip{font-size:.82rem;font-weight:700;color:var(--muted);cursor:pointer;transition:color .2s}
+.hud .skip:hover{color:var(--text)}
+.bars{position:fixed;top:0;left:0;right:0;z-index:21;display:flex;gap:4px;padding:0 24px;height:3px;margin-top:54px}
+.bars .seg{flex:1;height:3px;border-radius:3px;background:var(--line);overflow:hidden}
+.bars .seg i{display:block;height:100%;width:0;background:var(--ac);border-radius:3px}
+.bars .seg.done i{width:100%}
+.bars .seg.run i{animation:fillbar linear forwards;animation-duration:var(--dur)}
+@keyframes fillbar{to{width:100%}}
+
+/* controls */
+.controls{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);z-index:20;display:flex;align-items:center;gap:10px}
+.cbtn{width:42px;height:42px;border-radius:50%;background:var(--surface);border:1px solid var(--line2);color:var(--text);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .2s,transform .2s}
+.cbtn:hover{background:var(--surface-2);transform:translateY(-2px)}
+.cbtn svg{width:17px;height:17px;fill:currentColor}
+.btn{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:.95rem;padding:13px 24px;border-radius:60px;cursor:pointer;border:1px solid transparent;text-decoration:none;color:inherit;transition:transform .3s var(--ease),background .25s}
+.btn-ac{background:var(--ac);color:#0b1020;box-shadow:0 8px 26px rgba(91,140,255,.4)}
+.btn-ac:hover{background:var(--ac2);transform:translateY(-2px)}
+.btn-ghost{background:rgba(255,255,255,.05);border-color:var(--line2);color:var(--text)}
+.btn-ghost:hover{background:rgba(255,255,255,.1);transform:translateY(-2px)}
+body.paused .scene.active *,body.paused .bars .seg.run i{animation-play-state:paused!important}
+
+/* ── scene visuals ── */
+.phone-ic{width:96px;height:96px;border-radius:26px;background:var(--surface);border:1px solid var(--line2);display:flex;align-items:center;justify-content:center;margin-bottom:8px}
+.phone-ic svg{width:42px;height:42px;stroke:var(--red);fill:none;stroke-width:1.8}
+.ring{animation:ring 1s ease-in-out infinite}
+@keyframes ring{0%,100%{transform:rotate(0)}25%{transform:rotate(-12deg)}75%{transform:rotate(12deg)}}
+
+.phone{width:280px;background:var(--bg2);border:1px solid var(--line2);border-radius:26px;padding:14px;box-shadow:0 40px 100px -30px rgba(0,0,0,.7)}
+.ph-top{display:flex;align-items:center;gap:9px;padding:4px 6px 12px;border-bottom:1px solid var(--line)}
+.ph-av{width:32px;height:32px;border-radius:50%;background:var(--surface-2);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.7rem;color:var(--muted)}
+.ph-name{font-size:.82rem;font-weight:700;text-align:left}.ph-num{font-size:.66rem;color:var(--muted);font-family:var(--mono);text-align:left}
+.ph-body{padding:12px 4px 4px;display:flex;flex-direction:column;gap:7px;min-height:60px}
+.bub{max-width:80%;padding:8px 12px;border-radius:14px;font-size:.8rem;line-height:1.4;text-align:left;opacity:0}
+.bub.in{background:var(--surface-2);align-self:flex-start;border-bottom-left-radius:4px}
+.bub.out{background:var(--ac);color:#0b1020;align-self:flex-end;border-bottom-right-radius:4px;font-weight:500}
+.scene.active .b1{animation:bubIn .5s var(--ease) .4s both}
+.scene.active .b2{animation:bubIn .5s var(--ease) 1.6s both}
+.scene.active .b3{animation:bubIn .5s var(--ease) 2.8s both}
+.scene.active .b4{animation:bubIn .5s var(--ease) 4s both}
+@keyframes bubIn{from{opacity:0;transform:translateY(10px) scale(.96)}to{opacity:1;transform:none}}
+.stamp{display:inline-flex;align-items:center;gap:8px;background:var(--green);color:#062a1b;font-weight:800;font-size:.82rem;padding:8px 14px;border-radius:60px;margin-top:12px;opacity:0}
+.scene.active .stamp{animation:pop .6s var(--ease) 4.6s both}
+.stamp svg{width:14px;height:14px;stroke:#062a1b;fill:none;stroke-width:3}
+
+/* invoice card */
+.inv{width:340px;background:var(--surface);border:1px solid var(--line2);border-radius:16px;padding:18px;text-align:left;box-shadow:0 40px 100px -30px rgba(0,0,0,.7)}
+.inv-h{display:flex;justify-content:space-between;align-items:center;font-size:.74rem;color:var(--muted);font-family:var(--mono);margin-bottom:12px}
+.inv-line{display:flex;justify-content:space-between;font-size:.84rem;padding:8px 0;border-bottom:1px solid var(--line);opacity:0}
+.inv-line .v{font-family:var(--mono)}
+.scene.active .il1{animation:rise .5s var(--ease) .5s both}
+.scene.active .il2{animation:rise .5s var(--ease) .9s both}
+.scene.active .il3{animation:rise .5s var(--ease) 1.3s both}
+.inv-tot{display:flex;justify-content:space-between;align-items:center;margin-top:12px;font-weight:800}
+.inv-tot .v{font-size:1.2rem}
+.approve{margin-top:14px;background:var(--ac);color:#0b1020;font-weight:800;text-align:center;padding:11px;border-radius:10px;font-size:.9rem;position:relative;opacity:0}
+.scene.active .approve{animation:rise .5s var(--ease) 1.8s both}
+.scene.active .approve.tapped{animation:tap .4s var(--ease) 3.2s both}
+@keyframes tap{0%{transform:scale(1)}40%{transform:scale(.95);background:var(--ac2)}100%{transform:scale(1)}}
+.cursor{position:absolute;width:22px;height:22px;right:40%;bottom:-30px;opacity:0;z-index:3}
+.cursor svg{width:22px;height:22px;fill:#fff;stroke:#0b1020;stroke-width:1}
+.scene.active .cursor{animation:cursorMove 1.6s var(--ease) 2s both}
+@keyframes cursorMove{0%{opacity:0;transform:translate(40px,30px)}30%{opacity:1}70%{opacity:1;transform:translate(0,0)}80%{transform:translate(0,3px)}100%{opacity:1;transform:translate(0,0)}}
+.synced{display:inline-flex;align-items:center;gap:8px;color:var(--green);font-weight:700;font-size:.92rem;margin-top:16px;opacity:0}
+.scene.active .synced{animation:pop .6s var(--ease) 3.8s both}
+.synced svg{width:16px;height:16px;stroke:var(--green);fill:none;stroke-width:2.6}
+
+/* dual mini cards */
+.duo{display:flex;gap:18px;flex-wrap:wrap;justify-content:center;margin-top:8px}
+.mini{width:280px;background:var(--surface);border:1px solid var(--line2);border-radius:14px;padding:20px;text-align:left}
+.mini .mt{font-size:.7rem;font-family:var(--mono);text-transform:uppercase;letter-spacing:.1em;font-weight:700;margin-bottom:10px}
+.mini .mh{font-size:1.05rem;font-weight:800;letter-spacing:-.01em;margin-bottom:6px}
+.mini .mp{font-size:.84rem;color:var(--muted);line-height:1.5}
+.mini.guard .mt{color:var(--amber)}.mini.revive .mt{color:var(--violet)}
+
+/* results */
+.res{display:flex;gap:clamp(20px,5vw,64px);flex-wrap:wrap;justify-content:center;margin-top:18px}
+.res .r .rn{font-size:clamp(2.4rem,6vw,4rem);font-weight:900;letter-spacing:-.04em;line-height:1}
+.res .r .rn .u{color:var(--ac2)}
+.res .r .rt{color:var(--muted);font-size:.86rem;font-weight:500;margin-top:8px;max-width:160px}
+
+.outro-cta{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:30px}
+@media(max-width:560px){.duo{gap:12px}.mini{width:100%}}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.001ms!important}}
+</style>
+</head>
+<body>
+
+<div class="hud">
+  <div class="logo"><span class="mk" style="--mks:24px"></span>Trade<span>Loop</span></div>
+  <span class="count" id="count">01 / 08</span>
+  <span class="skip" onclick="end()">Skip ⟶</span>
+</div>
+<div class="bars" id="bars"></div>
+
+<div class="player"><div class="stage">
+
+  <!-- 1 INTRO -->
+  <section class="scene" data-dur="4200">
+    <span class="mk pop" style="--mks:64px;margin-bottom:24px"></span>
+    <div class="big u1">The back office<br>that runs <em>itself.</em></div>
+    <p class="sub u2" style="margin-top:18px">A 60-second look at how TradeLoop turns missed calls into booked, invoiced, paid jobs — automatically.</p>
+  </section>
+
+  <!-- 2 PROBLEM -->
+  <section class="scene" data-dur="5000">
+    <div class="eyebrow u1">7:42pm · after hours</div>
+    <div class="phone-ic pop" style="margin-top:18px"><svg class="ring" viewBox="0 0 24 24"><path d="M22 16.92V21a1 1 0 01-1.1 1 19 19 0 01-8.3-3 19 19 0 01-6-6A19 19 0 013.5 4.6 1 1 0 014.5 3.5H8.6a1 1 0 011 .9l.7 3a1 1 0 01-.3.9L8.2 9.8a15 15 0 006 6l1.5-1.8a1 1 0 01.9-.3l3 .7a1 1 0 01.9 1z"/></svg></div>
+    <div class="big u2" style="margin-top:14px">A missed call.</div>
+    <p class="sub u3" style="margin-top:16px">Most tradies lose this job. It goes to voicemail — the caller rings the next name on Google.</p>
+  </section>
+
+  <!-- 3 CATCH -->
+  <section class="scene" data-dur="5600">
+    <div class="eyebrow u1">TradeLoop steps in</div>
+    <div class="big u2" style="margin-top:14px">Answered in <em>47 seconds.</em></div>
+    <div class="phone u3" style="margin-top:24px">
+      <div class="ph-top"><div class="ph-av">SH</div><div><div class="ph-name">Sarah Holden</div><div class="ph-num">+64 21 555 8821</div></div></div>
+      <div class="ph-body"><div class="bub out b1">Hi Sarah, sorry we missed your call! I'm Mike from Pacific Climate Solutions — how can we help?</div></div>
+    </div>
+  </section>
+
+  <!-- 4 BOOK -->
+  <section class="scene" data-dur="6400">
+    <div class="eyebrow u1">It books the job</div>
+    <div class="phone u2" style="margin-top:20px">
+      <div class="ph-top"><div class="ph-av">SH</div><div><div class="ph-name">Sarah Holden</div><div class="ph-num">Ducted heat pump · 180sqm</div></div></div>
+      <div class="ph-body">
+        <div class="bub in b1">Do you do ducted heat pump installs?</div>
+        <div class="bub out b2">Absolutely — that's our specialty. Around $7.5k–$10k installed. Free Wednesday 10am for an assessment?</div>
+        <div class="bub in b3">Wednesday 10am works great!</div>
+        <div class="bub out b4">Confirmed ✅ See you then — reminder the night before.</div>
+      </div>
+      <div style="text-align:center"><span class="stamp"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>Booked · Wed 10am · est. $8,500</span></div>
+    </div>
+  </section>
+
+  <!-- 5 INVOICE -->
+  <section class="scene" data-dur="6400">
+    <div class="eyebrow u1">Job done → paid faster</div>
+    <div class="inv u2" style="margin-top:20px">
+      <div class="inv-h"><span>INVOICE #1049</span><span>Baxter Commercial</span></div>
+      <div class="inv-line il1"><span>Heat pump service ×3</span><span class="v">$2,940</span></div>
+      <div class="inv-line il2"><span>Parts + consumables</span><span class="v">$640</span></div>
+      <div class="inv-line il3"><span>Labour</span><span class="v">$260</span></div>
+      <div class="inv-tot"><span>Total</span><span class="v num">$3,840</span></div>
+      <div class="approve" id="appr">Approve →<span class="cursor"><svg viewBox="0 0 24 24"><path d="M5 3l15 9-7 1 4 7-3 1-4-7-5 4z"/></svg></span></div>
+    </div>
+    <div class="synced"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>Sent to client · synced to Xero · reconciles on payment</div>
+  </section>
+
+  <!-- 6 MORE -->
+  <section class="scene" data-dur="5000">
+    <div class="eyebrow u1">And it never stops working</div>
+    <div class="big u2" style="font-size:clamp(1.8rem,4vw,3rem);margin-top:12px">Protecting margins.<br>Reviving leads.</div>
+    <div class="duo u3" style="margin-top:24px">
+      <div class="mini guard"><div class="mt">Pricing Guard</div><div class="mh">Caught a 6.2% margin</div><div class="mp">Flagged a thin quote before it went out — recommended $5,100 instead of $4,200.</div></div>
+      <div class="mini revive"><div class="mt">Lead Revival</div><div class="mh">Woke a dead quote</div><div class="mp">A 7-day sequence brought back a customer who'd gone quiet 8 days ago.</div></div>
+    </div>
+  </section>
+
+  <!-- 7 RESULTS -->
+  <section class="scene" data-dur="5200">
+    <div class="eyebrow u1">The month after switching on</div>
+    <div class="res u2" style="margin-top:8px">
+      <div class="r"><div class="rn num"><span class="cnt" data-to="18400" data-pre="$">$0</span></div><div class="rt">recovered in the first month</div></div>
+      <div class="r"><div class="rn num"><span class="cnt" data-to="47" data-pre="">0</span><span class="u">s</span></div><div class="rt">average missed-call response</div></div>
+      <div class="r"><div class="rn num"><span class="cnt" data-to="33" data-pre="">0</span><span class="u">%</span></div><div class="rt">missed calls → booked jobs</div></div>
+    </div>
+  </section>
+
+  <!-- 8 OUTRO -->
+  <section class="scene" data-dur="99999">
+    <span class="mk pop" style="--mks:60px;margin-bottom:22px"></span>
+    <div class="big u1">Your back office,<br><em>on autopilot.</em></div>
+    <p class="sub u2" style="margin-top:18px">Catch every call. Chase every invoice. Revive every lead — while you're on the tools.</p>
+    <div class="outro-cta u3">
+      <a class="btn btn-ac" href="index.html#app">See the live dashboard →</a>
+      <a class="btn btn-ghost" href="index.html">Visit the site</a>
+      <span class="btn btn-ghost" onclick="play(0)">↻ Replay</span>
+    </div>
+  </section>
+
+</div></div>
+
+<div class="controls">
+  <div class="cbtn" id="pp" onclick="togglePause()" title="Pause / play"><svg id="pp-ic" viewBox="0 0 24 24"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg></div>
+  <div class="cbtn" onclick="play(0)" title="Replay"><svg viewBox="0 0 24 24"><path d="M12 5V2L7 6l5 4V7a5 5 0 11-5 5H5a7 7 0 107-7z"/></svg></div>
+</div>
+
+<script>
+const scenes=[...document.querySelectorAll('.scene')];
+const bars=document.getElementById('bars');
+scenes.forEach(()=>{const s=document.createElement('div');s.className='seg';s.innerHTML='<i></i>';bars.appendChild(s);});
+const segs=[...bars.children];
+let idx=0,timer=null,startT=0,remain=0,paused=false,ended=false;
+
+function fmt(el,v){const pre=el.dataset.pre||'';el.textContent=pre+Math.round(v).toLocaleString('en-NZ');}
+function countScene(sc){sc.querySelectorAll('.cnt:not([data-done])').forEach(el=>{el.dataset.done=1;const to=+el.dataset.to,t0=performance.now(),dur=1200;(function step(t){let p=Math.min(1,(t-t0)/dur);p=1-Math.pow(1-p,3);fmt(el,to*p);if(p<1)requestAnimationFrame(step);})(t0);});}
+
+function play(n){
+  ended=false;document.body.classList.remove('paused');setPP(true);
+  clearTimeout(timer);
+  idx=n;
+  scenes.forEach((s,k)=>{s.classList.toggle('active',k===n);});
+  segs.forEach((s,k)=>{s.classList.remove('run');s.classList.toggle('done',k<n);s.querySelector('i').style.width=k<n?'100%':'0';});
+  document.getElementById('count').textContent=String(n+1).padStart(2,'0')+' / '+String(scenes.length).padStart(2,'0');
+  const sc=scenes[n],dur=+sc.dataset.dur;
+  // progress bar for this scene
+  const seg=segs[n];seg.classList.add('run');seg.style.setProperty('--dur',dur+'ms');
+  // tapped state for invoice scene
+  const ap=sc.querySelector('#appr');if(ap){ap.classList.remove('tapped');void ap.offsetWidth;ap.classList.add('tapped');}
+  countScene(sc);
+  startT=performance.now();remain=dur;
+  if(n<scenes.length-1) timer=setTimeout(()=>play(n+1),dur);
+  else end(true);
+}
+function end(skip){ended=true;clearTimeout(timer);
+  scenes.forEach((s,k)=>s.classList.toggle('active',k===scenes.length-1));
+  segs.forEach(s=>{s.classList.add('done');s.classList.remove('run');s.querySelector('i').style.width='100%';});
+  document.getElementById('count').textContent=scenes.length+' / '+scenes.length;
+  countScene(scenes[scenes.length-1]);
+}
+function togglePause(){
+  if(ended){play(0);return;}
+  if(!paused){paused=true;document.body.classList.add('paused');clearTimeout(timer);remain-=performance.now()-startT;setPP(false);}
+  else{paused=false;document.body.classList.remove('paused');startT=performance.now();setPP(true);timer=setTimeout(()=>{if(idx<scenes.length-1)play(idx+1);else end(true);},Math.max(0,remain));}
+}
+function setPP(playing){document.getElementById('pp-ic').innerHTML=playing?'<path d="M6 5h4v14H6zM14 5h4v14h-4z"/>':'<path d="M7 4l13 8-13 8z"/>';}
+document.addEventListener('keydown',e=>{if(e.code==='Space'){e.preventDefault();togglePause();}if(e.key==='r')play(0);});
+play(0);
+</script>
+</body>
+</html>
