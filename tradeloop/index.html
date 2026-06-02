@@ -334,6 +334,12 @@ footer{background:var(--bg-soft);border-top:1px solid var(--line);padding:64px 0
 .foot-bot{display:flex;justify-content:space-between;align-items:center;padding-top:26px;flex-wrap:wrap;gap:14px}
 .foot-bot small{color:var(--faint);font-size:.84rem}
 .foot-tag{font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ac-2)}
+.foot-family{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;padding:20px 0;border-top:1px solid var(--line);margin-top:6px}
+.foot-family .ff-lbl{font-family:var(--mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+.foot-family .ff-links{display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+.foot-family a{font-size:.9rem;font-weight:600;color:var(--text-2);transition:color .25s;display:inline-flex;align-items:center;gap:8px}
+.foot-family a:hover{color:var(--text)}
+.emk svg{width:17px;height:19px;display:block}
 
 /* REVEAL */
 .rv{opacity:0;transform:translateY(26px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
@@ -861,7 +867,7 @@ footer{background:var(--bg-soft);border-top:1px solid var(--line);padding:64px 0
       <div class="lab">Your monthly return</div>
       <div class="roi-line"><span class="k">Recovered revenue</span><span class="v pos num" id="r-rev">+$14,000</span></div>
       <div class="roi-line"><span class="k">Cash-flow improvement</span><span class="v pos num" id="r-cf">+$1,000</span></div>
-      <div class="roi-line"><span class="k">TradeLoop (Pro)</span><span class="v neg num">−$1,497</span></div>
+      <div class="roi-line"><span class="k">TradeLoop (Pro)</span><span class="v neg num">−$249</span></div>
       <div class="roi-net"><div class="lab">Net monthly return</div><div class="roi-big num" id="r-net">+$13,503</div><div class="roi-mult"><b id="r-mult">9.5×</b> back per dollar invested</div></div>
       <span class="btn btn-ac" style="margin-top:24px;justify-content:center;background:#fff;color:var(--ac-deep)" onclick="enterApp()">See it running →</span>
     </div>
@@ -877,15 +883,15 @@ footer{background:var(--bg-soft);border-top:1px solid var(--line);padding:64px 0
 <section id="pricing"><div class="wrap">
   <div class="sec-head center rv"><div class="eyebrow line">Pricing</div><h2>Pays for itself in <em>one</em> recovered job.</h2><p>Month-to-month. No lock-in. Cancel any time.</p></div>
   <div class="price-grid">
-    <div class="plan rv"><div class="pname">Starter</div><div class="amt num">$497<small>/mo</small></div><div class="desc">Solo operators and small crews getting the basics handled.</div>
-      <ul><li><span class="ck"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>Missed-call SMS responder</li><li><span class="ck"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>Lead capture + pipeline</li><li><span class="ck"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>Same-day invoicing</li><li><span class="ck"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>Daily digest</li><li><span class="ck"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>Email + SMS support</li></ul>
-      <span class="btn" onclick="go('cta')">Start with Starter</span></div>
-    <div class="plan feat rv d1"><div class="pname">Pro <span class="tag">Most crews start here</span></div><div class="amt num">$1,497<small>/mo</small></div><div class="desc">The full back office, running on autopilot.</div>
-      <ul><li><span class="ck"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>Everything in Starter</li><li><span class="ck"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>Lead Revival Engine</li><li><span class="ck"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>Pricing Guard</li><li><span class="ck"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>Xero + MYOB sync</li><li><span class="ck"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>Revenue recovery dashboard</li><li><span class="ck"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>Priority onboarding</li></ul>
+    <div class="plan rv"><div class="pname">Solo</div><div class="amt num">$149<small>/mo + GST</small></div><div class="desc">Owner-operators, 1–2 vans. The essentials, handled.</div>
+      <ul><li><span class="ck"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>Missed-call SMS responder (24/7)</li><li><span class="ck"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>Lead capture + pipeline</li><li><span class="ck"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>Same-day invoicing + Xero sync</li><li><span class="ck"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>Daily digest</li><li><span class="ck"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>$149 setup · month-to-month</li></ul>
+      <span class="btn" onclick="go('cta')">Start solo</span></div>
+    <div class="plan feat rv d1"><div class="pname">Pro <span class="tag">Most crews start here</span></div><div class="amt num">$249<small>/mo + GST</small></div><div class="desc">Small teams, 2–6 staff. The full back office on autopilot.</div>
+      <ul><li><span class="ck"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>Everything in Solo</li><li><span class="ck"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>Lead Revival Engine</li><li><span class="ck"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>Pricing Guard (margin alerts)</li><li><span class="ck"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>Xero + MYOB sync</li><li><span class="ck"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>Revenue recovery dashboard</li><li><span class="ck"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>Priority onboarding</li></ul>
       <span class="btn btn-ac" onclick="enterApp()">See Pro live →</span></div>
-    <div class="plan rv d2"><div class="pname">Scale</div><div class="amt">Custom</div><div class="desc">Multi-van operations and franchises with teams to coordinate.</div>
-      <ul><li><span class="ck"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>Everything in Pro</li><li><span class="ck"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>Multi-location + team roles</li><li><span class="ck"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>Dedicated number pool</li><li><span class="ck"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>Custom integrations</li><li><span class="ck"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>Dedicated success manager + SLA</li></ul>
-      <span class="btn" onclick="go('cta')">Talk to us</span></div>
+    <div class="plan rv d2"><div class="pname">Built for you</div><div class="amt num">$1,200<small> build + $200/mo</small></div><div class="desc">Done-for-you setup, tailored to your business, with hands-on support.</div>
+      <ul><li><span class="ck"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>Everything in Pro</li><li><span class="ck"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>We set it up for you in a week</li><li><span class="ck"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>Custom scripts in your voice</li><li><span class="ck"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>24/7 support</li><li><span class="ck"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>Multi-van + team roles</li></ul>
+      <span class="btn" onclick="go('cta')">Get it built for you</span></div>
   </div>
 </div></section>
 
@@ -896,7 +902,7 @@ footer{background:var(--bg-soft);border-top:1px solid var(--line);padding:64px 0
     <div class="q-item rv"><button class="q-head" onclick="toggleQ(this)">Will customers know it's automated?<span class="ic"></span></button><div class="q-body"><p>No. Replies go out in your voice and tone, not a robotic script. You can read every thread, and step in to take over a conversation any time you want.</p></div></div>
     <div class="q-item rv"><button class="q-head" onclick="toggleQ(this)">Do I lose control of my business?<span class="ic"></span></button><div class="q-body"><p>Never. Nothing important goes out without your nod on the morning digest — and that takes about two minutes. Once you trust it, switch on auto-approve for the routine stuff and only get pinged for the exceptions.</p></div></div>
     <div class="q-item rv"><button class="q-head" onclick="toggleQ(this)">I already use Xero — does it fit?<span class="ic"></span></button><div class="q-body"><p>Yes. TradeLoop syncs with Xero and MYOB. Invoices and payments reconcile automatically against your bank feed — no double entry, GST-ready at filing time.</p></div></div>
-    <div class="q-item rv"><button class="q-head" onclick="toggleQ(this)">What does it cost vs. what I get back?<span class="ic"></span></button><div class="q-body"><p>Pro is $1,497/mo. The average crew recovers around $18k a month in jobs and faster cash flow — it usually pays for itself with a single recovered install. Run your own numbers in the <a onclick="go('roi')">ROI calculator</a> above.</p></div></div>
+    <div class="q-item rv"><button class="q-head" onclick="toggleQ(this)">What does it cost vs. what I get back?<span class="ic"></span></button><div class="q-body"><p>Pro is $249/mo + GST (Solo is $149; or $1,200 build + $200/mo done-for-you). The average crew recovers around $18k a month in jobs and faster cash flow — it pays for itself many times over with a single recovered job. Run your own numbers in the <a onclick="go('roi')">ROI calculator</a> above.</p></div></div>
     <div class="q-item rv"><button class="q-head" onclick="toggleQ(this)">Is there a lock-in contract?<span class="ic"></span></button><div class="q-body"><p>No. It's month-to-month — cancel any time. We'd rather keep you because it's working than because you're stuck.</p></div></div>
   </div>
 </div></section>
@@ -920,7 +926,15 @@ footer{background:var(--bg-soft);border-top:1px solid var(--line);padding:64px 0
     <div class="foot-col"><h5>Company</h5><a onclick="go('cta')">Book a walkthrough</a><a onclick="go('faq')">FAQ</a><a onclick="showLogin()">Log in</a></div>
     <div class="foot-col"><h5>Trades</h5><a>HVAC</a><a>Plumbing</a><a>Electrical</a><a>Maintenance</a></div>
   </div>
-  <div class="foot-bot"><small>© <span id="yr"></span> TradeLoop. An Empora Intelligence product. Made in Aotearoa.</small><span class="foot-tag">Your back office, on autopilot.</span></div>
+  <div class="foot-family">
+    <span class="ff-lbl">Part of the Empora Group</span>
+    <div class="ff-links">
+      <a class="ff-brand" href="https://emporom-empora.vercel.app" target="_blank" rel="noopener"><span class="emk"><svg viewBox="0 0 18 20" fill="#FF6A1F" aria-hidden="true"><path d="M9 1l1.8 1.8L9 4.6 7.2 2.8z"/><path d="M15 7l1.6 1.6L15 10.2l-1.6-1.6z"/><path d="M3 9l1.6 1.6L3 12.2 1.4 10.6z"/><path d="M8.6 16l1.8 1.8-1.8 1.8-1.8-1.8z"/><path d="M11 11.4l1.1 1.1-1.1 1.1-1.1-1.1z"/></svg></span>Emporom Media</a>
+      <a href="https://intelligence-empora.vercel.app" target="_blank" rel="noopener">Empora Intelligence</a>
+      <a href="https://empora-group.vercel.app" target="_blank" rel="noopener">Empora Group</a>
+    </div>
+  </div>
+  <div class="foot-bot"><small>© <span id="yr"></span> TradeLoop — built by <b style="color:var(--text-2)">Emporom Media</b>, an Empora Intelligence product. Made in Aotearoa.</small><span class="foot-tag">Your back office, on autopilot.</span></div>
 </div></footer>
 </div><!-- /site -->
 
@@ -975,7 +989,7 @@ footer{background:var(--bg-soft);border-top:1px solid var(--line);padding:64px 0
         <div class="nav-sec">Account</div>
         <div class="nlink" data-page="settings" onclick="nav('settings',this)"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.6 1.6 0 00.3 1.8l.1.1a2 2 0 11-2.8 2.8l-.1-.1a1.6 1.6 0 00-2.7 1.1V21a2 2 0 11-4 0v-.1A1.6 1.6 0 005 19.4l-.1.1a2 2 0 11-2.8-2.8l.1-.1A1.6 1.6 0 003 14H3a2 2 0 110-4h.1A1.6 1.6 0 004.6 5l-.1-.1a2 2 0 112.8-2.8l.1.1A1.6 1.6 0 0010 3.6V3a2 2 0 114 0v.1a1.6 1.6 0 002.7 1.1l.1-.1a2 2 0 112.8 2.8l-.1.1a1.6 1.6 0 001.1 2.7H21a2 2 0 110 4h-.1a1.6 1.6 0 00-1.5 1z"/></svg>Settings</div>
       </nav>
-      <div class="aside-foot"><div class="plan-card"><div class="pl">Current plan</div><div class="pn">TradeLoop Pro</div><div class="ps">$1,497/mo · billed monthly</div></div></div>
+      <div class="aside-foot"><div class="plan-card"><div class="pl">Current plan</div><div class="pn">TradeLoop Pro</div><div class="ps">$249/mo + GST · monthly</div></div></div>
     </aside>
 
     <main class="amain"><div class="amain-in">
@@ -1200,7 +1214,7 @@ footer{background:var(--bg-soft);border-top:1px solid var(--line);padding:64px 0
         <div class="scell"><div class="k">Responder number</div><div class="v num">+64 9 555 0142</div></div>
         <div class="scell"><div class="k">Target margin</div><div class="v num">18%</div></div>
         <div class="scell"><div class="k">Invoice terms</div><div class="v">7 days</div></div>
-        <div class="scell"><div class="k">Plan</div><div class="v">TradeLoop Pro · $1,497/mo</div></div>
+        <div class="scell"><div class="k">Plan</div><div class="v">TradeLoop Pro · $249/mo</div></div>
       </div>
       <div class="sec-lbl">Active modules</div>
       <div class="card"><div class="card-b" style="padding-top:6px">
@@ -1274,7 +1288,7 @@ function setRange(r,btn){initChart();const d=charts.D[r];charts.rev.data.labels=
 
 /* ROI */
 function fmt(n){return '$'+Number(n).toLocaleString('en-NZ');}
-function calcROI(){const job=+document.getElementById('s-job').value,jobs=+document.getElementById('s-jobs').value,cf=+document.getElementById('s-cf').value,fee=1497;document.getElementById('v-job').textContent=fmt(job).replace('$','');document.getElementById('v-jobs').textContent=jobs;document.getElementById('v-cf').textContent=fmt(cf).replace('$','');const rev=job*jobs,total=rev+cf,net=total-fee,mult=(total/fee).toFixed(1);document.getElementById('r-rev').textContent='+'+fmt(rev);document.getElementById('r-cf').textContent='+'+fmt(cf);document.getElementById('r-net').textContent=(net>=0?'+':'')+fmt(net);document.getElementById('r-mult').textContent=mult+'×';}
+function calcROI(){const job=+document.getElementById('s-job').value,jobs=+document.getElementById('s-jobs').value,cf=+document.getElementById('s-cf').value,fee=249;document.getElementById('v-job').textContent=fmt(job).replace('$','');document.getElementById('v-jobs').textContent=jobs;document.getElementById('v-cf').textContent=fmt(cf).replace('$','');const rev=job*jobs,total=rev+cf,net=total-fee,mult=(total/fee).toFixed(1);document.getElementById('r-rev').textContent='+'+fmt(rev);document.getElementById('r-cf').textContent='+'+fmt(cf);document.getElementById('r-net').textContent=(net>=0?'+':'')+fmt(net);document.getElementById('r-mult').textContent=mult+'×';}
 calcROI();
 
 /* sync */
