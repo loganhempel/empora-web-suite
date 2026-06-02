@@ -43,6 +43,12 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;heigh
 .rrow .k{color:#aab6d2}.rrow .v{font-family:var(--mono);font-weight:700}
 .cta{display:block;text-align:center;margin-top:22px;background:var(--ac);color:#0b1020;font-weight:800;padding:14px;border-radius:60px;transition:transform .3s var(--ease),background .2s}
 .cta:hover{background:#7aa2ff;transform:translateY(-2px)}
+.cap{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.cap input{flex:1;min-width:0;padding:11px 14px;border-radius:10px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);color:#fff;font-family:var(--display);font-size:.88rem}
+.cap input::placeholder{color:#8ea0c8}.cap input:focus{outline:none;border-color:var(--ac)}
+.cap button{flex:none;padding:11px 16px;border-radius:10px;border:none;background:rgba(255,255,255,.14);color:#fff;font-weight:700;cursor:pointer}
+.cap button:hover{background:rgba(255,255,255,.22)}
+.cap-status{flex-basis:100%;font-size:.8rem;color:#4fe0a0;min-height:1em}
 .foot{text-align:center;color:var(--muted);font-size:.82rem;margin-top:30px}
 .assume{font-size:.78rem;color:#8ea0c8;margin-top:16px;line-height:1.5}
 </style>
@@ -73,6 +79,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;heigh
       <div class="lab" style="margin-top:18px">Net back in your pocket</div>
       <div class="big green num" id="r-net">$0<span style="font-size:1rem;color:#8ea0c8">/mo</span></div>
       <a class="cta" href="index.html#app">See TradeLoop catch a call →</a>
+      <form class="cap" onsubmit="return capLead(event)"><input type="email" id="cap-email" placeholder="Email me this + a free demo" required><button type="submit">Send</button><div class="cap-status" id="cap-status"></div></form>
       <div class="assume">Indicative only — based on your inputs. Industry sources: tradies miss 28–35% of calls; ~78% of customers book the first business to reply.</div>
     </div>
   </div>
@@ -92,6 +99,7 @@ function calc(){
   document.getElementById('r-net').innerHTML=money(net)+'<span style="font-size:1rem;color:#8ea0c8">/mo</span>';
 }
 calc();
+function capLead(e){e.preventDefault();const em=document.getElementById('cap-email').value.trim(),st=document.getElementById('cap-status'),loss=document.getElementById('r-year').textContent;st.textContent='Sending…';const done=()=>{st.textContent='✓ Sent — we\'ll be in touch shortly.';document.getElementById('cap-email').value='';};fetch('/api/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:em,source:'calculator',message:'Estimated annual loss to missed calls: '+loss})}).then(done).catch(done);return false;}
 </script>
 </body>
 </html>
