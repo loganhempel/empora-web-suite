@@ -12,12 +12,12 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  /* ── graphite surfaces ── */
-  --bg:#14161b; --bg-soft:#181b21; --surface:#1c1f27; --surface-2:#23272f; --surface-3:#2a2f39;
-  --line:rgba(255,255,255,.07); --line-2:rgba(255,255,255,.12); --line-3:rgba(255,255,255,.18);
-  --text:#e9ebef; --text-2:#b7bcc6; --muted:#7e838e; --faint:#565b66;
-  /* ── electric blue / indigo accent ── */
-  --ac:#5b8cff; --ac-2:#7aa2ff; --ac-deep:#3a61d8; --ac-soft:rgba(91,140,255,.13); --ac-line:rgba(91,140,255,.30);
+  /* ── light surfaces (marketing) ── */
+  --bg:#f6f7f9; --bg-soft:#eef1f5; --surface:#ffffff; --surface-2:#f1f3f7; --surface-3:#e5e9f0;
+  --line:rgba(13,15,20,.09); --line-2:rgba(13,15,20,.14); --line-3:rgba(13,15,20,.22);
+  --text:#0e1118; --text-2:#3f4654; --muted:#697080; --faint:#9aa1ad;
+  /* ── electric blue / indigo accent (text/icon tones tuned for light) ── */
+  --ac:#5b8cff; --ac-2:#2f55e0; --ac-deep:#2746c4; --ac-soft:rgba(91,140,255,.12); --ac-line:rgba(91,140,255,.30);
   /* ── data palette ── */
   --violet:#a78bfa; --green:#3ddc97; --green-soft:rgba(61,220,151,.13); --amber:#f7b955; --amber-soft:rgba(247,185,85,.13);
   --red:#f87171; --red-soft:rgba(248,113,113,.13);
@@ -58,8 +58,8 @@ body[data-view="app"] .app{display:flex}
 .btn:hover svg{transform:translateX(3px)}
 .btn-ac{background:var(--ac);color:#0b1020;box-shadow:0 8px 26px rgba(91,140,255,.34)}
 .btn-ac:hover{background:var(--ac-2);transform:translateY(-2px)}
-.btn-ghost{background:rgba(255,255,255,.04);color:var(--text);border-color:var(--line-2)}
-.btn-ghost:hover{border-color:var(--line-3);background:rgba(255,255,255,.07);transform:translateY(-2px)}
+.btn-ghost{background:var(--surface);color:var(--text);border-color:var(--line-2)}
+.btn-ghost:hover{border-color:var(--line-3);background:var(--surface-2);transform:translateY(-2px)}
 
 #progress{position:fixed;top:0;left:0;height:2px;width:0;background:linear-gradient(90deg,var(--ac),var(--violet));z-index:3000;transition:width .1s linear}
 
@@ -70,7 +70,7 @@ body[data-view="app"] .app{display:flex}
 
 /* ═══════════════ NAV ═══════════════ */
 .nav{position:fixed;inset:0 0 auto 0;z-index:1000;padding:20px 0;transition:background .4s,padding .4s,box-shadow .4s,border-color .4s;border-bottom:1px solid transparent}
-.nav.scrolled{background:rgba(20,22,27,.78);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);padding:12px 0;border-color:var(--line)}
+.nav.scrolled{background:rgba(246,247,249,.82);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);padding:12px 0;border-color:var(--line)}
 .nav-in{display:flex;align-items:center;justify-content:space-between;gap:30px}
 .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.18rem;letter-spacing:-.03em;cursor:pointer}
 .logo span{color:var(--ac-2)}
@@ -186,8 +186,8 @@ h2 em{font-style:normal;color:var(--ac-2)}
 
 /* FEATURES BENTO */
 .bento{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:1fr;gap:16px}
-.fcard{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:28px;transition:transform .4s var(--ease),border-color .4s,background .4s;position:relative;overflow:hidden}
-.fcard:hover{transform:translateY(-5px);border-color:var(--ac-line)}
+.fcard{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:28px;transition:transform .4s var(--ease),border-color .4s,box-shadow .4s;position:relative;overflow:hidden;box-shadow:0 1px 2px rgba(13,15,20,.04),0 10px 30px -22px rgba(13,15,20,.18)}
+.fcard:hover{transform:translateY(-5px);border-color:var(--ac-line);box-shadow:0 18px 44px -22px rgba(13,15,20,.28)}
 .fcard .ic{width:46px;height:46px;border-radius:12px;background:var(--surface-2);border:1px solid var(--line-2);display:flex;align-items:center;justify-content:center;margin-bottom:18px;transition:background .3s,border-color .3s}
 .fcard .ic svg{width:21px;height:21px;stroke:var(--ac-2);fill:none;stroke-width:1.9}
 .fcard:hover .ic{background:var(--ac-soft);border-color:var(--ac-line)}
@@ -223,7 +223,7 @@ h2 em{font-style:normal;color:var(--ac-2)}
 
 /* ROI */
 .roi{background:var(--bg-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.roi-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:grid;grid-template-columns:1fr 1fr;box-shadow:0 30px 70px -45px rgba(0,0,0,.6)}
+.roi-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:grid;grid-template-columns:1fr 1fr;box-shadow:0 30px 70px -45px rgba(13,15,20,.16)}
 .roi-inputs{padding:36px}
 .roi-out{background:linear-gradient(160deg,var(--ac-deep),#1a2547);padding:36px;display:flex;flex-direction:column;justify-content:center}
 .roi-inputs h3{font-size:1.25rem;font-weight:800;letter-spacing:-.02em;margin-bottom:5px}
@@ -256,8 +256,8 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;background:var(--ac);
 
 /* PRICING */
 .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:stretch}
-.plan{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:32px;display:flex;flex-direction:column;transition:transform .4s var(--ease),border-color .4s}
-.plan:hover{transform:translateY(-5px);border-color:var(--line-3)}
+.plan{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:32px;display:flex;flex-direction:column;transition:transform .4s var(--ease),border-color .4s,box-shadow .4s;box-shadow:0 1px 2px rgba(13,15,20,.04),0 10px 30px -22px rgba(13,15,20,.16)}
+.plan:hover{transform:translateY(-5px);border-color:var(--line-3);box-shadow:0 18px 44px -22px rgba(13,15,20,.26)}
 .plan.feat{background:linear-gradient(180deg,var(--ac-soft),var(--surface));border-color:var(--ac-line)}
 .plan .pname{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--muted)}
 .plan.feat .pname{color:var(--ac-2)}
@@ -340,6 +340,14 @@ footer{background:var(--bg-soft);border-top:1px solid var(--line);padding:64px 0
 /* ═══════════════════════════════════════════
    APP / DASHBOARD
    ═══════════════════════════════════════════ */
+/* dark scope: dashboard, login, splash, hero product-mock, command palette, toast */
+.app,.auth,.splash,.stage,.cmdk,.toast{
+  --bg:#14161b;--bg-soft:#181b21;--surface:#1c1f27;--surface-2:#23272f;--surface-3:#2a2f39;
+  --line:rgba(255,255,255,.07);--line-2:rgba(255,255,255,.12);--line-3:rgba(255,255,255,.18);
+  --text:#e9ebef;--text-2:#b7bcc6;--muted:#7e838e;--faint:#565b66;
+  --ac-2:#7aa2ff;--ac-deep:#3a61d8;
+  color:var(--text);
+}
 .app{flex-direction:column;height:100vh;width:100%;overflow:hidden;font-size:14px}
 /* top bar */
 .atop{height:56px;flex:none;display:flex;align-items:center;gap:18px;padding:0 18px;background:var(--bg-soft);border-bottom:1px solid var(--line)}
