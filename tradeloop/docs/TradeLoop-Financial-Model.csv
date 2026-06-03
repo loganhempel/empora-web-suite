@@ -1,0 +1,35 @@
+TradeLoop — 12-Month Financial Model (illustrative),,,,,,,
+Edit the assumptions; the monthly table uses them. NZD.,,,,,,,
+,,,,,,,
+ASSUMPTIONS,,,,,,,
+Blended ARPU (mo),200,,,,,,
+Cost-to-serve per client (mo),40,,,,,,
+Avg setup/build fee per new client,400,,,,,,
+Gross margin %,80%,,,,,,
+,,,,,,,
+MONTHLY MODEL,,,,,,,
+Month,New clients,Total clients,MRR,Setup cash,Cost-to-serve,Gross profit (sub),Total cash in
+M1,3,3,600,1200,120,480,1800
+M2,3,6,1200,1200,240,960,2400
+M3,4,10,2000,1600,400,1600,3600
+M4,4,14,2800,1600,560,2240,4400
+M5,5,19,3800,2000,760,3040,5800
+M6,5,24,4800,2000,960,3840,6800
+M7,5,29,5800,2000,1160,4640,7800
+M8,5,34,6800,2000,1360,5440,8800
+M9,4,38,7600,1600,1520,6080,9200
+M10,4,42,8400,1600,1680,6720,10000
+M11,4,46,9200,1600,1840,7360,10800
+M12,4,50,10000,1600,2000,8000,11600
+,,,,,,,
+YEAR 1 TOTALS,50,,,20600,,,
+Exit MRR (M12),,,10000,,,,
+Exit ARR (M12 x12),,,120000,,,,
+Sub gross profit (year),,,,,,55400,
+Total cash in (year),,,,,,,103000
+,,,,,,,
+NOTES,,,,,,,
+- Conservative: assumes no churn. Model 5-8% monthly logo churn for realism.,,,,,,,
+- Built-for-you ($1200 build) front-loads cash; productised ($149/$249) compounds MRR.,,,,,,,
+- Only real variable cost is SMS+LLM per client. Cap heavy after-hours tenants or upsell.,,,,,,,
+- North-star to track alongside: $ recovered for clients / month.,,,,,,,
