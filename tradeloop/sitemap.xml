@@ -2,6 +2,12 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://tradeloop-eight.vercel.app/</loc><priority>1.0</priority></url>
   <url><loc>https://tradeloop-eight.vercel.app/calculator</loc><priority>0.9</priority></url>
-  <url><loc>https://tradeloop-eight.vercel.app/demo</loc><priority>0.7</priority></url>
-  <url><loc>https://tradeloop-eight.vercel.app/heroes</loc><priority>0.3</priority></url>
+  <url><loc>https://tradeloop-eight.vercel.app/compare</loc><priority>0.8</priority></url>
+  <url><loc>https://tradeloop-eight.vercel.app/onboarding</loc><priority>0.7</priority></url>
+  <url><loc>https://tradeloop-eight.vercel.app/for-plumbers</loc><priority>0.7</priority></url>
+  <url><loc>https://tradeloop-eight.vercel.app/for-electricians</loc><priority>0.7</priority></url>
+  <url><loc>https://tradeloop-eight.vercel.app/for-hvac</loc><priority>0.7</priority></url>
+  <url><loc>https://tradeloop-eight.vercel.app/for-builders</loc><priority>0.7</priority></url>
+  <url><loc>https://tradeloop-eight.vercel.app/for-cleaners</loc><priority>0.7</priority></url>
+  <url><loc>https://tradeloop-eight.vercel.app/demo</loc><priority>0.6</priority></url>
 </urlset>
