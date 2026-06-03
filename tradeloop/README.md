@@ -1,4 +1,4 @@
-# TradeLoop
+# Offsider
 
 The automated back office for NZ trades businesses — the flagship prospect demo for **Empora Intelligence**, built by **Emporom Media**. Static, self-contained, deployed on Vercel.
 
@@ -32,7 +32,7 @@ Vercel project `tradeloop` (alias `tradeloop-eight.vercel.app`), git-connected t
 Dark graphite `#14161b` + electric-blue `#5b8cff` for the app; light `#f6f7f9` marketing. Pricing: Solo $149/mo · Pro $249/mo · Built-for-you $1,200 + $200/mo (all + GST).
 
 ## Off-repo
-- Strategy: `~/Downloads/TradeLoop-Business-Map.pdf`
-- Sales: `~/Downloads/TradeLoop-One-Pager.pdf`
-- GTM: `~/Downloads/TradeLoop-Outreach-Pack.pdf`
+- Strategy: `~/Downloads/Offsider-Business-Map.pdf`
+- Sales: `~/Downloads/Offsider-One-Pager.pdf`
+- GTM: `~/Downloads/Offsider-Outreach-Pack.pdf`
 - Miro business map: board `uXjVG_SwN0c=`

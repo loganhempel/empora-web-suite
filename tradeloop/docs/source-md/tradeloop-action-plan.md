@@ -1,4 +1,4 @@
-# TradeLoop — Action Plan
+# Offsider — Action Plan
 
 What to do tomorrow morning, then 30/60/90. Ordered so each step unblocks the next. Everything I could build autonomously is done and committed; this is the human-only list.
 
@@ -10,9 +10,9 @@ What to do tomorrow morning, then 30/60/90. Ordered so each step unblocks the ne
 2. **[5 min] Open the hub.** `tradeloop/hub.html` — click through every page once on the live URL; confirm it all renders.
 3. **[10 min] Pick the hero direction.** Open `/heroes` — decide primary (rec: #2 "Never miss a job") + secondary (#4 pricing reframe). Tell me and I'll set the live site to it.
 4. **[10 min] Turn on lead capture.** Make a Slack incoming webhook (or Zapier/Google-Apps-Script) → in Vercel set env var **`LEAD_WEBHOOK_URL`** to it. Now every form + calculator submission pings you. Test it once.
-5. **[15 min] Read the two key docs.** `TradeLoop-Operating-Plan.pdf` and `TradeLoop-Tech-Architecture.pdf` (esp. §1 — validate thin before building). Decide with Liam: concierge stack first.
-6. **[30 min] Start selling.** Run the **missed-call audit** on your 4 warm clients — Fantail (Chris), Ultra Fast, Singh, 2in1/Welly Lawns. Script in `TradeLoop-Outreach-Pack.pdf`. Aim: book 2 demos today.
-7. **[10 min] Domain.** Check/grab **tradeloop.co.nz**; point it at the Vercel project.
+5. **[15 min] Read the two key docs.** `Offsider-Operating-Plan.pdf` and `Offsider-Tech-Architecture.pdf` (esp. §1 — validate thin before building). Decide with Liam: concierge stack first.
+6. **[30 min] Start selling.** Run the **missed-call audit** on your 4 warm clients — Fantail (Chris), Ultra Fast, Singh, 2in1/Welly Lawns. Script in `Offsider-Outreach-Pack.pdf`. Aim: book 2 demos today.
+7. **[10 min] Domain.** Check/grab **offsider.co.nz**; point it at the Vercel project.
 
 ---
 
@@ -43,7 +43,7 @@ What to do tomorrow morning, then 30/60/90. Ordered so each step unblocks the ne
 ## Decisions only you can make
 - Primary hero/brand angle.
 - Concierge-first vs build-first (rec: concierge — see architecture §1).
-- Empora Intelligence name/domain + sign Liam (TradeLoop sits under EI).
+- Empora Intelligence name/domain + sign Liam (Offsider sits under EI).
 - Final pricing confirm ($149 / $249 / $1,200+$200).
 - Which warm client becomes the flagship case study.
 

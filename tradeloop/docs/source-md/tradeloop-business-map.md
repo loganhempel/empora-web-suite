@@ -1,6 +1,6 @@
-# TradeLoop — Business Map
+# Offsider — Business Map
 
-TradeLoop is the trades vertical of **Empora Intelligence** — a productised "automated back office" for Kiwi trades businesses, built and delivered by **Emporom Media**. This document maps the whole business: product, market, ICP, pricing, messaging, features, go-to-market, and the numbers — plus everything built in this session and the decisions waiting for you.
+Offsider is the trades vertical of **Empora Intelligence** — a productised "automated back office" for Kiwi trades businesses, built and delivered by **Emporom Media**. This document maps the whole business: product, market, ICP, pricing, messaging, features, go-to-market, and the numbers — plus everything built in this session and the decisions waiting for you.
 
 Prepared autonomously, 2026-06-03. Market figures are from verified NZ research (sources at the end); $ are NZD unless noted.
 
@@ -25,7 +25,7 @@ While you were away I treated this like a startup and moved on every front. All 
 
 ## 2. The product in one line
 
-> **TradeLoop catches every missed call, chases every invoice, and revives every dead lead — automatically. You just approve the two-minute morning digest.**
+> **Offsider catches every missed call, chases every invoice, and revives every dead lead — automatically. You just approve the two-minute morning digest.**
 
 It runs one loop for every job: **missed call → instant SMS (47s) → booked → job done → same-day invoice → Xero sync → paid → revive past customers → repeat.** Six modules: Missed-Call Responder, Lead Revival, Same-Day Invoicing, Xero/MYOB Sync, Pricing Guard, Daily Digest.
 
@@ -48,11 +48,11 @@ NZ has ~605,000 businesses, **97% small**. Trades miss **28–35% of calls**; ~*
 | **Talkify / automateai / voice-ai** | NZ | AI voice agents for tradies | $59–70 + GST |
 | **GoHighLevel** (agencies resell) | US | Missed-call text-back built-in | $97–497 + SMS. **NZ gotcha:** custom SMS (TNZ) not supported for MCTB |
 
-### The whitespace (why TradeLoop wins)
+### The whitespace (why Offsider wins)
 
 - The two NZ incumbents (**Tradify, Fergus**) do jobs + invoicing but treat missed-call text-back as a **bolt-on SMS add-on** — they don't *capture the lead* or run the back office for you.
 - The new NZ AI-voice startups (**Talkify, automateai, voice-ai**) are **capture-only and shallow** — no invoicing, no Xero sync, no lead revival, no margin guard.
-- **Nobody in NZ bundles capture + revival + same-day invoicing + accounting sync + margin guard as one "back office that runs itself."** That seam is TradeLoop's position.
+- **Nobody in NZ bundles capture + revival + same-day invoicing + accounting sync + margin guard as one "back office that runs itself."** That seam is Offsider's position.
 - **Lead Revival** (auto re-text cold quotes/past customers) and **Pricing Guard** (flag below-margin quotes) are genuinely unmarketed in this segment. Quoting tradies sit on a graveyard of dead quotes — reviving them is near-pure upside and the killer demo.
 - **NZ-native plumbing is a moat**: native NZ SMS sender, Xero-first + GST-correct, NZ number provisioning — sidesteps the GHL/US tooling limitations.
 
@@ -151,7 +151,7 @@ The 5 hero directions in `/heroes.html` (each a different angle + brand system):
 ## 10. Risks & open decisions
 
 - **Brand direction** — pick the primary hero angle (my pick: #2 + #4). *Your call.*
-- **Empora Intelligence naming/domain** still open (emporaintel.ai) and Liam not yet signed — TradeLoop sits under EI, so this is a dependency.
+- **Empora Intelligence naming/domain** still open (emporaintel.ai) and Liam not yet signed — Offsider sits under EI, so this is a dependency.
 - **SMS deliverability/compliance in NZ** — must use a compliant NZ sender; confirm before first paid client.
 - **"Sounds like a human" claim** — keep an easy human-handoff and be honest in marketing; don't overpromise the AI.
 - **Delivery capacity** — productise onboarding early so Built-for-you doesn't cap growth at your personal hours.

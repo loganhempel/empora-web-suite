@@ -1,6 +1,6 @@
-# TradeLoop — Technical Architecture & Backend Build Plan
+# Offsider — Technical Architecture & Backend Build Plan
 
-How TradeLoop goes from a static demo to a real, multi-tenant SaaS that's efficient and scalable. Written for Logan + Liam (technical). The headline call is in §1 — **validate with a thin stack before building custom.**
+How Offsider goes from a static demo to a real, multi-tenant SaaS that's efficient and scalable. Written for Logan + Liam (technical). The headline call is in §1 — **validate with a thin stack before building custom.**
 
 ---
 

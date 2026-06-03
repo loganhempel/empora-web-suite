@@ -1,6 +1,6 @@
-# TradeLoop — Operating & Scaling Plan
+# Offsider — Operating & Scaling Plan
 
-Every function of the business: model, economics, sales, marketing, ops, finance, team, risk, and the metrics that matter. Built on the verified NZ research. This is the plan to make TradeLoop cook — efficiently and at scale.
+Every function of the business: model, economics, sales, marketing, ops, finance, team, risk, and the metrics that matter. Built on the verified NZ research. This is the plan to make Offsider cook — efficiently and at scale.
 
 ---
 
@@ -9,7 +9,7 @@ Every function of the business: model, economics, sales, marketing, ops, finance
 - **What:** productised "back office that runs itself" for NZ trades. Software + (early) done-for-you setup.
 - **Who:** sole traders (1–2 vans, $150k–400k) → small teams (2–6 staff). HVAC, plumbing, electrical, drainage, gasfitting.
 - **How it makes money:** recurring monthly subscription (MRR), plus one-time setup/build fees. Sits inside **Empora Intelligence** (the AI arm), delivered by **Emporom Media** + the SA pod.
-- **Why it wins:** nobody in NZ bundles capture + revival + same-day invoicing + Xero + margin-guard. Incumbents (Tradify/Fergus) do jobs; AI-voice startups only answer. TradeLoop runs the whole loop.
+- **Why it wins:** nobody in NZ bundles capture + revival + same-day invoicing + Xero + margin-guard. Incumbents (Tradify/Fergus) do jobs; AI-voice startups only answer. Offsider runs the whole loop.
 
 ## 2. Pricing (set, research-backed)
 - **Solo** $149/mo + GST · **Pro** $249/mo + GST (+$149 setup) · **Built-for-you** $1,200 build + $200/mo.
@@ -28,7 +28,7 @@ Every function of the business: model, economics, sales, marketing, ops, finance
 - **M3–4:** first case study live; 10 clients total. **~$2k MRR.**
 - **M6:** 20–25 clients. **~$5k MRR.**
 - **M12:** 50 clients blended ~$200. **~$10k MRR / ~$120k ARR** + ongoing setup fees.
-- Detailed model in `TradeLoop-Financial-Model.csv` — change the assumptions and it recalculates.
+- Detailed model in `Offsider-Financial-Model.csv` — change the assumptions and it recalculates.
 
 ## 5. Sales (the playbook)
 - **Pipeline:** Audit → Demo → Proposal (deposit) → Onboard → Live → Case study/referral.
@@ -47,7 +47,7 @@ Every function of the business: model, economics, sales, marketing, ops, finance
 
 ## 7. Operations & delivery
 - **Onboarding SOP (target < 1 week):** connect number + Xero → set tone/margin/terms → load services + pricing bands → test the loop live → go live + 7-day check-in. Templatise into a checklist so it's repeatable and pod-deliverable.
-- **Support:** 24/7 promise on Built-for-you → SA pod handles tier-1; escalation path for anything the AI flags. Weekly "what did TradeLoop do for you" value report to reduce churn.
+- **Support:** 24/7 promise on Built-for-you → SA pod handles tier-1; escalation path for anything the AI flags. Weekly "what did Offsider do for you" value report to reduce churn.
 - **Quality:** every AI thread logged + sampled; guardrails + human handoff; monthly tone tune per client.
 
 ## 8. Finance
@@ -66,7 +66,7 @@ Every function of the business: model, economics, sales, marketing, ops, finance
 - **Churn from no visible value** → first-30-day proof + weekly value report.
 - **SMS deliverability/compliance (NZ)** → NZ-native sender, UEMA opt-out, before first paid client.
 - **AI overpromise** → honest "assisted, you're in control" positioning + human handoff.
-- **Empora Intelligence naming/domain + Liam sign-off** still open — TradeLoop depends on it; close it.
+- **Empora Intelligence naming/domain + Liam sign-off** still open — Offsider depends on it; close it.
 - **Key-person/time** → productise onboarding so growth isn't capped by Logan's hours.
 
 ## 11. KPIs — the dashboard to run the business
@@ -79,4 +79,4 @@ Every function of the business: model, economics, sales, marketing, ops, finance
 
 ---
 
-*Companion docs: Technical Architecture & Build Plan, Business Map, One-Pager, Outreach Pack, Financial Model (CSV). All in ~/Downloads. TradeLoop — Emporom Media × Empora Intelligence.*
+*Companion docs: Technical Architecture & Build Plan, Business Map, One-Pager, Outreach Pack, Financial Model (CSV). All in ~/Downloads. Offsider — Emporom Media × Empora Intelligence.*

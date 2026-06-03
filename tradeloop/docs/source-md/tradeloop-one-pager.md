@@ -1,8 +1,8 @@
-# TradeLoop
+# Offsider
 
 **The back office that runs itself — for trades.**
 
-You're on the tools all day. TradeLoop handles the office while you're there: it answers the calls you miss, follows up the quotes that go quiet, sends the invoices the same day, and keeps your books straight. You just check the two-minute morning rundown.
+You're on the tools all day. Offsider handles the office while you're there: it answers the calls you miss, follows up the quotes that go quiet, sends the invoices the same day, and keeps your books straight. You just check the two-minute morning rundown.
 
 ---
 
@@ -15,9 +15,9 @@ You're on the tools all day. TradeLoop handles the office while you're there: it
 
 ## Why it matters
 
-Tradies miss roughly **a third of their calls**, and most of those callers just ring someone else. Late invoices cost Kiwi small businesses **$827m a year**. One recovered job a month covers TradeLoop several times over.
+Tradies miss roughly **a third of their calls**, and most of those callers just ring someone else. Late invoices cost Kiwi small businesses **$827m a year**. One recovered job a month covers Offsider several times over.
 
-> *"It books jobs while I'm under a house. I cleared a $3,840 invoice and confirmed two installs before my first coffee — TradeLoop had already done the lot overnight."* — Mike, Pacific Climate Solutions (illustrative)
+> *"It books jobs while I'm under a house. I cleared a $3,840 invoice and confirmed two installs before my first coffee — Offsider had already done the lot overnight."* — Mike, Pacific Climate Solutions (illustrative)
 
 ## What it costs
 
@@ -32,6 +32,6 @@ Month-to-month. No lock-in. Works with the Xero and the business number you alre
 ## See it work
 
 Watch the 60-second demo or get a live walkthrough on your own numbers.
-**→ tradeloop.co.nz** · hello@tradeloop.co.nz
+**→ offsider.co.nz** · hello@offsider.co.nz
 
-*TradeLoop — built by Emporom Media, an Empora Intelligence product. Made in Aotearoa.*
+*Offsider — built by Emporom Media, an Empora Intelligence product. Made in Aotearoa.*

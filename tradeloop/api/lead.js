@@ -1,4 +1,4 @@
-// TradeLoop — lead capture (Vercel serverless, zero dependencies).
+// Offsider — lead capture (Vercel serverless, zero dependencies).
 // Forwards leads to LEAD_WEBHOOK_URL (Slack / Zapier / Make / Google Apps Script).
 // If no webhook is configured it logs the lead and still succeeds, so the form never breaks.
 // Set the env var in Vercel: Project → Settings → Environment Variables → LEAD_WEBHOOK_URL
@@ -37,16 +37,16 @@ module.exports = async (req, res) => {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          text: `🔧 New TradeLoop lead — ${lead.name || '(no name)'} <${lead.email}> · via ${lead.source}`,
+          text: `🔧 New Offsider lead — ${lead.name || '(no name)'} <${lead.email}> · via ${lead.source}`,
           lead
         })
       });
     } else {
-      console.log('[TradeLoop lead] (set LEAD_WEBHOOK_URL to forward):', JSON.stringify(lead));
+      console.log('[Offsider lead] (set LEAD_WEBHOOK_URL to forward):', JSON.stringify(lead));
     }
     res.status(200).json({ ok: true });
   } catch (err) {
-    console.error('[TradeLoop lead] forward failed:', err);
+    console.error('[Offsider lead] forward failed:', err);
     res.status(200).json({ ok: true, warning: 'captured' }); // never fail the visitor
   }
 };
