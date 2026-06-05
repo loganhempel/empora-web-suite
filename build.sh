@@ -22,11 +22,11 @@ SHARED_JS="$ROOT/_shared/system.js"
 
 echo "→ wiping $DEPLOY"
 rm -rf "$DEPLOY"
-mkdir -p "$DEPLOY/group/assets" "$DEPLOY/h2" "$DEPLOY/intelligence"
-# Emporom Media is deployed separately — the React app at
-# ~/Documents/GitHub/empwebv2 (the /redesign route). The standalone
-# emporom/ in this repo is kept as a donor reference only and is NOT
-# built into deploy/. See DEPLOY.md for the empwebv2 Vercel setup.
+mkdir -p "$DEPLOY/group/assets" "$DEPLOY/h2" "$DEPLOY/intelligence" "$DEPLOY/emporom"
+# Emporom Media now ships from THIS repo: the standalone cobalt/Southern-Cross
+# site (emporom/index.html, Group-branded + schematics) is the emporom.media
+# homepage, plus per-niche landing pages under emporom/niches/. The empwebv2
+# React app is retired as the public front-end.
 
 # ---------- Group hub ------------------------------------------
 # Already self-contained inline (no _shared/ refs). Needs only the
@@ -67,10 +67,11 @@ html = re.sub(
 )
 # rewrite the "Back to Group" switch link from ../index.html to /
 # (each site is now its own root in its Vercel project)
-html = html.replace('href="../index.html"', 'href="https://empora-group.vercel.app/"')
-html = html.replace('href="../h2/index.html"',           'href="https://h2-empora.vercel.app/"')
-html = html.replace('href="../intelligence/index.html"', 'href="https://intelligence-empora.vercel.app/"')
-html = html.replace('href="../emporom/index.html"',      'href="https://emporom-empora.vercel.app/"')
+# end-state cross-site links = emporom.media subdomains (live once DNS is configured)
+html = html.replace('href="../index.html"', 'href="https://group.emporom.media/"')
+html = html.replace('href="../h2/index.html"',           'href="https://h2.emporom.media/"')
+html = html.replace('href="../intelligence/index.html"', 'href="https://intelligence.emporom.media/"')
+html = html.replace('href="../emporom/index.html"',      'href="https://emporom.media/"')
 pathlib.Path(dst).write_text(html)
 print(f"   inlined → {dst}")
 PY
@@ -78,11 +79,16 @@ PY
 
 echo "→ h2/"
 inline_shared "$ROOT/h2/index.html"       "$DEPLOY/h2/index.html"
-# emporom/ standalone is the donor — NOT built. Real Emporom Media =
-# empwebv2 React app at ~/Documents/GitHub/empwebv2 (its own deploy).
+
+echo "→ emporom/ (homepage + niche landing pages)"
+inline_shared "$ROOT/emporom/index.html"  "$DEPLOY/emporom/index.html"
+# Niche landing pages are self-contained (inline CSS) — copy as-is.
+if [ -d "$ROOT/emporom/niches" ]; then
+  cp -R "$ROOT/emporom/niches" "$DEPLOY/emporom/niches"
+fi
 
 # ---------- per-site vercel.json (clean config) ----------------
-for site in group h2 intelligence; do
+for site in group h2 intelligence emporom; do
   cat > "$DEPLOY/$site/vercel.json" <<JSON
 {
   "\$schema": "https://openapi.vercel.sh/vercel.json",
@@ -106,5 +112,4 @@ echo "✓ Build complete. Deploy artefacts in:"
 echo "    $DEPLOY/group/"
 echo "    $DEPLOY/h2/"
 echo "    $DEPLOY/intelligence/"
-echo ""
-echo "    [Emporom Media] deploys separately from ~/Documents/GitHub/empwebv2"
+echo "    $DEPLOY/emporom/   (+ /niches/*)"
