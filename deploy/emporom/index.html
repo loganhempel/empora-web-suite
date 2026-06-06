@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Emporom Media · Build demand. Dominate your market.</title>
+<meta name="description" content="Emporom Media is a Wellington-based performance marketing agency. Meta Ads, Google Ads, SEO, content and landing pages built to grow revenue for NZ brands." />
+<meta name="theme-color" content="#2536E6" />
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Emporom Media · Build demand. Dominate your market." />
+<meta property="og:description" content="Wellington performance marketing. We run the ads, build the pages and tighten the tracking, so growth shows up where it counts: revenue." />
+<meta property="og:locale" content="en_NZ" />
+<meta name="twitter:card" content="summary_large_image" />
+<!-- Inline SVG favicon: Southern Cross sparkle -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%232536E6'/%3E%3Cpath fill='%23FF6A1F' d='M50 14 C53 38 62 47 86 50 C62 53 53 62 50 86 C47 62 38 53 14 50 C38 47 47 38 50 14 Z'/%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<!-- Shared Empora design system. Emporom = the system defaults (cobalt + orange, light). -->
+<style>
+/* inlined from _shared/system.css */
+/* ============================================================
+   EMPORA DESIGN SYSTEM  ·  system.css
+   One system, four faces. Extracted from the approved Emporom
+   Media redesign (blue/light). Every brand-specific colour is
+   now a token pair:
+     --brand*   = the dominant / hero colour
+     --accent*  = the action / highlight colour
+   A brand page sets those (and, for dark skins, the surface
+   tokens) in its own :root block. Nothing else changes.
+   ------------------------------------------------------------
+   Default theme below = Emporom Media (cobalt + orange, light).
+   ============================================================ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  /* ── brand pair (override per page) ── */
+  --brand:#2536E6; --brand-d:#1a27c4; --brand-deep:#0c1487; --brand-rgb:37,54,230;
+  --brand-ink:var(--brand);    /* brand colour tuned for text/icons on the skin (dark skins lighten it) */
+  --accent:#FF6A1F; --accent-d:#F2540A; --accent-lt:#FFB07A; --accent-rgb:255,106,31;
+  --accent-soft:rgba(var(--accent-rgb),.12);
+  --on-accent:#fff;            /* text/icon colour on a solid accent fill */
+  --accent-ink:var(--accent);  /* accent tuned for text on LIGHT backgrounds */
+
+  /* ── skin: light surfaces (dark-skin pages override these) ── */
+  --bg:#F4F1EA; --bg-2:#ECE7DC;
+  --surface:#ffffff; --surface-2:#ECE7DC;
+  --text:#0D0D0F; --text-2:#17171c;
+  --muted:#6C6B66;
+  --line:rgba(13,13,15,0.10);
+  --white:#ffffff;
+
+  /* ── inverted dark band inside a light page (results / cases / footer) ── */
+  --band:#0D0D0F; --band-2:#17171c; --band-text:#ffffff;
+  --band-muted:rgba(255,255,255,.6); --line-lt:rgba(255,255,255,0.16);
+
+  /* ── tokens shared across every skin ── */
+  --display:'Hanken Grotesk',-apple-system,system-ui,sans-serif;
+  --mono:'Space Mono','SFMono-Regular',monospace;
+  --r:18px;
+  --ease:cubic-bezier(0.16,1,0.3,1);
+}
+
+html{scroll-behavior:smooth;font-size:16px;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{font-family:var(--display);background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+img{display:block;max-width:100%}
+::selection{background:var(--accent);color:#fff}
+:focus-visible{outline:2.5px solid var(--brand);outline-offset:3px;border-radius:4px}
+::-webkit-scrollbar{width:10px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--text);border:3px solid var(--bg);border-radius:10px}
+
+/* subtle paper grain */
+body::after{content:'';position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.4;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E")}
+
+.wrap{max-width:1240px;margin:0 auto;padding:0 32px;position:relative;z-index:2}
+.eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;font-weight:700}
+.eyebrow.line{display:inline-flex;align-items:center;gap:13px}
+.eyebrow.line::before{content:'';width:30px;height:1px;background:linear-gradient(90deg,transparent,currentColor)}
+.btn{display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:.95rem;padding:15px 26px;border-radius:60px;transition:transform .35s var(--ease),background .3s,color .3s,box-shadow .3s;cursor:pointer;border:none;white-space:nowrap}
+.btn svg{width:16px;height:16px;transition:transform .35s var(--ease)}
+.btn:hover svg{transform:translateX(4px)}
+.btn-orange{background:var(--accent);color:var(--on-accent);box-shadow:0 8px 30px rgba(var(--accent-rgb),.35)}
+.btn-orange:hover{background:var(--accent-d);transform:translateY(-2px)}
+.btn-ink{background:var(--text);color:var(--bg)}
+.btn-ink:hover{transform:translateY(-2px);box-shadow:0 12px 34px rgba(0,0,0,.25)}
+.btn-ghost-light{background:rgba(255,255,255,.08);color:#fff;border:1px solid var(--line-lt);backdrop-filter:blur(8px)}
+.btn-ghost-light:hover{background:rgba(255,255,255,.16)}
+
+/* scroll progress */
+#progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--accent),var(--brand));z-index:2000;transition:width .1s linear}
+
+/* ── LOGO MARK ── */
+.mark{flex:none;position:relative}
+.mark svg{display:block;transition:transform .6s var(--ease),filter .4s}
+.mark .glow{position:absolute;inset:-40%;border-radius:50%;background:radial-gradient(circle,rgba(var(--accent-rgb),.5),transparent 65%);opacity:0;transition:opacity .4s;pointer-events:none}
+.logo:hover .mark svg{transform:rotate(90deg)}
+.logo:hover .mark .glow{opacity:.7}
+.mark .dot{position:absolute;border-radius:50%;background:var(--accent)}
+
+/* ───────────────── NAV ───────────────── */
+nav{position:fixed;inset:0 0 auto 0;z-index:1000;padding:22px 0;transition:background .4s,padding .4s,box-shadow .4s}
+nav.scrolled{background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);padding:14px 0;box-shadow:0 1px 0 var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;gap:30px}
+.logo{display:flex;align-items:center;gap:11px}
+.logo .word{font-weight:800;font-size:1.18rem;letter-spacing:-.02em;line-height:1}
+.logo .word span{font-weight:500;opacity:.9}
+.nav-links{display:flex;align-items:center;gap:34px;list-style:none}
+.nav-links a{font-size:.92rem;font-weight:600;transition:opacity .3s;position:relative}
+.nav-links a::after{content:'';position:absolute;left:0;bottom:-5px;height:2px;width:0;background:var(--accent);transition:width .3s var(--ease)}
+.nav-links a:hover::after{width:100%}
+.nav-right{display:flex;align-items:center;gap:18px}
+nav:not(.scrolled) .logo .word,nav:not(.scrolled) .nav-links a{color:#fff}
+nav:not(.scrolled) .nav-cta{background:#fff;color:var(--text)}
+nav.scrolled .nav-cta{background:var(--text);color:var(--bg)}
+.nav-cta{padding:11px 22px;border-radius:60px;font-size:.9rem;font-weight:700;transition:transform .3s var(--ease),opacity .3s}
+.nav-cta:hover{transform:translateY(-2px)}
+.menu-btn{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:6px}
+.menu-btn span{width:24px;height:2px;background:currentColor;display:block;transition:transform .3s,opacity .3s}
+nav:not(.scrolled) .menu-btn{color:#fff}nav.scrolled .menu-btn{color:var(--text)}
+body.menu-open .menu-btn span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+body.menu-open .menu-btn span:nth-child(2){opacity:0}
+body.menu-open .menu-btn span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.m-menu{position:fixed;inset:0;z-index:999;background:var(--brand);display:flex;flex-direction:column;justify-content:center;gap:8px;padding:0 32px;transform:translateY(-100%);transition:transform .5s var(--ease);visibility:hidden}
+body.menu-open .m-menu{transform:none;visibility:visible}
+.m-menu a{color:#fff;font-size:2rem;font-weight:800;letter-spacing:-.02em;padding:12px 0;border-bottom:1px solid var(--line-lt)}
+.m-menu .btn-orange{margin-top:24px;align-self:flex-start;font-size:1.1rem}
+
+/* ───────────────── HERO ───────────────── */
+.hero{position:relative;background:var(--brand);color:#fff;padding:170px 0 120px;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:
+   radial-gradient(120% 80% at 50% -10%,rgba(255,255,255,.22),transparent 55%),
+   radial-gradient(90% 70% at 85% 120%,var(--brand-deep),transparent 60%);pointer-events:none}
+.hero::after{content:'';position:absolute;inset:0;opacity:.5;pointer-events:none;
+   background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);
+   background-size:64px 64px;mask-image:radial-gradient(70% 60% at 50% 30%,#000,transparent 80%)}
+.hero-in{position:relative;z-index:2;text-align:center;max-width:920px;margin:0 auto}
+.hero .eyebrow{color:rgba(255,255,255,.82);display:inline-flex;align-items:center;gap:10px;margin-bottom:26px}
+.hero .eyebrow::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px var(--accent);animation:blink 2.4s ease-in-out infinite}
+.hero h1{font-weight:800;font-size:clamp(2.9rem,7.4vw,6rem);line-height:.96;letter-spacing:-.035em;margin-bottom:26px}
+.hero h1 em{font-style:normal;color:transparent;-webkit-text-stroke:1.6px rgba(255,255,255,.85)}
+.hero h1 .or{font-style:normal;background:linear-gradient(110deg,var(--accent) 0%,var(--accent-lt) 45%,var(--accent) 100%);background-size:220% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 5s ease-in-out infinite}
+@keyframes shimmer{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}
+.hero p.sub{font-size:clamp(1.05rem,1.7vw,1.3rem);color:rgba(255,255,255,.82);max-width:600px;margin:0 auto 38px;font-weight:500}
+.hero-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:22px}
+.hero-trust{font-size:.86rem;color:rgba(255,255,255,.62);font-weight:500}
+.hero-trust b{color:#fff}
+
+/* hero entrance choreography */
+.an{opacity:0;animation:heroUp .95s var(--ease) forwards}
+.an.a1{animation-delay:.05s}.an.a2{animation-delay:.16s}.an.a3{animation-delay:.27s}.an.a4{animation-delay:.38s}.an.a5{animation-delay:.5s}.an.a6{animation-delay:.66s}
+@keyframes heroUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+
+/* hero browser / dashboard mock */
+.stage{position:relative;z-index:2;max-width:980px;margin:70px auto 0}
+.browser{background:#fff;border-radius:16px;box-shadow:0 50px 120px -30px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.5);overflow:hidden;color:#0D0D0F}
+.b-bar{display:flex;align-items:center;gap:8px;padding:14px 18px;border-bottom:1px solid rgba(13,13,15,.10);background:#FBFAF7}
+.b-bar i{width:11px;height:11px;border-radius:50%;background:#E2DDD2}
+.b-bar i:nth-child(1){background:#FF5F57}.b-bar i:nth-child(2){background:#FEBC2E}.b-bar i:nth-child(3){background:#28C840}
+.b-url{margin-left:14px;font-family:var(--mono);font-size:.72rem;color:#6C6B66;background:#fff;border:1px solid rgba(13,13,15,.10);padding:6px 14px;border-radius:60px}
+.dash{padding:26px;display:grid;grid-template-columns:1.55fr 1fr;gap:18px}
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;grid-column:1 / -1}
+.tile{border:1px solid rgba(13,13,15,.10);border-radius:14px;padding:16px}
+.tile .lbl{font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:#6C6B66}
+.tile .num{font-size:1.5rem;font-weight:800;letter-spacing:-.03em;margin-top:6px;color:#0D0D0F}
+.tile .delta{font-size:.74rem;font-weight:700;color:#15a05a;margin-top:2px}
+.tile .delta.b{color:var(--brand)}
+.panel{border:1px solid rgba(13,13,15,.10);border-radius:14px;padding:18px;display:flex;flex-direction:column}
+.panel h4{font-size:.8rem;font-weight:700;margin-bottom:4px;color:#0D0D0F}
+.panel .cap{font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:#6C6B66;margin-bottom:14px}
+.bars{display:flex;align-items:flex-end;gap:9px;height:120px;margin-top:auto}
+.bars span{flex:1;background:#ECE7DC;border-radius:6px 6px 0 0;position:relative}
+.bars span::after{content:'';position:absolute;inset:auto 0 0 0;height:0;background:var(--brand);border-radius:6px 6px 0 0;transition:height 1s var(--ease)}
+.bars span:last-child::after{background:var(--accent)}
+.in .bars span::after{height:var(--h)}
+.area{position:relative;flex:1;min-height:140px}
+.area svg{position:absolute;inset:0;width:100%;height:100%}
+.area .line{stroke-dasharray:600;stroke-dashoffset:600;transition:stroke-dashoffset 1.6s var(--ease) .2s}
+.in .area .line{stroke-dashoffset:0}
+.pip{transform-box:fill-box;transform-origin:center;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{r:4.5px;opacity:1}50%{r:7px;opacity:.5}}
+.result-card{position:absolute;left:-26px;bottom:-34px;z-index:4;background:#0D0D0F;color:#fff;border-radius:16px;padding:20px 22px;width:270px;box-shadow:0 30px 70px -20px rgba(0,0,0,.6)}
+.result-card .cap{font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+.result-card .big{font-size:2.4rem;font-weight:900;letter-spacing:-.04em;margin:4px 0;line-height:1}
+.result-card .row{display:flex;align-items:center;justify-content:space-between;margin-top:10px}
+.result-card .up{font-size:.8rem;font-weight:700;color:#36d77e}
+.play{width:42px;height:42px;border-radius:50%;background:var(--brand);display:flex;align-items:center;justify-content:center;flex:none;transition:transform .3s}
+.play:hover{transform:scale(1.08)}
+.play svg{width:14px;height:14px;fill:#fff;margin-left:2px}
+.ftag{position:absolute;z-index:3;background:rgba(13,13,15,.62);border:1px solid var(--line-lt);backdrop-filter:blur(10px);border-radius:60px;padding:8px 15px;display:flex;align-items:center;gap:9px;font-size:.78rem;font-weight:700;color:#fff;white-space:nowrap;animation:tagFloat 5s ease-in-out infinite}
+.ftag .d{width:7px;height:7px;border-radius:50%;flex:none;animation:blink 2s ease-in-out infinite}
+.ftag-1{top:8%;right:-2%;animation-delay:0s}
+.ftag-2{top:42%;left:-7%;animation-delay:1.1s}
+.ftag-3{bottom:18%;right:-5%;animation-delay:2.2s}
+@keyframes tagFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+/* ───────────────── MARQUEE / TRUST ───────────────── */
+.trust{background:var(--band);color:var(--band-text);padding:30px 0;overflow:hidden}
+.trust .lab{text-align:center;font-family:var(--mono);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:22px}
+.marquee{display:flex;gap:64px;width:max-content;animation:scroll 28s linear infinite}
+.marquee:hover{animation-play-state:paused}
+.marquee span{font-size:1.45rem;font-weight:800;letter-spacing:-.02em;color:rgba(255,255,255,.55);white-space:nowrap;display:flex;align-items:center;gap:64px}
+.marquee span::after{content:'✦';color:var(--accent);font-size:.9rem}
+@keyframes scroll{to{transform:translateX(-50%)}}
+.marquee-mask{position:relative;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+
+/* ───────────────── SECTION SHELL ───────────────── */
+section{padding:120px 0}
+.sec-head{max-width:760px;margin-bottom:60px}
+.sec-head.center{margin-left:auto;margin-right:auto;text-align:center}
+.sec-head .eyebrow{color:var(--accent-ink);margin-bottom:18px;display:inline-flex}
+h2{font-weight:800;font-size:clamp(2.1rem,4.6vw,3.6rem);line-height:1.02;letter-spacing:-.03em}
+h2 .blue{color:var(--brand-ink)}
+.sec-head p{margin-top:20px;font-size:1.1rem;color:var(--muted);font-weight:500;max-width:560px}
+.sec-head.center p{margin-left:auto;margin-right:auto}
+
+/* ── INVERTED BAND (results / cases share this) ── */
+.results,.cases{background:var(--band);color:var(--band-text)}
+.results .sec-head .eyebrow,.cases .sec-head .eyebrow{color:var(--accent)}
+.results h2,.cases h2{color:var(--band-text)}
+.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:20px}
+.stat{border-top:1px solid var(--line-lt);padding-top:24px}
+.stat .n{font-size:clamp(2.6rem,5vw,3.7rem);font-weight:900;letter-spacing:-.04em;line-height:1}
+.stat .n .u{color:var(--accent)}
+.stat .t{margin-top:10px;color:var(--band-muted);font-size:.95rem;font-weight:500}
+
+/* ── INTERACTIVE TOGGLE FEATURE (Emporom: tracking audit) ── */
+.audit{background:var(--bg-2)}
+.audit-card{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:38px;box-shadow:0 30px 70px -40px rgba(13,13,15,.3)}
+.audit-toggle{display:inline-flex;background:var(--bg-2);border-radius:60px;padding:5px;margin-bottom:30px;gap:4px}
+.audit-toggle button{border:none;background:none;cursor:pointer;font-family:var(--display);font-weight:700;font-size:.9rem;color:var(--muted);padding:10px 22px;border-radius:60px;transition:background .35s var(--ease),color .35s}
+.audit-toggle button.on{background:var(--text);color:var(--bg)}
+.audit-card.audited .audit-toggle button.t-after{background:var(--accent);color:var(--on-accent)}
+.audit-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center}
+.audit-chart{position:relative;min-height:230px}
+.audit-chart svg{width:100%;height:230px;display:block}
+.a-reported{stroke:#B9B3A6;stroke-width:3;fill:none;stroke-dasharray:5 6;stroke-linecap:round}
+.a-actual{stroke:var(--accent-ink);stroke-width:3.5;fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:680;stroke-dashoffset:680;transition:stroke-dashoffset 1.4s var(--ease)}
+.audited .a-actual{stroke-dashoffset:0}
+.a-fill{fill:url(#ag);opacity:0;transition:opacity 1s ease .3s}
+.audited .a-fill{opacity:1}
+.a-gap{fill:rgba(var(--accent-rgb),.10);opacity:0;transition:opacity .6s}
+.audited .a-gap{opacity:1}
+.a-dot{opacity:0;transition:opacity .4s ease 1.1s}
+.audited .a-dot{opacity:1}
+.audit-read .lead{font-family:var(--mono);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.audit-read .figure{font-size:3.6rem;font-weight:900;letter-spacing:-.04em;line-height:1;margin:6px 0}
+.audit-read .sub{color:var(--muted);font-weight:500;max-width:300px}
+.recovered{margin-top:22px;display:inline-flex;align-items:center;gap:10px;background:rgba(var(--accent-rgb),.12);color:var(--accent-ink);font-weight:800;padding:11px 18px;border-radius:60px;font-size:.95rem;opacity:0;transform:translateY(8px);transition:opacity .5s ease .6s,transform .5s var(--ease) .6s}
+.audited .recovered{opacity:1;transform:none}
+.audit-foot{font-family:var(--mono);font-size:.62rem;letter-spacing:.08em;color:var(--muted);margin-top:26px;text-transform:uppercase}
+
+/* ── CREATIVE / COLLAGE ── */
+.collage{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:150px;gap:16px}
+.cell{border-radius:16px;overflow:hidden;position:relative;padding:20px;display:flex;flex-direction:column;justify-content:space-between;color:#fff;transition:transform .4s var(--ease)}
+.cell:hover{transform:translateY(-5px)}
+.cell .k{font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;opacity:.85}
+.cell .v{font-size:1.7rem;font-weight:800;letter-spacing:-.03em}
+.cell.tall{grid-row:span 2}.cell.wide{grid-column:span 2}
+.c-blue{background:linear-gradient(150deg,var(--brand),var(--brand-deep))}
+.c-orange{background:linear-gradient(150deg,var(--accent),var(--accent-d))}
+.c-ink{background:linear-gradient(150deg,#2a2a32,#0D0D0F)}
+.c-paper{background:var(--bg-2);color:var(--text)}
+.cell.grain::after{content:'';position:absolute;inset:0;opacity:.5;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* ── SERVICES ── */
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.svc{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:30px;transition:transform .4s var(--ease),box-shadow .4s}
+.svc:hover{transform:translateY(-6px);box-shadow:0 24px 50px -22px rgba(13,13,15,.25)}
+.svc-badge{width:52px;height:52px;border-radius:50%;background:linear-gradient(150deg,var(--accent),var(--accent-d));display:flex;align-items:center;justify-content:center;margin-bottom:22px;box-shadow:0 8px 22px rgba(var(--accent-rgb),.32)}
+.svc-badge svg{width:22px;height:22px;stroke:var(--on-accent);fill:none;stroke-width:1.9}
+.svc:nth-child(3n-1) .svc-badge{background:linear-gradient(150deg,var(--brand),var(--brand-deep));box-shadow:0 8px 22px rgba(var(--brand-rgb),.3)}
+.svc:nth-child(3n) .svc-badge{background:linear-gradient(150deg,#26262e,#0D0D0F);box-shadow:0 8px 22px rgba(0,0,0,.25)}
+.svc:nth-child(3n-1) .svc-badge svg,.svc:nth-child(3n) .svc-badge svg{stroke:#fff}
+.svc h3{font-size:1.25rem;font-weight:800;letter-spacing:-.02em;margin-bottom:10px}
+.svc p{color:var(--muted);font-size:.96rem;font-weight:500}
+
+/* ── CASE STUDIES ── */
+.case-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.case{background:var(--band-2);border:1px solid var(--line-lt);border-radius:var(--r);padding:30px;display:flex;flex-direction:column;transition:transform .4s var(--ease),border-color .4s}
+.case:hover{transform:translateY(-6px);border-color:rgba(var(--accent-rgb),.5)}
+.case .cnum{font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;color:var(--accent);font-weight:700}
+.case h3{font-size:1.3rem;font-weight:800;letter-spacing:-.02em;margin:14px 0 8px}
+.case p{color:var(--band-muted);font-size:.95rem;font-weight:500;flex:1}
+.case .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.case .tags span{font-family:var(--mono);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.8);border:1px solid var(--line-lt);padding:5px 11px;border-radius:60px}
+
+/* ── APPROACH ── */
+.approach{background:var(--bg-2)}
+.app-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.steps{list-style:none;counter-reset:s}
+.steps li{counter-increment:s;display:flex;gap:22px;padding:26px 0;border-top:1px solid var(--line)}
+.steps li:last-child{border-bottom:1px solid var(--line)}
+.steps li::before{content:counter(s,decimal-leading-zero);font-family:var(--mono);font-weight:700;font-size:.9rem;color:var(--accent-ink);flex:none;padding-top:3px}
+.steps h3{font-size:1.2rem;font-weight:800;letter-spacing:-.02em;margin-bottom:6px}
+.steps p{color:var(--muted);font-size:.95rem;font-weight:500}
+.app-card{background:var(--brand);color:#fff;border-radius:24px;padding:46px;position:relative;overflow:hidden}
+.app-card::after{content:'';position:absolute;right:-40px;top:-40px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.18),transparent 70%)}
+.app-card .rate{font-size:5rem;font-weight:900;letter-spacing:-.05em;line-height:1}
+.app-card .stars{color:var(--accent);font-size:1.3rem;margin:10px 0 18px}
+.app-card .q{font-size:1.12rem;font-weight:600;line-height:1.45}
+.app-card .by{margin-top:22px;font-size:.86rem;color:rgba(255,255,255,.7);font-weight:600}
+
+/* ── PRICING ── */
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:stretch}
+.plan{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:34px;display:flex;flex-direction:column;transition:transform .4s var(--ease),box-shadow .4s}
+.plan:hover{transform:translateY(-5px);box-shadow:0 24px 50px -26px rgba(13,13,15,.3)}
+.plan.feat{background:var(--band);color:#fff;transform:scale(1.04);box-shadow:0 40px 80px -30px rgba(13,13,15,.5)}
+.plan.feat:hover{transform:scale(1.04) translateY(-5px)}
+.plan .pname{font-family:var(--mono);font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--muted)}
+.plan.feat .pname{color:var(--accent)}
+.plan .tag{display:inline-block;margin-left:8px;background:var(--accent);color:var(--on-accent);font-size:.6rem;padding:3px 9px;border-radius:60px;letter-spacing:.1em;vertical-align:middle}
+.plan .amt{font-size:3rem;font-weight:900;letter-spacing:-.04em;margin:18px 0 2px;line-height:1}
+.plan .amt small{font-size:1rem;font-weight:600;color:var(--muted)}
+.plan .desc{color:var(--muted);font-size:.92rem;font-weight:500;margin-bottom:24px;min-height:42px}
+.plan.feat .desc{color:rgba(255,255,255,.6)}
+.plan ul{list-style:none;margin-bottom:28px;display:flex;flex-direction:column;gap:13px}
+.plan li{display:flex;gap:11px;font-size:.93rem;font-weight:500}
+.plan li svg{width:17px;height:17px;flex:none;stroke:var(--brand-ink);fill:none;stroke-width:2.4;margin-top:3px}
+.plan.feat li svg{stroke:var(--accent)}
+.plan .btn{width:100%;justify-content:center;margin-top:auto}
+.plan:not(.feat) .btn{background:var(--bg-2);color:var(--text)}
+.plan:not(.feat) .btn:hover{background:var(--text);color:var(--bg)}
+
+/* ── FAQ ── */
+.faq{max-width:840px;margin:0 auto}
+.q-item{border-bottom:1px solid var(--line)}
+.q-head{width:100%;background:none;border:none;text-align:left;cursor:pointer;padding:26px 0;display:flex;justify-content:space-between;align-items:center;gap:20px;font-family:var(--display);font-size:1.15rem;font-weight:700;letter-spacing:-.01em;color:var(--text)}
+.q-head .ic{flex:none;width:26px;height:26px;position:relative;transition:transform .4s var(--ease)}
+.q-head .ic::before,.q-head .ic::after{content:'';position:absolute;background:var(--accent-ink);border-radius:2px}
+.q-head .ic::before{top:50%;left:0;right:0;height:2px;transform:translateY(-50%)}
+.q-head .ic::after{left:50%;top:0;bottom:0;width:2px;transform:translateX(-50%);transition:opacity .3s}
+.q-item.open .q-head .ic{transform:rotate(180deg)}
+.q-item.open .q-head .ic::after{opacity:0}
+.q-body{max-height:0;overflow:hidden;transition:max-height .45s var(--ease)}
+.q-body p{padding:0 0 26px;color:var(--muted);font-size:1rem;font-weight:500;max-width:680px}
+
+/* ── CTA ── */
+.cta{background:var(--brand);color:#fff;text-align:center;position:relative;overflow:hidden}
+.cta::before{content:'';position:absolute;inset:0;background:radial-gradient(80% 120% at 50% 120%,var(--brand-deep),transparent 60%)}
+.cta-in{position:relative;z-index:2}
+.cta h2{color:#fff;margin-bottom:18px}
+.cta p{color:rgba(255,255,255,.8);font-size:1.15rem;font-weight:500;max-width:520px;margin:0 auto 36px}
+.cta .btn-orange{font-size:1.05rem;padding:18px 36px}
+
+/* ── FOOTER ── */
+footer{background:var(--band);color:#fff;padding:80px 0 40px}
+.foot-top{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;padding-bottom:54px;border-bottom:1px solid var(--line-lt)}
+.foot-brand p{color:rgba(255,255,255,.6);font-size:.95rem;font-weight:500;max-width:300px;margin-top:18px}
+.foot-col h5{font-family:var(--mono);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:18px}
+.foot-col a{display:block;color:rgba(255,255,255,.78);font-size:.95rem;font-weight:500;margin-bottom:12px;transition:color .3s}
+.foot-col a:hover{color:var(--accent)}
+.foot-bot{display:flex;justify-content:space-between;align-items:center;padding-top:30px;flex-wrap:wrap;gap:14px}
+.foot-bot small{color:rgba(255,255,255,.45);font-size:.84rem}
+.foot-tag{font-family:var(--mono);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+
+/* ── REVEAL ── */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.08s}.rv.d2{transition-delay:.16s}.rv.d3{transition-delay:.24s}.rv.d4{transition-delay:.32s}
+
+/* cross-brand switch pill (bottom-right) */
+.switch{position:fixed;right:20px;bottom:20px;z-index:1100;background:var(--text);color:var(--bg);border-radius:60px;padding:11px 18px;font-size:.82rem;font-weight:700;display:flex;align-items:center;gap:9px;box-shadow:0 12px 30px rgba(0,0,0,.22);transition:transform .3s var(--ease)}
+.switch:hover{transform:translateY(-2px)}
+.switch .d{width:8px;height:8px;border-radius:50%;background:var(--accent)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1000px){
+  .dash{grid-template-columns:1fr}
+  .stat-grid{grid-template-columns:repeat(2,1fr);gap:34px}
+  .svc-grid,.price-grid,.case-grid{grid-template-columns:1fr 1fr}
+  .plan.feat{transform:none}.plan.feat:hover{transform:translateY(-5px)}
+  .app-grid,.audit-grid{grid-template-columns:1fr;gap:40px}
+  .foot-top{grid-template-columns:1fr 1fr;gap:34px}
+  .ftag{display:none}
+}
+@media(max-width:680px){
+  .wrap{padding:0 22px}
+  .nav-links{display:none}
+  .menu-btn{display:flex}
+  section{padding:84px 0}
+  .hero{padding:140px 0 90px}
+  .svc-grid,.price-grid,.stat-grid,.collage,.case-grid{grid-template-columns:1fr}
+  .collage{grid-auto-rows:130px}
+  .cell.tall{grid-row:span 1}.cell.wide{grid-column:span 1}
+  .result-card{position:relative;left:0;bottom:0;width:100%;margin-top:18px}
+  .foot-top{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important}
+  .an,.rv{opacity:1 !important;transform:none !important}
+  .area .line{stroke-dashoffset:0 !important}
+}
+
+/* ── LEAD CAPTURE FORM (sits on the coloured CTA band) ── */
+.lead-form{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;max-width:540px;margin:0 auto}
+.lead-form input{flex:1 1 190px;min-width:0;padding:14px 18px;border-radius:60px;border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.10);color:#fff;font-family:var(--display);font-size:.95rem;font-weight:500;transition:border-color .3s,background .3s}
+.lead-form input::placeholder{color:rgba(255,255,255,.62)}
+.lead-form input:focus{outline:none;border-color:#fff;background:rgba(255,255,255,.16)}
+.lead-form .btn{flex:0 0 auto}
+.lead-status{flex-basis:100%;margin:8px 0 0;font-size:.9rem;font-weight:600;color:#fff;min-height:1.1em}
+
+/* ── cursor-follow glow on heroes (Cursor-style) ── */
+.cglow{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:0;transition:opacity .45s ease;background:radial-gradient(300px circle at var(--mx,50%) var(--my,30%),rgba(255,255,255,.10),transparent 70%)}
+
+/* ── educational: problem -> solution (ecomflow blueprint) ── */
+.edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(34px,5vw,72px);align-items:center}
+.edu-grid+.edu-grid{margin-top:30px}
+.edu-tag{font-family:var(--mono);font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:var(--accent-ink);margin-bottom:14px}
+.edu-grid h3{font-size:clamp(1.5rem,3vw,2.3rem);font-weight:800;letter-spacing:-.03em;line-height:1.1}
+.edu-grid p{margin-top:16px;color:var(--muted);font-size:1.05rem;font-weight:500}
+.edu-card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:30px;box-shadow:0 30px 70px -50px rgba(13,13,15,.35)}
+.edu-pts{list-style:none;display:flex;flex-direction:column;gap:15px}
+.edu-pts li{display:flex;gap:12px;align-items:flex-start;font-weight:500;font-size:1rem}
+.edu-pts svg{width:20px;height:20px;flex:none;stroke:var(--accent);fill:none;stroke-width:2.4;margin-top:2px}
+.edu-pts b{font-weight:800}
+.edu-pts.bad svg{stroke:var(--muted)}.edu-pts.bad li{color:var(--muted)}
+@media(max-width:900px){.edu-grid{grid-template-columns:1fr;gap:26px}}
+
+/* ── kinetic rotating headline word (Linear-style) ── */
+.kw{position:relative;display:inline-block;vertical-align:bottom}
+.kw-sizer{visibility:hidden}
+.kw-w{position:absolute;left:0;top:0;white-space:nowrap;opacity:0;transform:translateY(.42em);transition:opacity .55s var(--ease),transform .55s var(--ease)}
+.kw-w[data-active="true"]{opacity:1;transform:none}
+
+</style>
+<style>
+  /* ── Emporom signature: the demand engine ── */
+  .engine{background:var(--bg-2)}
+  .flow{display:flex;align-items:center;justify-content:center;flex-wrap:nowrap;margin-top:10px}
+  .stage{flex:0 0 auto;width:152px;text-align:center;background:var(--white);border:1px solid var(--line);border-radius:16px;padding:20px 14px;position:relative;z-index:2}
+  .stage .stage-ic{width:44px;height:44px;border-radius:12px;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;background:linear-gradient(150deg,var(--brand),var(--brand-deep))}
+  .stage .stage-ic svg{width:20px;height:20px;stroke:#fff;fill:none;stroke-width:1.9}
+  .stage .stage-name{font-weight:800;font-size:.98rem;letter-spacing:-.01em}
+  .stage .stage-val{font-family:var(--mono);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+  .stage.feat .stage-ic{background:linear-gradient(150deg,var(--accent),var(--accent-d));box-shadow:0 8px 22px rgba(var(--accent-rgb),.35)}
+  .stage.feat .stage-big{font-size:1.5rem;font-weight:900;letter-spacing:-.03em;color:var(--accent-d);margin-top:2px}
+  .conn{flex:1 1 auto;height:2px;background:var(--line);position:relative;min-width:34px;align-self:center;margin-top:-12px}
+  .conn .pkt{position:absolute;top:50%;left:0;width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px var(--accent);transform:translate(-50%,-50%);animation:flowH 2.4s linear infinite}
+  .conn .pkt:nth-child(2){animation-delay:.8s}.conn .pkt:nth-child(3){animation-delay:1.6s}
+  @keyframes flowH{0%{left:0;opacity:0}12%{opacity:1}88%{opacity:1}100%{left:100%;opacity:0}}
+  @media(max-width:820px){
+    .flow{flex-direction:column}.stage{width:220px}
+    .conn{width:2px;height:34px;min-width:0;margin:0}
+    .conn .pkt{animation-name:flowV}
+    @keyframes flowV{0%{top:0;left:50%;opacity:0}12%{opacity:1}88%{opacity:1}100%{top:100%;left:50%;opacity:0}}
+  }
+  @media(prefers-reduced-motion:reduce){.conn .pkt{animation:none;opacity:.6;left:50%}}
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<!-- ───────── NAV ───────── -->
+<nav id="nav">
+  <div class="wrap nav-in">
+    <a class="logo" href="#top" aria-label="Emporom Media home">
+      <span class="mark" style="width:30px;height:30px">
+        <span class="glow"></span>
+        <svg viewBox="0 0 100 100" width="30" height="30"><path fill="#FF6A1F" d="M50 3 C53.5 35 65 46.5 97 50 C65 53.5 53.5 65 50 97 C46.5 65 35 53.5 3 50 C35 46.5 46.5 35 50 3 Z"/></svg>
+        <span class="dot" style="width:7px;height:7px;top:1px;right:0"></span>
+      </span>
+      <span class="word"><b>Emporom</b> <span>Media</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#audit">Tracking</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="#contact" class="nav-cta">Book a call</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mMenu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="m-menu" id="mMenu" aria-hidden="true">
+  <a href="#services">Services</a>
+  <a href="#audit">Tracking audit</a>
+  <a href="#work">Work</a>
+  <a href="#pricing">Pricing</a>
+  <a href="#contact" class="btn btn-orange">Book a strategy call</a>
+</div>
+
+<!-- ───────── HERO (the blue one) ───────── -->
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-in">
+      <span class="eyebrow an a1">Wellington-based performance marketing</span>
+      <h1 class="an a2">Build demand.<br><span class="or">Dominate</span> your <span class="kw"><span class="kw-sizer">category.</span><span class="kw-w" data-active="true">market.</span><span class="kw-w">funnel.</span><span class="kw-w">category.</span><span class="kw-w">pipeline.</span></span></h1>
+      <p class="sub an a3">We run the ads, build the pages and tighten the tracking, so growth shows up where it counts: revenue.</p>
+      <div class="hero-cta an a4">
+        <a href="#contact" class="btn btn-orange magnetic">Book a strategy call <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a href="#work" class="btn btn-ghost-light">See the work</a>
+      </div>
+      <p class="hero-trust an a5">Trusted by <b>NZ brands</b> in e-commerce, trades &amp; professional services</p>
+    </div>
+
+    <!-- dashboard mock -->
+    <div class="stage an a6">
+      <span class="ftag ftag-1"><span class="d" style="background:#36d77e;box-shadow:0 0 8px #36d77e"></span>Tracking fixed</span>
+      <span class="ftag ftag-2"><span class="d" style="background:var(--accent);box-shadow:0 0 8px var(--accent)"></span>+38% ROAS</span>
+      <span class="ftag ftag-3"><span class="d" style="background:#7aa2ff;box-shadow:0 0 8px #7aa2ff"></span>Page 1 · SEO</span>
+      <div class="browser rv">
+        <div class="b-bar"><i></i><i></i><i></i><span class="b-url">app.emporom.org/dashboard</span></div>
+        <div class="dash">
+          <div class="tiles">
+            <div class="tile"><div class="lbl">Revenue</div><div class="num" data-count="284" data-prefix="$" data-suffix="k">$0</div><div class="delta">▲ 38% MoM</div></div>
+            <div class="tile"><div class="lbl">ROAS</div><div class="num" data-count="3.8" data-suffix="×" data-dec="1">0×</div><div class="delta b">▲ blended</div></div>
+            <div class="tile"><div class="lbl">Cost / lead</div><div class="num" data-count="11" data-prefix="$">$0</div><div class="delta">▼ 41%</div></div>
+          </div>
+          <div class="panel">
+            <h4>Revenue trend</h4><div class="cap">Last 6 months</div>
+            <div class="area">
+              <svg viewBox="0 0 320 140" preserveAspectRatio="none">
+                <defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#2536E6" stop-opacity=".28"/><stop offset="1" stop-color="#2536E6" stop-opacity="0"/>
+                </linearGradient></defs>
+                <path d="M0 110 L55 96 L110 102 L165 70 L220 58 L275 30 L320 14 L320 140 L0 140 Z" fill="url(#g)"/>
+                <path class="line" d="M0 110 L55 96 L110 102 L165 70 L220 58 L275 30 L320 14" fill="none" stroke="#2536E6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle class="pip" cx="320" cy="14" r="4.5" fill="#FF6A1F"/>
+              </svg>
+            </div>
+          </div>
+          <div class="panel">
+            <h4>Spend by channel</h4><div class="cap">This month</div>
+            <div class="bars">
+              <span style="--h:48%"></span><span style="--h:70%"></span><span style="--h:40%"></span><span style="--h:88%"></span><span style="--h:62%"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="result-card rv d2">
+        <div class="cap">Revenue influenced</div>
+        <div class="big" data-count="1.2" data-prefix="$" data-suffix="M+" data-dec="1">$0</div>
+        <div class="row">
+          <span class="up">▲ for NZ clients</span>
+          <span class="play" role="img" aria-label="Play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ───────── TRUST MARQUEE ───────── -->
+<div class="trust">
+  <div class="lab">Working with brands that value the work</div>
+  <div class="marquee-mask">
+    <div class="marquee">
+      <span>Carnivore Crate</span><span>Ultra Fast Pest Control</span><span>Waterwell</span><span>2in1 Cleaners</span><span>Welly Lawns</span><span>Home &amp; Beyond</span>
+      <span>Carnivore Crate</span><span>Ultra Fast Pest Control</span><span>Waterwell</span><span>2in1 Cleaners</span><span>Welly Lawns</span><span>Home &amp; Beyond</span>
+    </div>
+  </div>
+</div>
+
+<!-- ───────── RESULTS BAND ───────── -->
+<section class="results">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow line">By the numbers</span>
+      <h2>Not just a pretty layout.<br>This one's built to <span style="color:var(--accent)">convert.</span></h2>
+    </div>
+    <div class="stat-grid">
+      <div class="stat rv"><div class="n"><span data-count="1.2" data-prefix="$" data-dec="1">$0</span><span class="u">M+</span></div><div class="t">Revenue influenced for clients</div></div>
+      <div class="stat rv d1"><div class="n"><span data-count="3.8" data-dec="1">0</span><span class="u">×</span></div><div class="t">Average blended ROAS</div></div>
+      <div class="stat rv d2"><div class="n"><span data-count="94">0</span><span class="u">%</span></div><div class="t">Client retention rate</div></div>
+      <div class="stat rv d3"><div class="n"><span data-count="12">0</span><span class="u">+</span></div><div class="t">NZ brands scaled to date</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── DEMAND ENGINE (signature flow) ───────── -->
+<section class="engine">
+  <div class="wrap">
+    <div class="sec-head center rv">
+      <span class="eyebrow line">The demand engine</span>
+      <h2>How a click becomes <span class="blue">revenue.</span></h2>
+      <p>Every stage measured, every handoff tracked. This is the system we run for you, end to end.</p>
+    </div>
+    <div class="flow rv">
+      <div class="stage"><div class="stage-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7"/></svg></div><div class="stage-name">Audience</div><div class="stage-val">Targeted</div></div>
+      <div class="conn"><span class="pkt"></span><span class="pkt"></span><span class="pkt"></span></div>
+      <div class="stage"><div class="stage-ic"><svg viewBox="0 0 24 24"><path d="M3 11l18-7-7 18-2.5-7.5z"/></svg></div><div class="stage-name">Ads</div><div class="stage-val">Meta + Google</div></div>
+      <div class="conn"><span class="pkt"></span><span class="pkt"></span><span class="pkt"></span></div>
+      <div class="stage"><div class="stage-ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18"/></svg></div><div class="stage-name">Landing page</div><div class="stage-val">Built to convert</div></div>
+      <div class="conn"><span class="pkt"></span><span class="pkt"></span><span class="pkt"></span></div>
+      <div class="stage"><div class="stage-ic"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg></div><div class="stage-name">Conversion</div><div class="stage-val">Tracked</div></div>
+      <div class="conn"><span class="pkt"></span><span class="pkt"></span><span class="pkt"></span></div>
+      <div class="stage feat"><div class="stage-ic"><svg viewBox="0 0 24 24"><path d="M4 18V8m5 10V5m5 13v-7m5 7V9"/></svg></div><div class="stage-name">Revenue</div><div class="stage-big" data-count="38" data-prefix="+" data-suffix="%">+0%</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── AUDIT (interactive signature feature) ───────── -->
+<section class="audit" id="audit">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow line">The first lever</span>
+      <h2>See what your tracking is <span class="blue">hiding.</span></h2>
+      <p>Most accounts we inherit are quietly losing conversions to broken pixels and untracked calls. Flip the switch. That gap is usually the fastest win in the account.</p>
+    </div>
+    <div class="audit-card rv" id="auditCard">
+      <div class="audit-toggle" role="tablist" aria-label="Tracking state">
+        <button class="t-before on" role="tab" aria-selected="true">Reported</button>
+        <button class="t-after" role="tab" aria-selected="false">After audit</button>
+      </div>
+      <div class="audit-grid">
+        <div class="audit-chart">
+          <svg viewBox="0 0 480 230" preserveAspectRatio="none" aria-hidden="true">
+            <defs><linearGradient id="ag" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#FF6A1F" stop-opacity=".26"/><stop offset="1" stop-color="#FF6A1F" stop-opacity="0"/>
+            </linearGradient></defs>
+            <!-- gridlines -->
+            <g stroke="rgba(13,13,15,.07)" stroke-width="1">
+              <line x1="0" y1="58" x2="480" y2="58"/><line x1="0" y1="116" x2="480" y2="116"/><line x1="0" y1="174" x2="480" y2="174"/>
+            </g>
+            <!-- gap shading between reported and actual -->
+            <path class="a-gap" d="M0 150 L80 142 L160 138 L240 128 L320 124 L400 118 L480 112 L480 188 L400 186 L320 182 L240 180 L160 176 L80 172 L0 170 Z"/>
+            <!-- actual area + line -->
+            <path class="a-fill" d="M0 150 L80 142 L160 138 L240 128 L320 124 L400 118 L480 112 L480 230 L0 230 Z"/>
+            <path class="a-actual" d="M0 150 L80 142 L160 138 L240 128 L320 124 L400 118 L480 112"/>
+            <!-- reported (always visible) -->
+            <path class="a-reported" d="M0 170 L80 172 L160 176 L240 180 L320 182 L400 186 L480 188"/>
+            <circle class="a-dot" cx="480" cy="112" r="5.5" fill="#FF6A1F"/>
+          </svg>
+        </div>
+        <div class="audit-read">
+          <div class="lead" id="auditLead">Conversions reported</div>
+          <div class="figure" id="auditFigure" data-before="148" data-after="271">148</div>
+          <p class="sub" id="auditSub">What the platform credited before we touched the tracking.</p>
+          <span class="recovered">▲ <span id="auditRecovered">123</span> conversions recovered</span>
+        </div>
+      </div>
+      <div class="audit-foot">Illustrative example · real recovery depends on the account</div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── CREATIVE / WORK ───────── -->
+<section id="creative">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow line">What we do</span>
+      <h2>Brands scale with <span class="blue">creative</span> that earns its spend.</h2>
+      <p>Strategy, creative and tracking under one roof. Every dollar is measured, every campaign is built to be cut or scaled on the numbers, never on a hunch.</p>
+    </div>
+    <div class="collage rv">
+      <div class="cell c-blue grain tall"><span class="k">Meta Ads</span><span class="v">Story &amp; Reel<br>A/B tested</span></div>
+      <div class="cell c-paper wide"><span class="k">Google Ads</span><span class="v">Search that<br>actually tracks.</span></div>
+      <div class="cell c-ink grain"><span class="k">SEO</span><span class="v">Page 1</span></div>
+      <div class="cell c-orange grain"><span class="k">CRO</span><span class="v">+38%</span></div>
+      <div class="cell c-ink grain wide"><span class="k">Email &amp; Lifecycle</span><span class="v">Flows that sell on autopilot</span></div>
+      <div class="cell c-blue grain"><span class="k">Content</span><span class="v">Short-form</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── SERVICES ───────── -->
+<section id="services" style="background:var(--bg-2)">
+  <div class="wrap">
+    <div class="sec-head center rv">
+      <span class="eyebrow line">Services</span>
+      <h2>One partner for the whole <span class="blue">growth engine.</span></h2>
+      <p>Pick the pieces you need, or hand us the lot. We plug into your business, not the other way around.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc rv">
+        <div class="svc-badge"><svg viewBox="0 0 24 24"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg></div>
+        <h3>Meta Ads</h3><p>Story &amp; Reel creative, audience testing and offers that move. Built around your margins, not vanity reach.</p>
+      </div>
+      <div class="svc rv d1">
+        <div class="svc-badge"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div>
+        <h3>Google Ads</h3><p>Search, Performance Max and proper conversion tracking. We audit the tracking first. It's where most accounts quietly leak.</p>
+      </div>
+      <div class="svc rv d2">
+        <div class="svc-badge"><svg viewBox="0 0 24 24"><path d="M4 18V8m5 10V5m5 13v-7m5 7V9"/></svg></div>
+        <h3>SEO</h3><p>Technical fixes, content and local search that compounds, so you're not renting every click forever.</p>
+      </div>
+      <div class="svc rv">
+        <div class="svc-badge"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18M8 18v2m8-2v2"/></svg></div>
+        <h3>Landing pages &amp; CRO</h3><p>Fast, focused pages built to convert the traffic you're paying for. Tested, not guessed.</p>
+      </div>
+      <div class="svc rv d1">
+        <div class="svc-badge"><svg viewBox="0 0 24 24"><path d="M4 5h16v14H4z"/><path d="M4 7l8 6 8-6"/></svg></div>
+        <h3>Email &amp; lifecycle</h3><p>Welcome, abandoned-cart and win-back flows that turn one-time buyers into repeat revenue while you sleep.</p>
+      </div>
+      <div class="svc rv d2">
+        <div class="svc-badge"><svg viewBox="0 0 24 24"><path d="M15 10l4.5-2.6v9.2L15 14M3 8h12v8H3z"/></svg></div>
+        <h3>Social &amp; content</h3><p>Short-form video and content systems that feed the funnel and keep your brand in front of the right people.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── CASE STUDIES (real proof) ───────── -->
+<section class="cases" id="work">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow line">Selected work</span>
+      <h2>Real accounts. <span style="color:var(--accent)">Real fixes.</span></h2>
+      <p>A snapshot of what we've actually done for NZ brands, the kind of unglamorous, revenue-moving work that doesn't show up in a logo wall.</p>
+    </div>
+    <div class="case-grid">
+      <article class="case rv">
+        <span class="cnum">01 · Pest control</span>
+        <h3>Ultra Fast Pest Control</h3>
+        <p>Diagnosed a conversion crash after a website migration down to broken phone-call tracking, restored visibility on every call the ads were actually driving.</p>
+        <div class="tags"><span>Google Ads</span><span>Conversion tracking</span></div>
+      </article>
+      <article class="case rv d1">
+        <span class="cnum">02 · E-commerce</span>
+        <h3>Carnivore Crate</h3>
+        <p>Ran a Mother's Day push on a Shopify store with A/B tested Story and Reel creative, backed by email and on-site CRO.</p>
+        <div class="tags"><span>Meta Ads</span><span>Email</span><span>CRO</span></div>
+      </article>
+      <article class="case rv d2">
+        <span class="cnum">03 · Home services</span>
+        <h3>Welly Lawns &amp; 2in1</h3>
+        <p>Audited the accounts, fixed the conversion tracking that was misreporting results, and rebuilt the landing pages the spend was pointing at.</p>
+        <div class="tags"><span>Google Ads</span><span>Landing pages</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── APPROACH ───────── -->
+<section class="approach" id="approach">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow line">How we work</span>
+      <h2>A mission built around <span class="blue">growth</span>, not busywork.</h2>
+    </div>
+    <div class="app-grid">
+      <ol class="steps rv">
+        <li><div><h3>Audit &amp; tracking</h3><p>We fix what's leaking first. Broken conversion tracking and analytics before a dollar of new spend goes out.</p></div></li>
+        <li><div><h3>Strategy &amp; offer</h3><p>Clear positioning, the right channels and an offer worth clicking. No spray-and-pray.</p></div></li>
+        <li><div><h3>Build &amp; launch</h3><p>Creative, pages and campaigns shipped fast, then measured against revenue from day one.</p></div></li>
+        <li><div><h3>Scale &amp; report</h3><p>Cut what doesn't work, double down on what does, and report in plain English you can act on.</p></div></li>
+      </ol>
+      <div class="app-card rv d2">
+        <div class="rate">4.9<span style="font-size:2rem;opacity:.6">/5</span></div>
+        <div class="stars">★★★★★</div>
+        <p class="q">"Emporom found the broken tracking that was hiding half our conversions. The fix paid for the retainer in the first month."</p>
+        <div class="by">— Client testimonial · replace with a real quote</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── EDUCATIONAL: problem → solution ───────── -->
+<section class="edu" style="background:var(--bg-2)">
+  <div class="wrap">
+    <div class="sec-head center rv">
+      <span class="eyebrow line">The problem</span>
+      <h2>Most ad budgets leak<br>before they <span class="blue">convert.</span></h2>
+    </div>
+    <div class="edu-grid">
+      <div class="rv"><div class="edu-tag">What goes wrong</div><h3>You're paying for clicks you can't see.</h3><p>Broken tracking, slow pages and untuned campaigns mean half the spend disappears before anyone counts it. You can't scale what you can't measure.</p></div>
+      <div class="edu-card rv d1"><ul class="edu-pts bad">
+        <li><svg viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18"/></svg><span>Conversions misfire after a site migration</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18"/></svg><span>Phone calls and forms go untracked</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18"/></svg><span>Budget scales on hunches, not numbers</span></li>
+      </ul></div>
+    </div>
+    <div class="edu-grid">
+      <div class="edu-card rv"><ul class="edu-pts">
+        <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6"/></svg><span><b>Fix the tracking first.</b> Every click and call attributed.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6"/></svg><span><b>Tune the page</b> the spend points at.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6"/></svg><span><b>Scale what works,</b> cut what doesn't.</span></li>
+      </ul></div>
+      <div class="rv d1"><div class="edu-tag">How we fix it</div><h3>Measure first. Then make it grow.</h3><p>We audit the tracking before a dollar of new spend goes out, rebuild the pages that leak, and scale only what's proven. Revenue you can defend to anyone.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── PRICING ───────── -->
+<section id="pricing">
+  <div class="wrap">
+    <div class="sec-head center rv">
+      <span class="eyebrow line">Pricing</span>
+      <h2>Retainers that scale <span class="blue">with you.</span></h2>
+      <p>Monthly, no lock-in beyond the agreed term. Deposit secures your start date. Work begins once it's in.</p>
+    </div>
+    <div class="price-grid">
+      <div class="plan rv">
+        <div class="pname">Launch</div>
+        <div class="amt">$900<small>/mo</small></div>
+        <div class="desc">One channel, done properly. Ideal for getting a single engine humming.</div>
+        <ul>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>1 ad channel (Meta or Google)</li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>Conversion tracking setup</li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>Monthly report &amp; call</li>
+        </ul>
+        <a href="#contact" class="btn">Start with Launch</a>
+      </div>
+      <div class="plan feat rv d1">
+        <div class="pname">Growth <span class="tag">POPULAR</span></div>
+        <div class="amt">$1,400<small>/mo</small></div>
+        <div class="desc">The full demand engine for brands ready to scale spend with confidence.</div>
+        <ul>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>Meta + Google managed</li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>Landing page &amp; CRO</li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>Creative &amp; social content</li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>Bi-weekly reporting</li>
+        </ul>
+        <a href="#contact" class="btn btn-orange">Book a strategy call</a>
+      </div>
+      <div class="plan rv d2">
+        <div class="pname">Scale</div>
+        <div class="amt">Custom</div>
+        <div class="desc">Multi-channel, full-funnel and lifecycle for established brands with real budget.</div>
+        <ul>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>Everything in Growth</li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>SEO + email lifecycle</li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>Dedicated strategist</li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>Live dashboard access</li>
+        </ul>
+        <a href="#contact" class="btn">Talk to us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── FAQ ───────── -->
+<section style="background:var(--bg-2)">
+  <div class="wrap">
+    <div class="sec-head center rv">
+      <span class="eyebrow line">Questions</span>
+      <h2>The honest <span class="blue">answers.</span></h2>
+    </div>
+    <div class="faq rv">
+      <div class="q-item">
+        <button class="q-head" aria-expanded="false">Do I need a deposit to start? <span class="ic"></span></button>
+        <div class="q-body"><p>Yes. A deposit secures your start date and confirms the engagement. Work begins once it's in. No exceptions. It keeps both of us serious and the timeline real.</p></div>
+      </div>
+      <div class="q-item">
+        <button class="q-head" aria-expanded="false">How fast will I see results? <span class="ic"></span></button>
+        <div class="q-body"><p>Tracking and quick wins in week one. Meaningful trend data usually takes 4–6 weeks as campaigns exit the learning phase. We'd rather set the right expectation than overpromise.</p></div>
+      </div>
+      <div class="q-item">
+        <button class="q-head" aria-expanded="false">Why audit tracking first? <span class="ic"></span></button>
+        <div class="q-body"><p>Because most accounts we inherit are quietly losing conversions to broken pixels, untracked phone calls or a botched website migration. Fixing that is often the single biggest lever before we touch spend.</p></div>
+      </div>
+      <div class="q-item">
+        <button class="q-head" aria-expanded="false">Am I locked in? <span class="ic"></span></button>
+        <div class="q-body"><p>We work to an agreed minimum term so campaigns have room to perform, then it's month-to-month. The work should keep you, not a contract.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── CTA ───────── -->
+<section class="cta" id="contact">
+  <div class="wrap cta-in">
+    <div class="rv">
+      <h2>Ready to dominate your market?</h2>
+      <p>Book a free strategy call. We'll audit what you're running and show you where the revenue is hiding.</p>
+      <form class="lead-form" novalidate>
+        <input type="text" name="name" placeholder="Your name" required aria-label="Your name" />
+        <input type="email" name="email" placeholder="Email address" required aria-label="Email address" />
+        <button type="submit" class="btn btn-orange magnetic">Book a strategy call <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        <p class="lead-status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── FOOTER ───────── -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a class="logo" href="#top">
+          <span class="mark" style="width:28px;height:28px">
+            <svg viewBox="0 0 100 100" width="28" height="28"><path fill="#FF6A1F" d="M50 3 C53.5 35 65 46.5 97 50 C65 53.5 53.5 65 50 97 C46.5 65 35 53.5 3 50 C35 46.5 46.5 35 50 3 Z"/></svg>
+          </span>
+          <span class="word" style="color:#fff"><b>Emporom</b> <span style="opacity:.7">Media</span></span>
+        </a>
+        <p>Performance marketing for NZ brands that value the work. Wellington, Aotearoa.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Services</h5>
+        <a href="#services">Meta Ads</a><a href="#services">Google Ads</a><a href="#services">SEO</a><a href="#services">CRO</a>
+      </div>
+      <div class="foot-col">
+        <h5>Company</h5>
+        <a href="#work">Work</a><a href="#approach">Approach</a><a href="#pricing">Pricing</a><a href="#contact">Contact</a>
+      </div>
+      <div class="foot-col">
+        <h5>Get in touch</h5>
+        <a href="mailto:logan@emporom.org">logan@emporom.org</a><a href="https://emporom.org">emporom.org</a><a href="#contact">Book a call</a>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <small>© <span id="yr"></span> Emporom Media. Part of Empora Group.</small>
+      <span class="foot-tag">Navigate forward.</span>
+    </div>
+  </div>
+</footer>
+
+<a class="switch" href="https://group.emporom.media/"><span class="d"></span>Empora Group ↗</a>
+
+<script>
+/* inlined from _shared/system.js */
+/* ============================================================
+   EMPORA DESIGN SYSTEM  ·  system.js
+   Shared behaviour for every brand page. All handlers guard on
+   element existence, so a page only "activates" what it uses.
+   ============================================================ */
+(function(){
+  const rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* scroll progress + nav state */
+  const nav = document.getElementById('nav'), prog = document.getElementById('progress');
+  if (nav || prog) {
+    const onScroll = () => {
+      if (nav) nav.classList.toggle('scrolled', window.scrollY > 40);
+      if (prog) {
+        const h = document.documentElement.scrollHeight - window.innerHeight;
+        prog.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
+      }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
+
+  /* mobile menu */
+  const menuBtn = document.getElementById('menuBtn'), mMenu = document.getElementById('mMenu');
+  if (menuBtn && mMenu) {
+    const toggleMenu = (open) => {
+      document.body.classList.toggle('menu-open', open);
+      menuBtn.setAttribute('aria-expanded', open);
+      mMenu.setAttribute('aria-hidden', !open);
+    };
+    menuBtn.addEventListener('click', () => toggleMenu(!document.body.classList.contains('menu-open')));
+    mMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => toggleMenu(false)));
+  }
+
+  /* reveal on scroll */
+  const io = new IntersectionObserver((es) => {
+    es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: .14 });
+  document.querySelectorAll('.rv').forEach(el => io.observe(el));
+
+  /* count-up (exposed so per-page scripts can reuse it) */
+  const fmt = (n, dec) => dec ? n.toFixed(dec) : Math.round(n).toString();
+  const runCount = (el, end, dec, pre, suf, dur) => {
+    if (rm) { el.textContent = pre + fmt(end, dec) + suf; return; }
+    let t0 = null;
+    const step = (ts) => {
+      if (!t0) t0 = ts;
+      const p = Math.min((ts - t0) / dur, 1), eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = pre + fmt(end * eased, dec) + suf;
+      if (p < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  };
+  window.EmporaCountUp = runCount;
+  const counters = new IntersectionObserver((es) => {
+    es.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el = e.target; counters.unobserve(el);
+      runCount(el, parseFloat(el.dataset.count), parseInt(el.dataset.dec || 0), el.dataset.prefix || '', el.dataset.suffix || '', 1400);
+    });
+  }, { threshold: .5 });
+  document.querySelectorAll('[data-count]').forEach(el => counters.observe(el));
+
+  /* FAQ accordion */
+  document.querySelectorAll('.q-head').forEach(b => {
+    b.addEventListener('click', () => {
+      const item = b.parentElement, body = item.querySelector('.q-body'), open = item.classList.contains('open');
+      document.querySelectorAll('.q-item.open').forEach(i => {
+        i.classList.remove('open'); i.querySelector('.q-body').style.maxHeight = null; i.querySelector('.q-head').setAttribute('aria-expanded', 'false');
+      });
+      if (!open) { item.classList.add('open'); body.style.maxHeight = body.scrollHeight + 'px'; b.setAttribute('aria-expanded', 'true'); }
+    });
+  });
+
+  /* interactive before/after toggle (Emporom tracking audit) */
+  (function () {
+    const card = document.getElementById('auditCard'); if (!card) return;
+    const fig = document.getElementById('auditFigure'); if (!fig) return; /* H² uses audit-v2 below */
+    const before = card.querySelector('.t-before'), after = card.querySelector('.t-after');
+    const lead = document.getElementById('auditLead'),
+          sub = document.getElementById('auditSub'), rec = document.getElementById('auditRecovered');
+    const vB = +fig.dataset.before, vA = +fig.dataset.after; rec.textContent = vA - vB;
+    const setState = (audited) => {
+      card.classList.toggle('audited', audited);
+      before.classList.toggle('on', !audited); after.classList.toggle('on', audited);
+      before.setAttribute('aria-selected', !audited); after.setAttribute('aria-selected', audited);
+      lead.textContent = audited
+        ? (card.dataset.leadAfter || 'Conversions actually happening')
+        : (card.dataset.leadBefore || 'Conversions reported');
+      sub.textContent = audited
+        ? (card.dataset.subAfter || 'What was really converting once the tracking was fixed.')
+        : (card.dataset.subBefore || 'What the platform credited before we touched the tracking.');
+      runCount(fig, audited ? vA : vB, 0, '', '', 900);
+    };
+    before.addEventListener('click', () => setState(false));
+    after.addEventListener('click', () => setState(true));
+    const aio = new IntersectionObserver((es) => {
+      es.forEach(e => { if (e.isIntersecting) { aio.unobserve(e.target); setTimeout(() => setState(true), 650); } });
+    }, { threshold: .45 });
+    aio.observe(card);
+  })();
+
+  /* magnetic CTA (desktop, motion-safe) */
+  if (!rm && window.matchMedia('(pointer:fine)').matches) {
+    document.querySelectorAll('.magnetic').forEach(btn => {
+      btn.addEventListener('mousemove', (e) => {
+        const r = btn.getBoundingClientRect();
+        btn.style.transform = `translate(${(e.clientX - r.left - r.width / 2) * .25}px,${(e.clientY - r.top - r.height / 2) * .35}px)`;
+      });
+      btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
+    });
+  }
+
+  /* year stamp */
+  const yr = document.getElementById('yr'); if (yr) yr.textContent = new Date().getFullYear();
+
+  /* lead capture — FormSubmit AJAX (no backend; emails logan@emporom.org) */
+  document.querySelectorAll('.lead-form').forEach((form) => {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const status = form.querySelector('.lead-status');
+      const btn = form.querySelector('button');
+      const payload = Object.fromEntries(new FormData(form));
+      payload._subject = 'New enquiry · ' + document.title;
+      if (btn) btn.disabled = true;
+      if (status) status.textContent = 'Sending…';
+      try {
+        const res = await fetch('https://formsubmit.co/ajax/logan@emporom.org', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        if (!res.ok) throw new Error('bad response');
+        form.reset();
+        if (status) status.textContent = "Got it. We'll be in touch within a day.";
+      } catch (_) {
+        if (status) status.textContent = 'Something went wrong. Email logan@emporom.org directly.';
+      } finally {
+        if (btn) btn.disabled = false;
+      }
+    });
+  });
+
+  /* cursor-follow glow on heroes */
+  if (window.matchMedia('(pointer:fine)').matches) {
+    document.querySelectorAll('.hero').forEach((hero) => {
+      if (getComputedStyle(hero).position === 'static') hero.style.position = 'relative';
+      const g = document.createElement('div'); g.className = 'cglow'; hero.prepend(g);
+      hero.addEventListener('pointermove', (e) => {
+        const r = hero.getBoundingClientRect();
+        g.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+        g.style.setProperty('--my', (e.clientY - r.top) + 'px');
+        g.style.opacity = '1';
+      });
+      hero.addEventListener('pointerleave', () => { g.style.opacity = '0'; });
+    });
+  }
+
+  /* kinetic rotating headline words */
+  document.querySelectorAll('.kw').forEach((kw) => {
+    const words = kw.querySelectorAll('.kw-w'); if (words.length < 2) return;
+    let i = 0;
+    setInterval(() => { words[i].dataset.active = 'false'; i = (i + 1) % words.length; words[i].dataset.active = 'true'; }, 2600);
+  });
+})();
+
+</script>
+</body>
+</html>
