@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Offsider — get set up</title>
+<meta name="description" content="How Offsider gets set up — live in under a week. Connect your number and Xero, set your voice, go live.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%235b8cff'/%3E%3Ccircle cx='28.5' cy='28.5' r='12.5' fill='none' stroke='%23fff' stroke-width='5'/%3E%3Ccircle cx='44.5' cy='42.5' r='5.5' fill='%23fff'/%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#f6f7f9;--surface:#fff;--ink:#0e1118;--ink2:#3f4654;--muted:#697080;--line:rgba(13,15,20,.1);--ac:#5b8cff;--ac2:#2f55e0;--green:#0f9d63;--ease:cubic-bezier(.16,1,.3,1)}
+body{font-family:'Hanken Grotesk',system-ui,sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.6}
+a{color:inherit;text-decoration:none}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:18px 26px;max-width:1000px;margin:0 auto}
+.logo{display:flex;align-items:center;gap:9px;font-weight:800;letter-spacing:-.03em;font-size:1.15rem}
+.logo .mk{width:26px;height:26px;border-radius:7px;background:linear-gradient(150deg,#5b8cff,#3a61d8);position:relative;display:flex}
+.logo .mk::before{content:'';width:46%;height:46%;border:2.4px solid #fff;border-radius:50%;margin:auto}.logo span{color:var(--ac2)}
+.wrap{max-width:840px;margin:0 auto;padding:24px 26px 90px}
+.head{text-align:center;margin:22px auto 36px;max-width:620px}
+.ey{font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ac2);font-weight:700}
+h1{font-size:clamp(2rem,4.6vw,3rem);font-weight:900;letter-spacing:-.035em;line-height:1.05;margin:12px 0}
+.head p{color:var(--muted);font-size:1.08rem}
+.stepper{display:flex;gap:8px;margin:0 auto 22px;max-width:560px}
+.stepper .s{flex:1;height:5px;border-radius:5px;background:#e3e7ee;overflow:hidden}
+.stepper .s.on{background:var(--ac)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;box-shadow:0 24px 60px -40px rgba(13,15,20,.3);overflow:hidden}
+.step{display:none;padding:34px}
+.step.active{display:block;animation:fade .35s var(--ease)}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.stp-n{font-family:'Space Mono',monospace;font-size:.72rem;color:var(--ac2);font-weight:700;letter-spacing:.08em}
+.step h2{font-size:1.5rem;font-weight:800;letter-spacing:-.02em;margin:6px 0 8px}
+.step p{color:var(--ink2);margin-bottom:18px}
+.checklist{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:8px}
+.checklist li{display:flex;gap:11px;align-items:flex-start;font-weight:500;color:var(--ink2)}
+.checklist .ck{flex:none;width:22px;height:22px;border-radius:50%;background:rgba(91,140,255,.12);color:var(--ac2);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.7rem;margin-top:1px}
+.visual{background:#0f1116;border-radius:14px;padding:18px;margin:18px 0;color:#e9ebef}
+.visual .vlbl{font-family:'Space Mono',monospace;font-size:.6rem;text-transform:uppercase;letter-spacing:.1em;color:#7e838e;margin-bottom:10px}
+.field{display:flex;gap:10px;align-items:center;background:#1c1f27;border:1px solid rgba(255,255,255,.1);border-radius:9px;padding:10px 13px;margin-bottom:8px;font-size:.86rem}
+.field .t{color:#7e838e;font-family:'Space Mono',monospace;font-size:.72rem}.field .v{margin-left:auto;font-weight:700}
+.field .dot{width:7px;height:7px;border-radius:50%;background:#3ddc97;box-shadow:0 0 8px #3ddc97}
+.chip{display:inline-flex;align-items:center;gap:7px;background:rgba(91,140,255,.1);color:var(--ac2);font-weight:700;font-size:.8rem;padding:6px 12px;border-radius:60px;margin:2px 4px 2px 0}
+.bar{display:flex;align-items:center;justify-content:space-between;padding:18px 34px;border-top:1px solid var(--line);background:#fbfcfe}
+.btn{font-weight:700;font-size:.94rem;padding:12px 22px;border-radius:60px;cursor:pointer;border:1px solid transparent;transition:transform .3s var(--ease),background .2s}
+.btn-ac{background:var(--ac);color:#0b1020}.btn-ac:hover{background:#7aa2ff;transform:translateY(-2px)}
+.btn-gh{background:transparent;color:var(--muted);border-color:var(--line)}.btn-gh:hover{color:var(--ink)}
+.eta{font-family:'Space Mono',monospace;font-size:.74rem;color:var(--muted)}
+.done-card{text-align:center;padding:44px 34px}
+.done-card .big{width:64px;height:64px;border-radius:50%;background:rgba(15,157,99,.12);color:var(--green);display:flex;align-items:center;justify-content:center;font-size:1.8rem;margin:0 auto 16px}
+.foot{text-align:center;color:var(--muted);font-size:.84rem;margin-top:26px}
+</style>
+</head>
+<body>
+<div class="nav"><a class="logo" href="index.html"><span class="mk"></span>Off<span>sider</span></a><a href="index.html" style="font-weight:700;color:var(--muted)">← back to site</a></div>
+<div class="wrap">
+  <div class="head">
+    <div class="ey">Onboarding</div>
+    <h1>Live in under a week.</h1>
+    <p>No new app for your crew to learn. Here's exactly how Offsider gets set up around the business you already run.</p>
+  </div>
+
+  <div class="stepper"><div class="s on" id="s0"></div><div class="s" id="s1"></div><div class="s" id="s2"></div><div class="s" id="s3"></div></div>
+
+  <div class="card">
+    <!-- 1 -->
+    <div class="step active" data-i="0">
+      <div class="stp-n">STEP 01 · 15 MINUTES</div>
+      <h2>Connect your number &amp; Xero</h2>
+      <p>One short call. We forward your existing business number so Offsider can catch the calls you miss, and connect Xero (or MYOB) for invoicing. Nothing changes for your customers.</p>
+      <div class="visual"><div class="vlbl">Connections</div>
+        <div class="field"><span class="t">Business number</span><span class="v">+64 9 555 0142</span><span class="dot"></span></div>
+        <div class="field"><span class="t">Xero</span><span class="v">Connected</span><span class="dot"></span></div>
+        <div class="field"><span class="t">SMS sender (NZ)</span><span class="v">Verified</span><span class="dot"></span></div>
+      </div>
+      <ul class="checklist"><li><span class="ck">✓</span>We handle the technical setup — you just approve access.</li><li><span class="ck">✓</span>Keep your number; calls still ring you first.</li></ul>
+    </div>
+    <!-- 2 -->
+    <div class="step" data-i="1">
+      <div class="stp-n">STEP 02 · 20 MINUTES</div>
+      <h2>Set your voice &amp; rules</h2>
+      <p>Tell us how you talk and how you work. Offsider replies in your tone, quotes within your ranges, and only books inside your hours.</p>
+      <div class="visual"><div class="vlbl">Your settings</div>
+        <div class="field"><span class="t">Tone</span><span class="v">Friendly, no-nonsense</span></div>
+        <div class="field"><span class="t">Target margin</span><span class="v">18%</span></div>
+        <div class="field"><span class="t">Invoice terms</span><span class="v">7 days</span></div>
+        <div class="field"><span class="t">Booking hours</span><span class="v">Mon–Sat 7–5</span></div>
+      </div>
+      <div><span class="chip">Heat pumps</span><span class="chip">Ducted installs</span><span class="chip">Servicing</span><span class="chip">Call-outs</span></div>
+    </div>
+    <!-- 3 -->
+    <div class="step" data-i="2">
+      <div class="stp-n">STEP 03 · WE DO THIS</div>
+      <h2>We build &amp; test it</h2>
+      <p>We load your services and pricing, write your reply scripts, and run a live test — we'll ring your number and watch Offsider text back and book a job — so you see it work before it goes anywhere near a real customer.</p>
+      <div class="visual"><div class="vlbl">Test run</div>
+        <div class="field"><span class="t">7:42pm</span><span class="v" style="margin-left:0">Missed call → text back in 47s</span><span class="dot"></span></div>
+        <div class="field"><span class="t">7:51pm</span><span class="v" style="margin-left:0">Customer replied</span><span class="dot"></span></div>
+        <div class="field"><span class="t">8:04pm</span><span class="v" style="margin-left:0">Booked Wed 10am</span><span class="dot"></span></div>
+      </div>
+      <ul class="checklist"><li><span class="ck">✓</span>Nothing goes live until you've seen it work.</li><li><span class="ck">✓</span>You can read every thread and take over anytime.</li></ul>
+    </div>
+    <!-- 4 -->
+    <div class="step" data-i="3">
+      <div class="done-card">
+        <div class="big">✓</div>
+        <h2>You're live.</h2>
+        <p style="max-width:440px;margin:0 auto 18px">From here, Offsider runs in the background — catching calls, chasing quotes, invoicing same-day. Each morning you get a two-minute digest. That's the whole job.</p>
+        <a class="btn btn-ac" href="index.html#app">See your dashboard →</a>
+        <div class="eta" style="margin-top:14px">Average time to live: <b>4–6 days</b></div>
+      </div>
+    </div>
+
+    <div class="bar" id="bar">
+      <span class="eta" id="eta">Step 1 of 4 · ~15 min</span>
+      <div style="display:flex;gap:10px">
+        <button class="btn btn-gh" id="back" onclick="go(-1)" style="display:none">Back</button>
+        <button class="btn btn-ac" id="next" onclick="go(1)">Next step →</button>
+      </div>
+    </div>
+  </div>
+  <div class="foot">This is how the <b>Built-for-you</b> setup works ($1,200 + $200/mo). Prefer to self-serve? Solo &amp; Pro plans walk you through the same steps. · <a href="index.html#pricing" style="color:var(--ac2);font-weight:700">See pricing</a></div>
+</div>
+<script>
+let i=0;const steps=document.querySelectorAll('.step'),etas=['Step 1 of 4 · ~15 min','Step 2 of 4 · ~20 min','Step 3 of 4 · we handle it','You\'re all set'];
+function render(){steps.forEach(s=>s.classList.toggle('active',+s.dataset.i===i));for(let k=0;k<4;k++)document.getElementById('s'+k).classList.toggle('on',k<=i);document.getElementById('eta').textContent=etas[i];document.getElementById('back').style.display=i===0?'none':'inline-flex';document.getElementById('next').style.display=i===3?'none':'inline-flex';document.getElementById('bar').style.display=i===3?'none':'flex';window.scrollTo({top:0,behavior:'smooth'});}
+function go(d){i=Math.max(0,Math.min(3,i+d));render();}
+</script>
+</body>
+</html>

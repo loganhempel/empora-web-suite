@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800;900&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{width:1200px;height:630px;overflow:hidden;font-family:'Hanken Grotesk',sans-serif;
+  background:radial-gradient(70% 60% at 78% -10%,rgba(91,140,255,.35),transparent 55%),radial-gradient(50% 50% at 10% 110%,rgba(167,139,250,.2),transparent 60%),#12141a;color:#fff;
+  display:flex;flex-direction:column;justify-content:center;padding:70px 80px;position:relative}
+.grid{position:absolute;inset:0;opacity:.5;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:54px 54px;-webkit-mask-image:radial-gradient(70% 60% at 60% 30%,#000,transparent 80%)}
+.brand{display:flex;align-items:center;gap:14px;font-weight:800;font-size:30px;letter-spacing:-.02em;position:relative;z-index:2;margin-bottom:30px}
+.mk{width:46px;height:46px;border-radius:12px;background:linear-gradient(150deg,#5b8cff,#3a61d8);position:relative;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 26px rgba(91,140,255,.5)}
+.mk::before{content:'';width:46%;height:46%;border:3px solid #fff;border-radius:50%}.brand span{color:#7aa2ff}
+h1{font-size:78px;font-weight:900;letter-spacing:-.04em;line-height:.98;position:relative;z-index:2}
+h1 em{font-style:normal;background:linear-gradient(110deg,#7aa2ff,#a78bfa);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+p{font-size:27px;color:#b7bcc6;margin-top:24px;max-width:760px;position:relative;z-index:2;font-weight:500}
+.pills{display:flex;gap:12px;margin-top:34px;position:relative;z-index:2}
+.pill{font-family:'Space Mono';font-size:18px;font-weight:700;padding:10px 18px;border-radius:60px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);color:#cfd6e4}
+.pill b{color:#7aa2ff}
+.url{position:absolute;bottom:54px;right:80px;font-family:'Space Mono';font-size:20px;color:#7e838e;z-index:2}
+</style></head>
+<body>
+<div class="grid"></div>
+<div class="brand"><span class="mk"></span>Off<span>sider</span></div>
+<h1>The back office that<br>runs <em>itself.</em></h1>
+<p>Missed calls answered in 47 seconds. Invoices out same-day. Dead leads revived — automatically.</p>
+<div class="pills"><span class="pill"><b>$18,400</b> recovered/mo</span><span class="pill"><b>47s</b> response</span><span class="pill">for NZ trades</span></div>
+<div class="url">offsider.co.nz</div>
+</body>
+</html>

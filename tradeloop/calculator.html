@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Offsider — What are missed calls costing you?</title>
+<meta name="description" content="Free calculator: see how much revenue your trades business loses to missed calls every year — and how much Offsider recovers.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%235b8cff'/%3E%3Ccircle cx='15' cy='15' r='6' fill='none' stroke='%23fff' stroke-width='3'/%3E%3Ccircle cx='22' cy='21' r='2.4' fill='%23fff'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#f6f7f9;--surface:#fff;--ink:#0e1118;--ink2:#3f4654;--muted:#697080;--line:rgba(13,15,20,.1);--ac:#5b8cff;--ac2:#2f55e0;--green:#0f9d63;--red:#e0483b;--display:'Hanken Grotesk',system-ui,sans-serif;--mono:'Space Mono',monospace;--ease:cubic-bezier(.16,1,.3,1)}
+html{-webkit-font-smoothing:antialiased}
+body{font-family:var(--display);background:var(--bg);color:var(--ink);line-height:1.6}
+a{color:inherit;text-decoration:none}.num{font-variant-numeric:tabular-nums}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:18px 26px;max-width:1080px;margin:0 auto}
+.logo{display:flex;align-items:center;gap:9px;font-weight:800;letter-spacing:-.03em;font-size:1.15rem}
+.logo .mk{width:26px;height:26px;border-radius:7px;background:linear-gradient(150deg,#5b8cff,#3a61d8);display:flex;align-items:center;justify-content:center;position:relative}
+.logo .mk::before{content:'';width:46%;height:46%;border:2.4px solid #fff;border-radius:50%}.logo span{color:var(--ac2)}
+.nav a.back{font-size:.9rem;font-weight:700;color:var(--muted)}
+.wrap{max-width:1000px;margin:0 auto;padding:30px 26px 80px}
+.head{text-align:center;max-width:680px;margin:24px auto 40px}
+.ey{font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ac2);font-weight:700}
+h1{font-size:clamp(2rem,4.6vw,3.2rem);font-weight:900;letter-spacing:-.035em;line-height:1.04;margin:14px 0}
+.head p{color:var(--muted);font-size:1.1rem}
+.calc{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
+@media(max-width:780px){.calc{grid-template-columns:1fr}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:30px;box-shadow:0 20px 50px -36px rgba(13,15,20,.3)}
+.card h2{font-size:1.15rem;font-weight:800;margin-bottom:6px}
+.card .cap{color:var(--muted);font-size:.9rem;margin-bottom:24px}
+.sr{margin-bottom:22px}
+.sr-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px}
+.sr-top .sl{font-weight:600;font-size:.95rem}.sr-top .sv{font-family:var(--mono);font-weight:700;color:var(--ac2)}
+input[type=range]{width:100%;-webkit-appearance:none;appearance:none;height:5px;border-radius:5px;background:#e5e9f0;outline:none}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:var(--ac);border:3px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.2);cursor:pointer}
+.res{background:linear-gradient(160deg,#101727,#0c1730);color:#eaf0ff;border:none}
+.res .lab{font-family:var(--mono);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:#8ea0c8;margin-bottom:6px}
+.big{font-size:2.8rem;font-weight:900;letter-spacing:-.04em;line-height:1}
+.big.red{color:#ff8d82}.big.green{color:#4fe0a0}
+.rrow{display:flex;justify-content:space-between;align-items:baseline;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.12);font-size:.95rem}
+.rrow .k{color:#aab6d2}.rrow .v{font-family:var(--mono);font-weight:700}
+.cta{display:block;text-align:center;margin-top:22px;background:var(--ac);color:#0b1020;font-weight:800;padding:14px;border-radius:60px;transition:transform .3s var(--ease),background .2s}
+.cta:hover{background:#7aa2ff;transform:translateY(-2px)}
+.cap{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.cap input{flex:1;min-width:0;padding:11px 14px;border-radius:10px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);color:#fff;font-family:var(--display);font-size:.88rem}
+.cap input::placeholder{color:#8ea0c8}.cap input:focus{outline:none;border-color:var(--ac)}
+.cap button{flex:none;padding:11px 16px;border-radius:10px;border:none;background:rgba(255,255,255,.14);color:#fff;font-weight:700;cursor:pointer}
+.cap button:hover{background:rgba(255,255,255,.22)}
+.cap-status{flex-basis:100%;font-size:.8rem;color:#4fe0a0;min-height:1em}
+.foot{text-align:center;color:var(--muted);font-size:.82rem;margin-top:30px}
+.assume{font-size:.78rem;color:#8ea0c8;margin-top:16px;line-height:1.5}
+</style>
+</head>
+<body>
+<div class="nav"><a class="logo" href="index.html"><span class="mk"></span>Off<span>sider</span></a><a class="back" href="index.html">← back to site</a></div>
+<div class="wrap">
+  <div class="head">
+    <div class="ey">Free 30-second check</div>
+    <h1>What are missed calls<br>costing your business?</h1>
+    <p>Tradies miss roughly a third of their calls — and most of those callers just ring the next name on Google. Drag the sliders to see your number.</p>
+  </div>
+  <div class="calc">
+    <div class="card">
+      <h2>Your business</h2><div class="cap">Rough figures are fine.</div>
+      <div class="sr"><div class="sr-top"><span class="sl">Missed / unanswered calls a week</span><span class="sv"><span id="v-calls">8</span></span></div><input type="range" id="s-calls" min="2" max="40" step="1" value="8" oninput="calc()"></div>
+      <div class="sr"><div class="sr-top"><span class="sl">Average job value</span><span class="sv">$<span id="v-job">650</span></span></div><input type="range" id="s-job" min="150" max="8000" step="50" value="650" oninput="calc()"></div>
+      <div class="sr"><div class="sr-top"><span class="sl">How many of those would've booked</span><span class="sv"><span id="v-rate">30</span>%</span></div><input type="range" id="s-rate" min="10" max="60" step="1" value="30" oninput="calc()"></div>
+      <div class="assume" style="color:var(--muted)">We assume Offsider recovers ~70% of those missed jobs by texting back in under a minute. Conservative — most never reach voicemail at all.</div>
+    </div>
+    <div class="card res">
+      <div class="lab">You're leaving on the table</div>
+      <div class="big red num" id="r-year">$0</div>
+      <div style="color:#8ea0c8;font-size:.9rem;margin:4px 0 18px">in lost jobs every year</div>
+      <div class="rrow"><span class="k">Lost per week</span><span class="v num" id="r-week">$0</span></div>
+      <div class="rrow"><span class="k">Offsider recovers (~70%)</span><span class="v num" style="color:#4fe0a0" id="r-rec">$0/mo</span></div>
+      <div class="rrow"><span class="k">Offsider Pro</span><span class="v num">−$249/mo</span></div>
+      <div class="lab" style="margin-top:18px">Net back in your pocket</div>
+      <div class="big green num" id="r-net">$0<span style="font-size:1rem;color:#8ea0c8">/mo</span></div>
+      <a class="cta" href="index.html#app">See Offsider catch a call →</a>
+      <form class="cap" onsubmit="return capLead(event)"><input type="email" id="cap-email" placeholder="Email me this + a free demo" required><button type="submit">Send</button><div class="cap-status" id="cap-status"></div></form>
+      <div class="assume">Indicative only — based on your inputs. Industry sources: tradies miss 28–35% of calls; ~78% of customers book the first business to reply.</div>
+    </div>
+  </div>
+  <div class="foot">Offsider — the back office that runs itself · built by Emporom Media · <a href="index.html" style="color:var(--ac2);font-weight:700">offsider.co.nz</a></div>
+</div>
+<script>
+function money(n){return '$'+Math.round(n).toLocaleString('en-NZ')}
+function calc(){
+  const calls=+document.getElementById('s-calls').value, job=+document.getElementById('s-job').value, rate=+document.getElementById('s-rate').value/100;
+  document.getElementById('v-calls').textContent=calls;
+  document.getElementById('v-job').textContent=job.toLocaleString('en-NZ');
+  document.getElementById('v-rate').textContent=Math.round(rate*100);
+  const lostWeek=calls*rate*job, lostYear=lostWeek*52, recMonth=lostWeek*(52/12)*0.7, net=recMonth-249;
+  document.getElementById('r-year').textContent=money(lostYear);
+  document.getElementById('r-week').textContent=money(lostWeek);
+  document.getElementById('r-rec').textContent=money(recMonth)+'/mo';
+  document.getElementById('r-net').innerHTML=money(net)+'<span style="font-size:1rem;color:#8ea0c8">/mo</span>';
+}
+calc();
+function capLead(e){e.preventDefault();const em=document.getElementById('cap-email').value.trim(),st=document.getElementById('cap-status'),loss=document.getElementById('r-year').textContent;st.textContent='Sending…';const done=()=>{st.textContent='✓ Sent — we\'ll be in touch shortly.';document.getElementById('cap-email').value='';};fetch('/api/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:em,source:'calculator',message:'Estimated annual loss to missed calls: '+loss})}).then(done).catch(done);return false;}
+</script>
+</body>
+</html>

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Offsider — 5 hero directions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800;900&family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,900&family=Space+Grotesk:wght@400;500;700&family=Sora:wght@400;600;700;800&family=Archivo:wght@800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;background:#0a0b0e;color:#fff;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+.tagbar{position:sticky;top:0;z-index:50;background:#0a0b0e;border-bottom:1px solid rgba(255,255,255,.1);padding:12px 26px;display:flex;align-items:center;gap:14px;font-size:.8rem;color:#9aa0aa;font-family:'Space Mono',monospace}
+.tagbar b{color:#fff;font-family:'Inter'}
+.tagbar a{margin-left:auto;color:#5b8cff;font-weight:700;font-family:'Inter'}
+.label{position:absolute;top:18px;left:24px;z-index:6;font-family:'Space Mono',monospace;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;padding:7px 13px;border-radius:60px;background:rgba(0,0,0,.32);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.2)}
+.hv{position:relative;min-height:92vh;display:flex;align-items:center;overflow:hidden;padding:90px 0}
+.in{max-width:1180px;margin:0 auto;padding:0 40px;width:100%;position:relative;z-index:2}
+.ey{font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;font-weight:700}
+.btn{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:.95rem;padding:14px 26px;border-radius:60px;cursor:pointer;transition:transform .3s cubic-bezier(.16,1,.3,1),opacity .2s}
+.btn:hover{transform:translateY(-2px)}
+.split{display:grid;grid-template-columns:1.05fr .95fr;gap:54px;align-items:center}
+@media(max-width:900px){.split{grid-template-columns:1fr;gap:40px}.hv{min-height:auto;padding:80px 0}}
+
+/* ───────── V1 · graphite + electric blue · "operations layer" ───────── */
+.hv1{background:radial-gradient(60% 50% at 72% 0%,rgba(91,140,255,.22),transparent 60%),#14161b;font-family:'Hanken Grotesk',sans-serif}
+.hv1 .ey{color:#7aa2ff}
+.hv1 h1{font-size:clamp(2.6rem,5.4vw,4.4rem);font-weight:900;letter-spacing:-.04em;line-height:1.02;margin:18px 0}
+.hv1 h1 em{font-style:normal;background:linear-gradient(110deg,#7aa2ff,#a78bfa);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hv1 p{color:#b7bcc6;font-size:1.18rem;max-width:480px;line-height:1.5}
+.hv1 .cta{display:flex;gap:12px;margin-top:30px}
+.hv1 .b1{background:#5b8cff;color:#0b1020}
+.hv1 .b2{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);color:#fff}
+.hv1 .card{background:#1c1f27;border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:20px;box-shadow:0 40px 90px -40px rgba(0,0,0,.7)}
+.hv1 .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+.hv1 .k{background:#23272f;border-radius:11px;padding:14px}
+.hv1 .k .l{font-size:.7rem;color:#7e838e;margin-bottom:6px}
+.hv1 .k .v{font-size:1.5rem;font-weight:800;letter-spacing:-.02em}
+.hv1 .k .d{font-size:.68rem;color:#3ddc97;font-family:'Space Mono'}
+.hv1 .row{display:flex;justify-content:space-between;align-items:center;background:#23272f;border-radius:11px;padding:13px 15px}
+.hv1 .row .t{font-size:.82rem;font-weight:700}.hv1 .row .s{font-size:.72rem;color:#7e838e}
+.hv1 .ap{background:#5b8cff;color:#0b1020;font-weight:700;font-size:.74rem;padding:7px 13px;border-radius:8px}
+
+/* ───────── V2 · light + emerald · "never miss a job" ───────── */
+.hv2{background:#f4f7f4;color:#0d1410;font-family:'Inter',sans-serif}
+.hv2 .ey{color:#0f9d63}
+.hv2 h1{font-size:clamp(2.6rem,5.6vw,4.6rem);font-weight:800;letter-spacing:-.035em;line-height:1.02;margin:16px 0;color:#0a120c}
+.hv2 h1 em{font-style:normal;color:#0f9d63}
+.hv2 p{color:#46554c;font-size:1.18rem;max-width:480px;line-height:1.5}
+.hv2 .pill{display:inline-flex;align-items:center;gap:9px;margin-top:24px;background:#dff5e9;color:#0b7a4d;font-weight:700;padding:9px 16px;border-radius:60px;font-size:.92rem}
+.hv2 .pill .d{width:8px;height:8px;border-radius:50%;background:#1fbf73;box-shadow:0 0 8px #1fbf73}
+.hv2 .cta{display:flex;gap:12px;margin-top:26px}
+.hv2 .b1{background:#11b673;color:#fff;box-shadow:0 10px 26px rgba(17,182,115,.35)}
+.hv2 .b2{background:#fff;border:1px solid rgba(13,20,16,.14);color:#0d1410}
+.hv2 .phone{width:300px;background:#fff;border-radius:30px;padding:16px;box-shadow:0 50px 110px -40px rgba(13,40,25,.4);border:1px solid rgba(13,20,16,.08);margin:0 auto}
+.hv2 .pt{display:flex;align-items:center;gap:10px;padding:4px 6px 12px;border-bottom:1px solid #eef1ee}
+.hv2 .av{width:34px;height:34px;border-radius:50%;background:#eaf6ef;color:#0f9d63;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem}
+.hv2 .nm{font-size:.84rem;font-weight:700}.hv2 .nb{font-size:.68rem;color:#8a958d}
+.hv2 .body{padding:14px 4px 4px;display:flex;flex-direction:column;gap:8px}
+.hv2 .bub{max-width:82%;padding:9px 13px;border-radius:15px;font-size:.82rem;line-height:1.4}
+.hv2 .out{background:#11b673;color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
+.hv2 .ic{background:#f0f3f0;color:#0d1410;align-self:flex-start;border-bottom-left-radius:4px}
+.hv2 .stamp{align-self:center;margin-top:8px;background:#0a120c;color:#fff;font-weight:700;font-size:.76rem;padding:7px 14px;border-radius:60px}
+
+/* ───────── V3 · cream + coral · serif editorial · "get paid faster" ───────── */
+.hv3{background:#f7f1e7;color:#1c1611;font-family:'Inter',sans-serif}
+.hv3 .ey{color:#d8531f}
+.hv3 h1{font-family:'Fraunces',serif;font-size:clamp(2.8rem,6vw,5rem);font-weight:600;letter-spacing:-.02em;line-height:1;margin:16px 0;color:#1c1208}
+.hv3 h1 em{font-style:italic;color:#d8531f}
+.hv3 p{color:#6a5d4f;font-size:1.18rem;max-width:470px;line-height:1.55}
+.hv3 .cta{display:flex;gap:12px;margin-top:28px}
+.hv3 .b1{background:#e0571f;color:#fff;box-shadow:0 10px 26px rgba(224,87,31,.32)}
+.hv3 .b2{background:transparent;border:1.5px solid #1c1611;color:#1c1611}
+.hv3 .inv{width:340px;background:#fff;border-radius:14px;padding:22px;box-shadow:0 40px 90px -42px rgba(60,30,10,.4);margin:0 auto;transform:rotate(-2deg)}
+.hv3 .ih{display:flex;justify-content:space-between;font-family:'Space Mono';font-size:.7rem;color:#a8917b;letter-spacing:.06em;margin-bottom:14px}
+.hv3 .il{display:flex;justify-content:space-between;font-size:.86rem;padding:9px 0;border-bottom:1px solid #f0eadf;color:#3a2f24}
+.hv3 .il .v{font-family:'Space Mono'}
+.hv3 .tot{display:flex;justify-content:space-between;align-items:center;margin-top:14px;font-weight:800;font-size:1.2rem;color:#1c1208}
+.hv3 .paid{margin-top:16px;display:flex;align-items:center;justify-content:center;gap:8px;background:#eaf7ee;color:#137a43;font-weight:800;padding:11px;border-radius:10px;font-size:.92rem}
+
+/* ───────── V4 · navy + gold · premium · "your 24/7 office manager" ───────── */
+.hv4{background:radial-gradient(70% 60% at 50% 0%,#16244a,#0a1326 70%);color:#eef2fb;font-family:'Sora',sans-serif}
+.hv4 .ey{color:#e8b964}
+.hv4 h1{font-size:clamp(2.5rem,5.2vw,4.2rem);font-weight:800;letter-spacing:-.03em;line-height:1.05;margin:18px 0}
+.hv4 h1 em{font-style:normal;color:#e8b964}
+.hv4 p{color:#aab6d2;font-size:1.16rem;max-width:480px;line-height:1.55}
+.hv4 .price{margin-top:22px;font-family:'Space Mono';font-size:.92rem;color:#e8b964}
+.hv4 .price b{font-size:1.4rem}
+.hv4 .cta{display:flex;gap:12px;margin-top:24px}
+.hv4 .b1{background:linear-gradient(180deg,#f0c878,#d99e3e);color:#241803;box-shadow:0 12px 30px rgba(216,158,62,.34)}
+.hv4 .b2{background:rgba(255,255,255,.06);border:1px solid rgba(232,185,100,.4);color:#eef2fb}
+.hv4 .emp{width:330px;background:linear-gradient(180deg,#142游,#0c1730);background:#0e1a36;border:1px solid rgba(232,185,100,.26);border-radius:18px;padding:24px;margin:0 auto;box-shadow:0 50px 110px -40px rgba(0,0,0,.7)}
+.hv4 .emp .ph{width:64px;height:64px;border-radius:16px;background:linear-gradient(150deg,#e8b964,#b4842c);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.3rem;color:#241803;margin-bottom:16px}
+.hv4 .emp .nm{font-size:1.2rem;font-weight:800}.hv4 .emp .rl{color:#aab6d2;font-size:.86rem;margin-bottom:16px}
+.hv4 .emp .li{display:flex;align-items:center;gap:9px;padding:8px 0;border-top:1px solid rgba(255,255,255,.08);font-size:.84rem;color:#cdd6ea}
+.hv4 .emp .li .d{width:7px;height:7px;border-radius:50%;background:#3ddc97;box-shadow:0 0 8px #3ddc97}
+
+/* ───────── V5 · black/white + neon · bold · "get your evenings back" ───────── */
+.hv5{background:#0c0c0c;color:#fff;font-family:'Space Grotesk',sans-serif}
+.hv5 .in{text-align:center;max-width:1000px}
+.hv5 .ey{color:#c6ff3d;display:inline-block}
+.hv5 h1{font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(2.6rem,7vw,5.6rem);letter-spacing:-.04em;line-height:.95;margin:18px 0;text-transform:none}
+.hv5 h1 u{text-decoration:none;border-bottom:8px solid #c6ff3d;padding-bottom:2px}
+.hv5 p{color:#b3b3b3;font-size:1.22rem;max-width:560px;margin:0 auto;line-height:1.5}
+.hv5 .clock{display:inline-flex;align-items:center;gap:16px;margin:26px 0 4px;font-family:'Space Mono';font-weight:700}
+.hv5 .clock .t{font-size:1.1rem;background:#161616;border:1px solid #2a2a2a;padding:10px 16px;border-radius:10px}
+.hv5 .clock .t.on{color:#c6ff3d;border-color:#c6ff3d}
+.hv5 .clock .ar{color:#666}
+.hv5 .cta{display:flex;gap:12px;justify-content:center;margin-top:26px}
+.hv5 .b1{background:#c6ff3d;color:#0c0c0c;font-weight:800}
+.hv5 .b2{background:transparent;border:1px solid #2e2e2e;color:#fff}
+.foot{padding:60px 40px;text-align:center;color:#6b7280;font-family:'Space Mono';font-size:.8rem;background:#0a0b0e;border-top:1px solid rgba(255,255,255,.08)}
+.foot a{color:#5b8cff;font-weight:700}
+</style>
+</head>
+<body>
+
+<div class="tagbar"><b>Offsider</b> · 5 hero directions — scroll to compare angle + brand system <a href="index.html">← back to the live site</a></div>
+
+<!-- V1 -->
+<section class="hv hv1">
+  <span class="label">01 · Operations layer · Graphite + electric blue</span>
+  <div class="in split">
+    <div>
+      <div class="ey">Automated back office</div>
+      <h1>The back office that runs <em>itself.</em></h1>
+      <p>Missed calls, follow-ups, invoices, Xero — handled overnight. You just approve the two-minute morning digest.</p>
+      <div class="cta"><a class="btn b1" href="index.html#app">See the live demo</a><a class="btn b2" href="demo.html">Watch the demo</a></div>
+    </div>
+    <div class="card">
+      <div class="grid"><div class="k"><div class="l">Recovered MTD</div><div class="v">$18,400</div><div class="d">▲ +$4,200</div></div><div class="k"><div class="l">Booked overnight</div><div class="v">8</div><div class="d">24 calls caught</div></div></div>
+      <div class="row"><div><div class="t">Baxter Commercial — invoice ready</div><div class="s">syncs to Xero on approval</div></div><span class="ap">$3,840 →</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- V2 -->
+<section class="hv hv2">
+  <span class="label" style="color:#0d1410;border-color:rgba(13,20,16,.2);background:rgba(255,255,255,.5)">02 · Never miss a job · Light + emerald</span>
+  <div class="in split">
+    <div>
+      <div class="ey">Missed-call capture</div>
+      <h1>Never lose another job to <em>voicemail.</em></h1>
+      <p>Every missed call gets a text back in 47 seconds — in your voice — and books the job before they ring anyone else.</p>
+      <div class="pill"><span class="d"></span>$18,400 in jobs recovered last month</div>
+      <div class="cta"><a class="btn b1" href="index.html#app">Capture my missed calls</a><a class="btn b2" href="demo.html">See how</a></div>
+    </div>
+    <div class="phone">
+      <div class="pt"><div class="av">SH</div><div><div class="nm">Sarah Holden</div><div class="nb">Missed 7:42pm · replied 7:43pm</div></div></div>
+      <div class="body">
+        <div class="bub out">Hi Sarah, sorry we missed your call! Mike from Pacific Climate — how can we help?</div>
+        <div class="bub ic">Need a ducted heat pump installed, do you do those?</div>
+        <div class="bub out">Absolutely. Free Wednesday 10am for a quote?</div>
+        <div class="bub ic">Perfect 👍</div>
+        <div class="stamp">✓ Booked · Wed 10am · est. $8,500</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- V3 -->
+<section class="hv hv3">
+  <span class="label" style="color:#1c1611;border-color:rgba(28,22,17,.2);background:rgba(255,255,255,.4)">03 · Get paid faster · Cream + coral · editorial</span>
+  <div class="in split">
+    <div>
+      <div class="ey">Same-day invoicing</div>
+      <h1>Job done by 3.<br>Invoiced by <em>3:30.</em></h1>
+      <p>Offsider drafts the invoice the moment a job's done, chases it until it's paid, and reconciles it in Xero. Your cash flow stops waiting for Sunday admin.</p>
+      <div class="cta"><a class="btn b1" href="index.html#app">Get paid faster</a><a class="btn b2" href="demo.html">Watch the demo</a></div>
+    </div>
+    <div class="inv">
+      <div class="ih"><span>INVOICE #1049</span><span>Baxter Commercial</span></div>
+      <div class="il"><span>Heat pump service ×3</span><span class="v">$2,940</span></div>
+      <div class="il"><span>Parts + labour</span><span class="v">$900</span></div>
+      <div class="tot"><span>Total</span><span>$3,840</span></div>
+      <div class="paid">✓ Paid in 2 days · reconciled in Xero</div>
+    </div>
+  </div>
+</section>
+
+<!-- V4 -->
+<section class="hv hv4">
+  <span class="label" style="border-color:rgba(232,185,100,.4)">04 · 24/7 office manager · Navy + gold · premium</span>
+  <div class="in split">
+    <div>
+      <div class="ey">Your 24/7 office manager</div>
+      <h1>Hire the office manager you <em>can't afford.</em></h1>
+      <p>Answers every call, chases every invoice, follows up every quote — around the clock, for less than a day of a bookkeeper's wage.</p>
+      <div class="price">from <b>$200</b>/month · no salary, no sick days</div>
+      <div class="cta"><a class="btn b1" href="index.html#app">Meet your office manager</a><a class="btn b2" href="demo.html">See it work</a></div>
+    </div>
+    <div class="emp">
+      <div class="ph">TL</div>
+      <div class="nm">Offsider</div>
+      <div class="rl">Office Manager · started today</div>
+      <div class="li"><span class="d"></span>Answering calls &amp; SMS — 24/7</div>
+      <div class="li"><span class="d"></span>Chasing 2 overdue invoices</div>
+      <div class="li"><span class="d"></span>Following up 4 open quotes</div>
+      <div class="li"><span class="d"></span>Synced to Xero · never off sick</div>
+    </div>
+  </div>
+</section>
+
+<!-- V5 -->
+<section class="hv hv5">
+  <span class="label" style="border-color:#2e2e2e">05 · Get your evenings back · Bold black + neon</span>
+  <div class="in">
+    <div class="ey">Get your evenings back</div>
+    <h1>You didn't start a business to do <u>paperwork at 9pm.</u></h1>
+    <p>Offsider runs the admin while you're on the tools — and while you're asleep. Two minutes in the morning. That's the whole job.</p>
+    <div class="clock"><span class="t">9:00pm — invoicing</span><span class="ar">→</span><span class="t on">9:02am — approve &amp; done</span></div>
+    <div class="cta"><a class="btn b1" href="index.html#app">Put admin on autopilot</a><a class="btn b2" href="demo.html">Watch the 60-sec demo</a></div>
+  </div>
+</section>
+
+<div class="foot">Offsider · 5 hero concepts for direction-setting — built by Emporom Media · <a href="index.html">live site</a> · <a href="demo.html">launch video</a></div>
+
+</body>
+</html>

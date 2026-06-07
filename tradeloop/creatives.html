@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Offsider — ad creatives</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;700;800;900&family=Archivo:wght@800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Hanken Grotesk',system-ui,sans-serif;background:#0a0b0e;color:#fff;-webkit-font-smoothing:antialiased;padding:0 0 60px}
+.bar{position:sticky;top:0;z-index:10;background:#0a0b0e;border-bottom:1px solid rgba(255,255,255,.1);padding:13px 26px;font-family:'Space Mono',monospace;font-size:.8rem;color:#9aa0aa;display:flex;gap:12px}
+.bar b{color:#fff;font-family:'Hanken Grotesk'}.bar a{margin-left:auto;color:#5b8cff;font-weight:700}
+.gallery{max-width:1180px;margin:36px auto;padding:0 28px;display:flex;flex-wrap:wrap;gap:30px;align-items:flex-start;justify-content:center}
+.unit{display:flex;flex-direction:column;gap:10px}
+.cap{font-family:'Space Mono',monospace;font-size:.7rem;color:#7e838e;letter-spacing:.05em}
+.cap b{color:#c6ccd6}
+.ad{border-radius:18px;overflow:hidden;position:relative;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 30px 70px -30px rgba(0,0,0,.7)}
+.sq{width:340px;height:340px;padding:30px}
+.st{width:300px;height:533px;padding:30px}
+.ad .brand{font-weight:800;font-size:1rem;letter-spacing:-.02em;display:flex;align-items:center;gap:8px}
+.ad .mk{width:22px;height:22px;border-radius:6px;background:linear-gradient(150deg,#5b8cff,#3a61d8);display:flex;align-items:center;justify-content:center;position:relative}
+.ad .mk::before{content:'';width:46%;height:46%;border:2px solid #fff;border-radius:50%}
+.ad .h{font-weight:900;letter-spacing:-.03em;line-height:1.02}
+.ad .s{font-size:.95rem;line-height:1.4;opacity:.9}
+.ad .tag{align-self:flex-start;font-family:'Space Mono';font-size:.7rem;font-weight:700;padding:7px 13px;border-radius:60px}
+
+/* C1 missed-call — dark + blue */
+.c1{background:radial-gradient(70% 60% at 50% 0%,rgba(91,140,255,.25),transparent),#14161b}
+.c1 .h{font-size:2rem;margin:auto 0 10px}
+.c1 .h em{font-style:normal;color:#ff6b6b}
+.c1 .tag{background:#5b8cff;color:#0b1020}
+
+/* C2 get-paid — cream + coral */
+.c2{background:#f7f1e7;color:#1c1208}
+.c2 .brand{color:#1c1208}.c2 .mk{background:linear-gradient(150deg,#e0571f,#b53e0f)}
+.c2 .h{font-size:1.95rem;margin:auto 0 10px}.c2 .h em{font-style:normal;color:#d8531f}
+.c2 .s{color:#6a5d4f}
+.c2 .tag{background:#e0571f;color:#fff}
+
+/* C3 evenings (story) — black + neon */
+.c3{background:#0c0c0c}
+.c3 .h{font-family:'Archivo';font-size:2.5rem;margin:30px 0 14px}
+.c3 .h u{text-decoration:none;border-bottom:7px solid #c6ff3d}
+.c3 .s{font-size:1rem;color:#b3b3b3}
+.c3 .tag{background:#c6ff3d;color:#0c0c0c}
+.c3 .clock{font-family:'Space Mono';font-size:.85rem;color:#c6ff3d;margin-top:14px}
+
+/* C4 receptionist comparison — navy + gold */
+.c4{background:radial-gradient(70% 60% at 50% 0%,#16244a,#0a1326)}
+.c4 .brand{color:#eef2fb}.c4 .mk{background:linear-gradient(150deg,#e8b964,#b4842c)}
+.c4 .cmp{margin:auto 0;display:flex;flex-direction:column;gap:14px;width:100%}
+.c4 .r{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border-radius:12px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1)}
+.c4 .r .l{font-size:.92rem;color:#aab6d2}.c4 .r .p{font-family:'Space Mono';font-weight:700;font-size:1.1rem}
+.c4 .r.win{background:rgba(232,185,100,.12);border-color:rgba(232,185,100,.4)}
+.c4 .r.win .l,.c4 .r.win .p{color:#e8b964}
+.c4 .tag{background:linear-gradient(180deg,#f0c878,#d99e3e);color:#241803}
+</style>
+</head>
+<body>
+<div class="bar"><b>Offsider</b> · ad creatives — 4 angles, paid-social ready <a href="index.html">← back to site</a></div>
+<div class="gallery">
+
+  <div class="unit"><div class="cap"><b>01 · Missed-call angle</b> · 1:1 feed · Meta/IG</div>
+    <div class="ad sq c1">
+      <div class="brand"><span class="mk"></span>Offsider</div>
+      <div class="h">I just rang you twice.<br><em>Voicemail.</em></div>
+      <div class="s">That's a $550 job gone to the next sparky. Offsider texts them back in 47 seconds — even when you're up a ladder.</div>
+      <div class="tag">Never miss a job →</div>
+    </div>
+  </div>
+
+  <div class="unit"><div class="cap"><b>02 · Get-paid-faster angle</b> · 1:1 feed</div>
+    <div class="ad sq c2">
+      <div class="brand"><span class="mk"></span>Offsider</div>
+      <div class="h">Job done by 3.<br>Invoiced by <em>3:30.</em></div>
+      <div class="s">Stop chasing money you've already earned. Invoices out same-day, chased automatically, reconciled in Xero.</div>
+      <div class="tag">Get paid faster →</div>
+    </div>
+  </div>
+
+  <div class="unit"><div class="cap"><b>03 · Evenings-back angle</b> · 9:16 story/reel</div>
+    <div class="ad st c3">
+      <div class="brand"><span class="mk"></span>Offsider</div>
+      <div class="h">Still doing invoices at <u>9pm?</u></div>
+      <div class="s">Offsider runs the admin while you're on the tools — and while you're asleep. Two minutes in the morning, that's it.</div>
+      <div class="clock">9:00pm → 9:02am · done</div>
+      <div class="tag" style="margin-top:auto">Put admin on autopilot →</div>
+    </div>
+  </div>
+
+  <div class="unit"><div class="cap"><b>04 · No-receptionist angle</b> · 1:1 feed</div>
+    <div class="ad sq c4">
+      <div class="brand"><span class="mk"></span>Offsider</div>
+      <div class="cmp">
+        <div class="r"><span class="l">A receptionist</span><span class="p">$52,000/yr</span></div>
+        <div class="r win"><span class="l">Offsider</span><span class="p">$249/mo</span></div>
+        <div class="s" style="color:#aab6d2;font-size:.9rem">Answers every call, books every job, chases every invoice — 24/7. No salary, no sick days.</div>
+      </div>
+      <div class="tag">Meet your office manager →</div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
