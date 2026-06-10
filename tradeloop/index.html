@@ -23,6 +23,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <style>
+.wm{font-weight:inherit;font-style:normal}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   /* ── light surfaces (marketing) ── */
@@ -209,8 +210,9 @@ h2 em{font-style:normal;color:var(--ac-2)}
 .fcard .stat{margin-top:16px;font-family:var(--mono);font-size:.66rem;letter-spacing:.04em;text-transform:uppercase;color:var(--ac-2);font-weight:700}
 .fcard.lg{grid-column:span 2;display:flex;flex-direction:column;justify-content:space-between;background:linear-gradient(150deg,var(--ac-soft),var(--surface))}
 .fcard.lg .mini{margin-top:24px;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.fcard.lg .mini .m{background:rgba(20,22,27,.5);border:1px solid var(--line);border-radius:10px;padding:12px}
+.fcard.lg .mini .m{background:var(--surface);border:1px solid var(--line-2);border-radius:10px;padding:12px;box-shadow:0 1px 2px rgba(13,15,20,.04)}
 .fcard.lg .mini .m .k{font-size:.62rem;color:var(--muted);font-family:var(--mono);text-transform:uppercase;letter-spacing:.06em}
+.fcard.lg .mini .m .v{color:var(--text)}
 .fcard.lg .mini .m .v{font-size:1.15rem;font-weight:800;margin-top:4px}
 @media(max-width:880px){.bento{grid-template-columns:1fr 1fr}.fcard.lg{grid-column:span 2}}
 @media(max-width:560px){.bento{grid-template-columns:1fr}.fcard.lg{grid-column:span 1}.fcard.lg .mini{grid-template-columns:1fr 1fr 1fr}}
@@ -718,7 +720,7 @@ footer{background:var(--bg-soft);border-top:1px solid var(--line);padding:64px 0
 <!-- ════════════ MARKETING SITE ════════════ -->
 <div class="site">
 <nav class="nav" id="nav"><div class="wrap nav-in">
-  <div class="logo" onclick="scrollTop()"><span class="mk"></span>Off<span>sider</span></div>
+  <div class="logo" onclick="scrollTop()"><span class="mk"></span><b class="wm">Off<span>sider</span></b></div>
   <ul class="nav-links">
     <li><a onclick="go('how')">How it works</a></li>
     <li><a onclick="go('features')">Features</a></li>
@@ -756,7 +758,7 @@ footer{background:var(--bg-soft);border-top:1px solid var(--line);padding:64px 0
     <div class="mock-bar"><i></i><i></i><i></i><span class="mock-url">app.offsider.co.nz</span></div>
     <div class="mock-body">
       <div class="mock-side">
-        <div class="b"><span class="mk" style="--mks:20px"></span>Off<span>sider</span></div>
+        <div class="b"><span class="mk" style="--mks:20px"></span><b class="wm">Off<span>sider</span></b></div>
         <a class="on"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>Today</a>
         <a><svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 7-7"/><path d="M14 8h6v6"/></svg>Revenue</a>
         <a><svg viewBox="0 0 24 24"><path d="M22 16.92V21a1 1 0 01-1.1 1 19 19 0 01-8.3-3 19 19 0 01-6-6A19 19 0 013.5 4.6 1 1 0 014.5 3.5H8.6a1 1 0 011 .9l.7 3a1 1 0 01-.3.9L8.2 9.8a15 15 0 006 6l1.5-1.8a1 1 0 01.9-.3l3 .7a1 1 0 01.9 1z"/></svg>Calls & SMS</a>
@@ -934,7 +936,7 @@ footer{background:var(--bg-soft);border-top:1px solid var(--line);padding:64px 0
 
 <footer><div class="wrap">
   <div class="foot-top">
-    <div class="foot-brand"><div class="logo"><span class="mk"></span>Off<span>sider</span></div><p>The automated back office for trades businesses. Catch every call, chase every invoice, revive every lead — while you're on the tools.</p></div>
+    <div class="foot-brand"><div class="logo"><span class="mk"></span><b class="wm">Off<span>sider</span></b></div><p>The automated back office for trades businesses. Catch every call, chase every invoice, revive every lead — while you're on the tools.</p></div>
     <div class="foot-col"><h5>Product</h5><a onclick="go('features')">Features</a><a href="onboarding.html">How setup works</a><a href="calculator.html">Missed-call calculator</a><a href="compare.html">Compare</a><a onclick="go('pricing')">Pricing</a><a onclick="enterApp()">Live demo</a></div>
     <div class="foot-col"><h5>Company</h5><a onclick="go('cta')">Book a walkthrough</a><a onclick="go('faq')">FAQ</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a onclick="showLogin()">Log in</a></div>
     <div class="foot-col"><h5>Trades</h5><a>HVAC</a><a>Plumbing</a><a>Electrical</a><a>Maintenance</a></div>
@@ -955,7 +957,7 @@ footer{background:var(--bg-soft);border-top:1px solid var(--line);padding:64px 0
 <div class="auth">
   <div class="auth-back" onclick="backToSite()">← Back to site</div>
   <div class="auth-card">
-    <div class="auth-logo"><span class="mk"></span>Off<span>sider</span></div>
+    <div class="auth-logo"><span class="mk"></span><b class="wm">Off<span>sider</span></b></div>
     <div class="auth-sub">Sign in to your back office</div>
     <form class="auth-box" onsubmit="return doLogin(event)">
       <div class="auth-field"><label>Work email</label><input type="email" id="login-email" value="mike@pacificclimate.co.nz"></div>
@@ -969,7 +971,7 @@ footer{background:var(--bg-soft);border-top:1px solid var(--line);padding:64px 0
 <!-- ════════════ APP ════════════ -->
 <div class="app">
   <header class="atop">
-    <div class="logo"><span class="mk"></span>Off<span>sider</span></div>
+    <div class="logo"><span class="mk"></span><b class="wm">Off<span>sider</span></b></div>
     <div class="atop-search" onclick="openCmd()"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>Search jobs, invoices, leads…<span class="kbd">⌘K</span></div>
     <div class="atop-right">
       <div class="atop-live"><span class="d"></span><span class="lbl">All systems live</span></div>

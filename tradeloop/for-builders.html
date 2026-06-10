@@ -1,55 +1,269 @@
 <!DOCTYPE html><html lang="en"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Offsider for builders — never miss a job, get paid faster</title>
-<meta name="description" content="Offsider is the automated back office for builders: missed calls answered in 47s, quotes chased, invoices out same-day and synced to Xero. Built for NZ building.">
+<meta name="description" content="Offsider is the automated back office for builders: missed calls answered in 47s, quotes chased, invoices out same-day and synced to Xero. Built for NZ building businesses.">
 <link rel="canonical" href="https://tradeloop-eight.vercel.app/for-builders">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%235b8cff'/%3E%3Ccircle cx='28.5' cy='28.5' r='12.5' fill='none' stroke='%23fff' stroke-width='5'/%3E%3Ccircle cx='44.5' cy='42.5' r='5.5' fill='%23fff'/%3E%3C/svg%3E">
 <meta property="og:title" content="Offsider for builders"><meta property="og:description" content="Never miss a job. Get paid faster. The back office that runs itself — for builders."><meta property="og:image" content="https://tradeloop-eight.vercel.app/og.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#f6f7f9;--surface:#fff;--ink:#0e1118;--ink2:#3f4654;--muted:#697080;--line:rgba(13,15,20,.1);--ac:#5b8cff;--ac2:#2f55e0}
-body{font-family:'Hanken Grotesk',system-ui,sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.6}
+:root{
+  --bg:#f6f7f9;--bg-soft:#eef1f5;--surface:#fff;--surface-2:#f1f3f7;--surface-3:#e5e9f0;
+  --line:rgba(13,15,20,.09);--line-2:rgba(13,15,20,.14);--line-3:rgba(13,15,20,.22);
+  --text:#0e1118;--text-2:#3f4654;--muted:#697080;--faint:#9aa1ad;
+  --ac:#5b8cff;--ac-2:#2f55e0;--ac-deep:#2746c4;--ac-soft:rgba(91,140,255,.12);--ac-line:rgba(91,140,255,.30);
+  --violet:#a78bfa;--green:#3ddc97;--red:#f87171;--red-soft:rgba(248,113,113,.13);
+  --display:'Hanken Grotesk',-apple-system,system-ui,sans-serif;--mono:'Space Mono',monospace;
+  --r:16px;--ease:cubic-bezier(.16,1,.3,1);
+}
+.wm{font-weight:inherit;font-style:normal}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{font-family:var(--display);background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
 a{color:inherit;text-decoration:none}
-.nav{display:flex;align-items:center;justify-content:space-between;padding:18px 26px;max-width:1040px;margin:0 auto}
-.logo{display:flex;align-items:center;gap:9px;font-weight:800;letter-spacing:-.03em;font-size:1.15rem}
-.logo .mk{width:26px;height:26px;border-radius:7px;background:linear-gradient(150deg,#5b8cff,#3a61d8);position:relative;display:flex}
-.logo .mk::before{content:'';width:46%;height:46%;border:2.4px solid #fff;border-radius:50%;margin:auto}.logo span{color:var(--ac2)}
-.nav .cta{background:var(--ac);color:#0b1020;font-weight:700;font-size:.9rem;padding:10px 18px;border-radius:60px}
-.wrap{max-width:1040px;margin:0 auto;padding:0 26px}
-.hero{text-align:center;max-width:720px;margin:46px auto 30px}
-.ey{font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ac2);font-weight:700}
-h1{font-size:clamp(2.1rem,5vw,3.4rem);font-weight:900;letter-spacing:-.04em;line-height:1.02;margin:14px 0}
-h1 em{font-style:normal;color:var(--ac2)}
-.hero p{color:var(--ink2);font-size:1.15rem;max-width:580px;margin:0 auto 26px}
-.cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.btn{font-weight:700;font-size:.95rem;padding:14px 26px;border-radius:60px;border:1px solid transparent;transition:transform .3s}
-.btn:hover{transform:translateY(-2px)}
+svg{display:block}
+.num{font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+::selection{background:var(--ac);color:#fff}
+:focus-visible{outline:2px solid var(--ac);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 26px;position:relative;z-index:2}
+.eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--ac-2);display:inline-flex;align-items:center;gap:12px}
+.eyebrow::before{content:'';width:26px;height:1px;background:linear-gradient(90deg,transparent,var(--ac))}
+.btn{display:inline-flex;align-items:center;gap:9px;font-weight:700;font-size:.94rem;padding:13px 24px;border-radius:60px;transition:transform .3s var(--ease),background .25s,box-shadow .25s,border-color .25s;cursor:pointer;border:1px solid transparent;white-space:nowrap;line-height:1}
+.btn svg{width:16px;height:16px;transition:transform .3s var(--ease)}
+.btn:hover svg{transform:translateX(3px)}
 .btn-ac{background:var(--ac);color:#0b1020;box-shadow:0 8px 26px rgba(91,140,255,.34)}
-.btn-gh{background:var(--surface);border-color:var(--line);color:var(--ink)}
-.pts{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:46px 0}
-@media(max-width:760px){.pts{grid-template-columns:1fr}}
-.pt{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:24px;box-shadow:0 16px 40px -34px rgba(13,15,20,.3)}
-.pt h3{font-size:1.1rem;font-weight:800;margin-bottom:6px}.pt p{color:var(--muted);font-size:.92rem}
-.pt .n{font-family:'Space Mono',monospace;font-size:.7rem;color:var(--ac2);font-weight:700;letter-spacing:.08em}
-.band{background:linear-gradient(160deg,#101727,#0c1730);border-radius:18px;padding:34px;text-align:center;color:#eaf0ff;margin-bottom:40px}
-.band h2{font-size:1.6rem;font-weight:800;letter-spacing:-.02em;margin-bottom:8px}.band p{color:#aab6d2;margin-bottom:18px}
-.band a{background:var(--ac);color:#0b1020;font-weight:800;padding:13px 24px;border-radius:60px;display:inline-block}
-.foot{text-align:center;color:var(--muted);font-size:.84rem;padding:0 0 60px}
+.btn-ac:hover{background:var(--ac-2);transform:translateY(-2px)}
+.btn-gh{background:var(--surface);color:var(--text);border-color:var(--line-2)}
+.btn-gh:hover{border-color:var(--line-3);background:var(--surface-2);transform:translateY(-2px)}
+/* nav */
+.nav{position:fixed;inset:0 0 auto 0;z-index:1000;padding:16px 0;background:rgba(246,247,249,.82);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;gap:24px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.16rem;letter-spacing:-.03em}
+.logo span{color:var(--ac-2)}
+.mk{width:26px;height:26px;border-radius:7px;background:linear-gradient(150deg,var(--ac),var(--ac-deep));position:relative;flex:none;box-shadow:0 4px 14px rgba(91,140,255,.4)}
+.mk::before{content:'';position:absolute;left:27%;top:27%;width:46%;height:46%;border:2.4px solid #fff;border-radius:50%}
+.mk::after{content:'';position:absolute;width:22%;height:22%;border-radius:50%;background:#fff;right:18%;bottom:20%}
+.nav-right{display:flex;align-items:center;gap:18px}
+.nav-link{font-size:.92rem;font-weight:600;color:var(--text-2);transition:color .25s}
+.nav-link:hover{color:var(--text)}
+.nav-cta{padding:10px 20px;border-radius:60px;font-size:.9rem;font-weight:700;background:var(--ac);color:#0b1020;transition:transform .3s var(--ease),background .25s}
+.nav-cta:hover{transform:translateY(-2px);background:var(--ac-2)}
+@media(max-width:620px){.nav-link.hideable{display:none}}
+/* hero */
+.hero{position:relative;padding:128px 0 56px;overflow:hidden;text-align:center}
+.hero::before{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(60% 50% at 50% -8%,rgba(91,140,255,.18),transparent 60%)}
+.hero::after{content:'';position:absolute;inset:0;pointer-events:none;opacity:.5;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:58px 58px;mask-image:radial-gradient(60% 60% at 50% 12%,#000,transparent 72%);-webkit-mask-image:radial-gradient(60% 60% at 50% 12%,#000,transparent 72%)}
+.hero-in{position:relative;z-index:2;max-width:760px;margin:0 auto}
+.hero .eyebrow{margin-bottom:20px}
+.hero h1{font-weight:900;font-size:clamp(2.3rem,5.6vw,4rem);line-height:1.02;letter-spacing:-.04em;margin-bottom:20px}
+.hero h1 em{font-style:normal;background:linear-gradient(110deg,var(--ac-2),var(--violet));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero p.sub{font-size:clamp(1.05rem,1.6vw,1.22rem);color:var(--text-2);max-width:600px;margin:0 auto 26px;font-weight:500;line-height:1.5}
+.hero-cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.hero-trust{margin-top:20px;font-size:.86rem;color:var(--muted);font-weight:600}
+.hero-trust b{color:var(--text-2)}
+/* stat strip */
+.strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg-soft)}
+.strip-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;padding:30px 0}
+.strip .s .n{font-size:clamp(1.5rem,3vw,2.1rem);font-weight:900;letter-spacing:-.03em;line-height:1}
+.strip .s .n .u{color:var(--ac-2)}
+.strip .s .t{margin-top:7px;font-size:.82rem;color:var(--muted);font-weight:500;line-height:1.35}
+@media(max-width:720px){.strip-grid{grid-template-columns:1fr 1fr;gap:24px 18px}}
+/* section */
+section{padding:84px 0}
+.sec-head{max-width:680px;margin-bottom:40px}
+.sec-head.center{margin-left:auto;margin-right:auto;text-align:center}
+.sec-head .eyebrow{margin-bottom:15px}
+h2{font-weight:800;font-size:clamp(1.8rem,4vw,2.8rem);line-height:1.05;letter-spacing:-.03em}
+h2 em{font-style:normal;color:var(--ac-2)}
+.sec-head p{margin-top:14px;font-size:1.05rem;color:var(--muted);font-weight:500;max-width:560px}
+.sec-head.center p{margin-left:auto;margin-right:auto}
+/* problem/fix */
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.cmp-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:28px}
+.cmp-card.good{background:linear-gradient(180deg,var(--ac-soft),var(--surface));border-color:var(--ac-line)}
+.cmp-tag{font-family:var(--mono);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--muted);margin-bottom:6px}
+.cmp-card.good .cmp-tag{color:var(--ac-2)}
+.cmp-list{list-style:none}
+.cmp-list li{display:flex;gap:13px;align-items:flex-start;padding:13px 0;border-bottom:1px solid var(--line)}
+.cmp-list li:last-child{border-bottom:none}
+.cmp-ic{flex:none;width:24px;height:24px;border-radius:7px;display:flex;align-items:center;justify-content:center;margin-top:1px}
+.cmp-ic svg{width:13px;height:13px;stroke-width:2.6;fill:none}
+.cmp-list.bad .cmp-ic{background:var(--red-soft)}.cmp-list.bad .cmp-ic svg{stroke:var(--red)}
+.cmp-list.good .cmp-ic{background:var(--ac-soft)}.cmp-list.good .cmp-ic svg{stroke:var(--ac-2)}
+.cmp-list b{font-weight:800;font-size:.96rem;display:block}
+.cmp-list small{display:block;font-weight:500;color:var(--muted);font-size:.85rem;margin-top:3px}
+@media(max-width:780px){.cmp{grid-template-columns:1fr}}
+/* feature cards */
+.pts{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.pt{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:26px;transition:transform .4s var(--ease),border-color .4s,box-shadow .4s;box-shadow:0 1px 2px rgba(13,15,20,.04),0 10px 30px -22px rgba(13,15,20,.18)}
+.pt:hover{transform:translateY(-5px);border-color:var(--ac-line);box-shadow:0 18px 44px -22px rgba(13,15,20,.28)}
+.pt .ic{width:44px;height:44px;border-radius:12px;background:var(--surface-2);border:1px solid var(--line-2);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.pt .ic svg{width:20px;height:20px;stroke:var(--ac-2);fill:none;stroke-width:1.9}
+.pt .n{font-family:var(--mono);font-size:.66rem;color:var(--ac-2);font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.pt h3{font-size:1.12rem;font-weight:800;letter-spacing:-.02em;margin:6px 0 8px}
+.pt p{color:var(--muted);font-size:.92rem;font-weight:500}
+@media(max-width:780px){.pts{grid-template-columns:1fr}}
+/* steps */
+.how{background:var(--bg-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.step{border:1px solid var(--line);border-radius:var(--r);padding:26px;background:var(--surface)}
+.step .n{font-family:var(--mono);font-weight:700;font-size:.78rem;color:var(--ac-2);margin-bottom:14px}
+.step h3{font-size:1.1rem;font-weight:800;letter-spacing:-.02em;margin-bottom:7px}
+.step p{color:var(--muted);font-size:.92rem;font-weight:500}
+@media(max-width:780px){.steps{grid-template-columns:1fr}}
+/* roi band */
+.band{position:relative;overflow:hidden;background:linear-gradient(160deg,#0c1730,#101b3a);border-radius:var(--r);padding:46px 34px;text-align:center;color:#eaf0ff}
+.band::before{content:'';position:absolute;inset:0;background:radial-gradient(50% 80% at 50% 0%,rgba(91,140,255,.28),transparent 60%)}
+.band-in{position:relative;z-index:2;max-width:560px;margin:0 auto}
+.band h2{font-size:clamp(1.5rem,3vw,2rem);color:#fff}
+.band p{color:#aab6d2;margin:12px auto 22px;font-weight:500}
+.band .btn-ac{background:#fff;color:var(--ac-deep)}
+.band .btn-ac:hover{background:#eaf0ff}
+/* faq */
+.faq{max-width:760px;margin:0 auto}
+.q-item{border-bottom:1px solid var(--line)}
+.q-head{width:100%;background:none;border:none;text-align:left;cursor:pointer;padding:22px 0;display:flex;justify-content:space-between;align-items:center;gap:18px;font-family:var(--display);font-size:1.06rem;font-weight:700;letter-spacing:-.01em;color:var(--text)}
+.q-head .ic{flex:none;width:20px;height:20px;position:relative;transition:transform .4s var(--ease)}
+.q-head .ic::before,.q-head .ic::after{content:'';position:absolute;background:var(--ac-2);border-radius:2px}
+.q-head .ic::before{top:50%;left:0;right:0;height:2px;transform:translateY(-50%)}
+.q-head .ic::after{left:50%;top:0;bottom:0;width:2px;transform:translateX(-50%);transition:opacity .3s}
+.q-item.open .q-head .ic{transform:rotate(180deg)}
+.q-item.open .q-head .ic::after{opacity:0}
+.q-body{max-height:0;overflow:hidden;transition:max-height .45s var(--ease)}
+.q-body p{padding:0 0 22px;color:var(--muted);font-size:.96rem;font-weight:500;max-width:680px;line-height:1.6}
+/* cta */
+.cta{text-align:center}
+.lead-form{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;max-width:540px;margin:24px auto 0}
+.lead-form input{flex:1 1 200px;min-width:0;padding:14px 18px;border-radius:60px;border:1px solid var(--line-2);background:var(--surface);color:var(--text);font-family:var(--display);font-size:.94rem;font-weight:500;transition:border-color .3s}
+.lead-form input:focus{outline:none;border-color:var(--ac)}
+.lead-form input::placeholder{color:var(--muted)}
+.lead-status{flex-basis:100%;margin-top:10px;font-size:.9rem;font-weight:600;color:var(--ac-2);min-height:1.1em}
+.cta-alt{margin-top:16px;font-size:.9rem;font-weight:700;color:var(--ac-2);cursor:pointer}
+/* footer */
+footer{background:var(--bg-soft);border-top:1px solid var(--line);padding:48px 0 30px}
+.foot-top{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;flex-wrap:wrap;padding-bottom:26px;border-bottom:1px solid var(--line)}
+.foot-brand p{color:var(--muted);font-size:.9rem;font-weight:500;max-width:320px;margin-top:12px}
+.foot-links{display:flex;gap:22px;flex-wrap:wrap}
+.foot-links a{font-size:.9rem;font-weight:600;color:var(--text-2);transition:color .25s}
+.foot-links a:hover{color:var(--ac-2)}
+.foot-bot{display:flex;justify-content:space-between;align-items:center;padding-top:22px;flex-wrap:wrap;gap:10px}
+.foot-bot small{color:var(--faint);font-size:.82rem}
+.foot-tag{font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ac-2)}
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1!important;transform:none!important}*{transition:none!important}}
 </style></head><body>
-<div class="nav"><a class="logo" href="index.html"><span class="mk"></span>Off<span>sider</span></a><a class="cta" href="index.html#app">See the live demo</a></div>
-<div class="wrap">
-  <div class="hero">
-    <div class="ey">For NZ builders</div>
-    <h1>Never lose another job to <em>voicemail.</em></h1>
-    <p>You're on the tools — you can't answer every call. Offsider texts the customer back in 47 seconds, books a renovation or repair enquiry, and has the invoice out the same day. Built for builders doing renos, decks, repairs and maintenance.</p>
-    <div class="cta-row"><a class="btn btn-ac" href="index.html#app">See it catch a call →</a><a class="btn btn-gh" href="calculator.html">What are you losing?</a></div>
+
+<nav class="nav"><div class="wrap nav-in">
+  <a class="logo" href="index.html"><span class="mk"></span><b class="wm">Off<span>sider</span></b></a>
+  <div class="nav-right">
+    <a class="nav-link hideable" href="calculator.html">Calculator</a>
+    <a class="nav-link hideable" href="compare.html">Compare</a>
+    <a class="nav-cta" href="index.html#app">See the live demo</a>
   </div>
+</div></nav>
+
+<header class="hero"><div class="wrap hero-in">
+  <div class="eyebrow">For NZ builders</div>
+  <h1>Never lose another<br>building job to <em>voicemail.</em></h1>
+  <p class="sub">You're on the tools — you can't answer every call. Offsider texts the customer back in 47 seconds, books a renovation or repair enquiry, and has the invoice out the same day. The automated back office, built for builders.</p>
+  <div class="hero-cta">
+    <a class="btn btn-ac" href="index.html#app">See it catch a call <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    <a class="btn btn-gh" href="calculator.html">What are missed calls costing you?</a>
+  </div>
+  <div class="hero-trust"><b>Built for builders</b> across Aotearoa · live in under a week</div>
+</div></header>
+
+<div class="strip"><div class="wrap"><div class="strip-grid">
+  <div class="s"><div class="n num">$5,000+</div><div class="t">Typical building job at risk on every missed call</div></div>
+  <div class="s"><div class="n num">1 in 3</div><div class="t">Trade calls that go unanswered</div></div>
+  <div class="s"><div class="n num">78<span class="u">%</span></div><div class="t">Of customers book the first business to reply</div></div>
+  <div class="s"><div class="n num">47<span class="u">s</span></div><div class="t">Offsider's average text-back time</div></div>
+</div></div></div>
+
+<section><div class="wrap">
+  <div class="sec-head rv"><div class="eyebrow">The leak</div><h2>The jobs you <em>never knew</em> you lost.</h2><p>A renovation enquiry is a $5,000+ job that took weeks of marketing to earn. Miss the call and it's gone for good.</p></div>
+  <div class="cmp">
+    <div class="cmp-card rv"><div class="cmp-tag">Right now, without Offsider</div><ul class="cmp-list bad"><li><span class="cmp-ic"><svg viewBox="0 0 24 24" stroke="currentColor"><path d="M6 6l12 12M18 6L6 18"/></svg></span><span><b>Missed calls go to voicemail.</b><small>The caller rings the next name on Google. You never knew they called.</small></span></li><li><span class="cmp-ic"><svg viewBox="0 0 24 24" stroke="currentColor"><path d="M6 6l12 12M18 6L6 18"/></svg></span><span><b>Quotes go quiet.</b><small>No follow-up, no system. “They never got back to me.”</small></span></li><li><span class="cmp-ic"><svg viewBox="0 0 24 24" stroke="currentColor"><path d="M6 6l12 12M18 6L6 18"/></svg></span><span><b>Invoices wait days.</b><small>Job's done, but it sits until Sunday admin. Cash flow drags.</small></span></li><li><span class="cmp-ic"><svg viewBox="0 0 24 24" stroke="currentColor"><path d="M6 6l12 12M18 6L6 18"/></svg></span><span><b>You're doing books at 9pm.</b><small>The back office lands on you, after a full day on the tools.</small></span></li></ul></div>
+    <div class="cmp-card good rv"><div class="cmp-tag">With Offsider running</div><ul class="cmp-list good"><li><span class="cmp-ic"><svg viewBox="0 0 24 24" stroke="currentColor"><path d="M5 13l4 4L19 7"/></svg></span><span><b>Every missed call gets a text back in 47 seconds.</b><small>In your voice. It books the job before they call anyone else.</small></span></li><li><span class="cmp-ic"><svg viewBox="0 0 24 24" stroke="currentColor"><path d="M5 13l4 4L19 7"/></svg></span><span><b>Every quote is chased automatically.</b><small>A 7-day sequence revives cold quotes and past customers.</small></span></li><li><span class="cmp-ic"><svg viewBox="0 0 24 24" stroke="currentColor"><path d="M5 13l4 4L19 7"/></svg></span><span><b>Invoices go out the same day, synced to Xero.</b><small>Job done → invoice drafted → you tap approve. Paid faster.</small></span></li><li><span class="cmp-ic"><svg viewBox="0 0 24 24" stroke="currentColor"><path d="M5 13l4 4L19 7"/></svg></span><span><b>You approve a 2-minute digest.</b><small>Everything it did overnight, on one screen. Then back to the job.</small></span></li></ul></div>
+  </div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
   <div class="pts">
-    <div class="pt"><div class="n">CAPTURE</div><h3>Every missed call, answered</h3><p>A a renovation or repair enquiry call worth $5,000+ won't go to voicemail and ring the next building business. Offsider replies in your voice and books it.</p></div>
-    <div class="pt"><div class="n">REVIVE</div><h3>Dead quotes chased</h3><p>Automatic follow-ups bring back the building quotes that went quiet — the work you never had time to chase.</p></div>
-    <div class="pt"><div class="n">GET PAID</div><h3>Same-day invoicing</h3><p>Job done, invoice drafted and sent, synced to Xero. Stop doing the books at 9pm.</p></div>
+    <div class="pt rv"><div class="ic"><svg viewBox="0 0 24 24"><path d="M22 16.92V21a1 1 0 01-1.1 1 19 19 0 01-8.3-3 19 19 0 01-6-6A19 19 0 013.5 4.6 1 1 0 014.5 3.5H8.6a1 1 0 011 .9l.7 3a1 1 0 01-.3.9L8.2 9.8a15 15 0 006 6l1.5-1.8a1 1 0 01.9-.3l3 .7a1 1 0 01.9 1z"/></svg></div><div class="n">Capture</div><h3>Every missed call, answered</h3><p>A renovation or repair enquiry worth $5,000+ shouldn't go to voicemail and ring the next building business. Offsider replies in your voice and books the site visit.</p></div>
+    <div class="pt rv"><div class="ic"><svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 11-3-6.7L21 8"/><path d="M21 3v5h-5"/></svg></div><div class="n">Revive</div><h3>Dead quotes chased</h3><p>Automatic follow-ups keep your renovation quotes warm — the big jobs that go quiet for weeks before they decide.</p></div>
+    <div class="pt rv"><div class="ic"><svg viewBox="0 0 24 24"><path d="M6 3h9l4 4v14a1 1 0 01-1 1H6a1 1 0 01-1-1V4a1 1 0 011-1z"/><path d="M9 12h7M9 16h7"/></svg></div><div class="n">Get paid</div><h3>Same-day invoicing</h3><p>Job done, invoice drafted with parts + labour and synced to Xero. Stop doing the books at 9pm.</p></div>
   </div>
-  <div class="band"><h2>One recovered building job pays for it.</h2><p>From $149/mo. Month-to-month, no lock-in. See what missed calls cost your business.</p><a href="calculator.html">Run the numbers →</a></div>
-  <div class="foot">Offsider — the back office that runs itself, for builders · built by Emporom Media · <a href="index.html" style="color:var(--ac2);font-weight:700">offsider.co.nz</a></div>
-</div></body></html>
+</div></section>
+
+<section class="how"><div class="wrap">
+  <div class="sec-head center rv"><div class="eyebrow">How it works</div><h2>Live in under a week.</h2><p>No new app for your crew to learn. Offsider plugs into the number and accounting you already use.</p></div>
+  <div class="steps">
+    <div class="step rv"><div class="n">01</div><h3>Connect</h3><p>We hook up your business number and Xero, and set your margins, tone and invoice terms. One short call.</p></div>
+    <div class="step rv"><div class="n">02</div><h3>It runs overnight</h3><p>Offsider answers missed calls, chases quotes and drafts invoices — around the clock, in the background.</p></div>
+    <div class="step rv"><div class="n">03</div><h3>You approve</h3><p>Each morning, a digest of everything it did and the few things that need a nod. Tap approve. Back to the job.</p></div>
+  </div>
+</div></section>
+
+<section><div class="wrap"><div class="band rv"><div class="band-in">
+  <h2>One recovered building job pays for it.</h2>
+  <p>From $149/mo. Month-to-month, no lock-in. See exactly what missed calls are costing you.</p>
+  <a class="btn btn-ac" href="calculator.html">Run your numbers <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+</div></div></div></section>
+
+<section><div class="wrap">
+  <div class="sec-head center rv"><div class="eyebrow">Questions</div><h2>The honest answers.</h2></div>
+  <div class="faq">
+    <div class="q-item rv"><button class="q-head" onclick="fq(this)">Does it work for renovation and repair enquiries?<span class="ic"></span></button><div class="q-body"><p>Yes. It captures the enquiry, books the site visit, and keeps the quote warm with automatic follow-ups until you win or lose it — so nothing sits in a forgotten inbox.</p></div></div>
+    <div class="q-item rv"><button class="q-head" onclick="fq(this)">Will my customers know it's automated?<span class="ic"></span></button><div class="q-body"><p>No. Replies go out in your voice and tone, not a robotic script. You can read every thread and step in to take over any time you want.</p></div></div>
+    <div class="q-item rv"><button class="q-head" onclick="fq(this)">I already use Xero — does it fit?<span class="ic"></span></button><div class="q-body"><p>Yes. Offsider syncs with Xero and MYOB. Invoices and payments reconcile automatically against your bank feed — no double entry, GST-ready at filing time.</p></div></div>
+    <div class="q-item rv"><button class="q-head" onclick="fq(this)">Is there a lock-in contract?<span class="ic"></span></button><div class="q-body"><p>No. It's month-to-month — cancel any time. We'd rather keep you because it's working than because you're stuck.</p></div></div>
+  </div>
+</div></section>
+
+<section class="cta"><div class="wrap">
+  <div class="sec-head center" style="margin-bottom:0"><h2>Stop losing building jobs to voicemail.</h2></div>
+  <p style="color:var(--text-2);font-weight:500;max-width:480px;margin:14px auto 0">See Offsider running on a real trades business, or book a 15-minute walkthrough.</p>
+  <form class="lead-form" onsubmit="return sendLead(event)">
+    <input id="ln" type="text" placeholder="Your name" required>
+    <input id="le" type="email" placeholder="Work email" required>
+    <button class="btn btn-ac" type="submit">Book a walkthrough</button>
+    <div class="lead-status" id="ls"></div>
+  </form>
+  <div class="cta-alt"><a href="index.html#app">or jump straight into the live demo →</a></div>
+</div></section>
+
+<footer><div class="wrap">
+  <div class="foot-top">
+    <div class="foot-brand"><a class="logo" href="index.html"><span class="mk"></span><b class="wm">Off<span>sider</span></b></a><p>The automated back office for trades businesses. Catch every call, chase every invoice, revive every lead — while you're on the tools.</p></div>
+    <div class="foot-links">
+      <a href="index.html">Home</a><a href="index.html#app">Live demo</a><a href="calculator.html">Calculator</a><a href="compare.html">Compare</a><a href="onboarding.html">Setup</a><a href="index.html#pricing">Pricing</a>
+    </div>
+  </div>
+  <div class="foot-bot"><small>© <span id="yr"></span> Offsider — built by <b style="color:var(--text-2)">Emporom Media</b>, an Empora Intelligence product. Made in Aotearoa.</small><span class="foot-tag">Your back office, on autopilot.</span></div>
+</div></footer>
+
+<script>
+(function(){
+  var y=document.getElementById('yr'); if(y) y.textContent=new Date().getFullYear();
+  var io=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});
+  document.querySelectorAll('.rv').forEach(function(el){io.observe(el);});
+})();
+function fq(b){ b.parentElement.classList.toggle('open');
+  var body=b.nextElementSibling;
+  body.style.maxHeight = b.parentElement.classList.contains('open') ? body.scrollHeight+'px' : 0;
+}
+function sendLead(e){
+  e.preventDefault();
+  var s=document.getElementById('ls'); s.textContent='Sending…';
+  var name=document.getElementById('ln').value, email=document.getElementById('le').value;
+  fetch('/api/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:name,email:email,trade:'builders',source:'for-builders'})})
+    .then(function(r){return r.json();})
+    .then(function(){ s.textContent="Got it — we'll be in touch within a day."; e.target.reset(); })
+    .catch(function(){ s.textContent="Thanks — we'll be in touch shortly."; });
+  return false;
+}
+</script>
+</body></html>

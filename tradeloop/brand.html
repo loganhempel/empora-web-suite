@@ -8,6 +8,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%235b8cff'/%3E%3Ccircle cx='28.5' cy='28.5' r='12.5' fill='none' stroke='%23fff' stroke-width='5'/%3E%3Ccircle cx='44.5' cy='42.5' r='5.5' fill='%23fff'/%3E%3C/svg%3E">
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
+.wm{font-weight:inherit;font-style:normal}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{--bg:#14161b;--surface:#1c1f27;--surface2:#23272f;--line:rgba(255,255,255,.09);--text:#e9ebef;--muted:#7e838e;--ac:#5b8cff;--ac2:#7aa2ff;--deep:#3a61d8;--violet:#a78bfa;--green:#3ddc97;--mono:'Space Mono',monospace}
 body{font-family:'Hanken Grotesk',system-ui,sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
@@ -66,8 +67,8 @@ svg{display:block}
 
   <div class="sec">Lockups</div>
   <div class="grid g2">
-    <div class="tile"><div class="lock"><svg viewBox="0 0 64 64" width="40" height="40"><defs><linearGradient id="l1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5b8cff"/><stop offset="1" stop-color="#3a61d8"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#l1)"/><circle cx="28.5" cy="28.5" r="12.5" fill="none" stroke="#fff" stroke-width="5"/><circle cx="44.5" cy="42.5" r="5.5" fill="#fff"/></svg>Off<span>sider</span></div><div class="cap">Horizontal · on dark</div></div>
-    <div class="tile lite"><div class="lock lite"><svg viewBox="0 0 64 64" width="40" height="40"><defs><linearGradient id="l2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5b8cff"/><stop offset="1" stop-color="#3a61d8"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#l2)"/><circle cx="28.5" cy="28.5" r="12.5" fill="none" stroke="#fff" stroke-width="5"/><circle cx="44.5" cy="42.5" r="5.5" fill="#fff"/></svg>Off<span>sider</span></div><div class="cap">Horizontal · on light</div></div>
+    <div class="tile"><div class="lock"><svg viewBox="0 0 64 64" width="40" height="40"><defs><linearGradient id="l1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5b8cff"/><stop offset="1" stop-color="#3a61d8"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#l1)"/><circle cx="28.5" cy="28.5" r="12.5" fill="none" stroke="#fff" stroke-width="5"/><circle cx="44.5" cy="42.5" r="5.5" fill="#fff"/></svg><b class="wm">Off<span>sider</span></b></div><div class="cap">Horizontal · on dark</div></div>
+    <div class="tile lite"><div class="lock lite"><svg viewBox="0 0 64 64" width="40" height="40"><defs><linearGradient id="l2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5b8cff"/><stop offset="1" stop-color="#3a61d8"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#l2)"/><circle cx="28.5" cy="28.5" r="12.5" fill="none" stroke="#fff" stroke-width="5"/><circle cx="44.5" cy="42.5" r="5.5" fill="#fff"/></svg><b class="wm">Off<span>sider</span></b></div><div class="cap">Horizontal · on light</div></div>
   </div>
 
   <div class="sec">Colour</div>

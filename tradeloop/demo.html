@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
+.wm{font-weight:inherit;font-style:normal}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   --bg:#0f1116;--bg2:#161922;--surface:#1c1f29;--surface-2:#242833;--line:rgba(255,255,255,.09);--line2:rgba(255,255,255,.15);
@@ -137,7 +138,7 @@ body.paused .scene.active *,body.paused .bars .seg.run i{animation-play-state:pa
 <body>
 
 <div class="hud">
-  <div class="logo"><span class="mk" style="--mks:24px"></span>Off<span>sider</span></div>
+  <div class="logo"><span class="mk" style="--mks:24px"></span><b class="wm">Off<span>sider</span></b></div>
   <span class="count" id="count">01 / 08</span>
   <span class="skip" onclick="end()">Skip ⟶</span>
 </div>
